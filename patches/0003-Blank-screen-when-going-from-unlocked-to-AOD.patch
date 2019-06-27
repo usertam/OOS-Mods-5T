@@ -1,0 +1,42 @@
+From 1411ef870aa68f61faddf17071c92f0ed875d051 Mon Sep 17 00:00:00 2001
+From: paphonb <paphonb@gmail.com>
+Date: Sun, 30 Sep 2018 12:14:58 +0700
+Subject: [PATCH 3/6] Blank screen when going from unlocked to AOD
+
+---
+ .../systemui/statusbar/phone/ScrimState$5.smali     | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/OPSystemUI/smali/com/android/systemui/statusbar/phone/ScrimState$5.smali b/OPSystemUI/smali/com/android/systemui/statusbar/phone/ScrimState$5.smali
+index d70f933..25a9fd5 100644
+--- a/OPSystemUI/smali/com/android/systemui/statusbar/phone/ScrimState$5.smali
++++ b/OPSystemUI/smali/com/android/systemui/statusbar/phone/ScrimState$5.smali
+@@ -51,8 +51,13 @@
+ 
+     .line 108
+     .local v0, "alwaysOnEnabled":Z
+-    iget-boolean v1, p0, Lcom/android/systemui/statusbar/phone/ScrimState$5;->mDisplayRequiresBlanking:Z
++    sget-object v1, Lcom/android/systemui/statusbar/phone/ScrimState;->UNLOCKED:Lcom/android/systemui/statusbar/phone/ScrimState;
+ 
++    if-ne p1, v1, :not_unlocked
++
++    const v1, 0x1
++
++    :put_blank_screen
+     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/ScrimState$5;->mBlankScreen:Z
+ 
+     .line 109
+@@ -117,4 +122,10 @@
+ 
+     .line 118
+     return-void
++
++    :not_unlocked
++
++    const v1, 0x0
++
++    goto :put_blank_screen
+ .end method
+-- 
+2.17.1
+
