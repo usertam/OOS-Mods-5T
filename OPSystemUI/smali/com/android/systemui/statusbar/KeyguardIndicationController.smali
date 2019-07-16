@@ -527,6 +527,16 @@
     return-object v0
 .end method
 
+.method static synthetic access$1000(Lcom/android/systemui/statusbar/KeyguardIndicationController;)Z
+    .locals 1
+    .param p0, "x0"    # Lcom/android/systemui/statusbar/KeyguardIndicationController;
+
+    .line 92
+    iget-boolean v0, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController;->mPowerPluggedIn:Z
+
+    return v0
+.end method
+
 .method static synthetic access$1100(Lcom/android/systemui/statusbar/KeyguardIndicationController;)Z
     .locals 1
     .param p0, "x0"    # Lcom/android/systemui/statusbar/KeyguardIndicationController;
