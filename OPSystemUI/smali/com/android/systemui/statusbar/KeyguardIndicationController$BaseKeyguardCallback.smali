@@ -694,7 +694,7 @@
 
     move-result-object v7
 
-    invoke-virtual {v7, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    # invoke-virtual {v7, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 914
     :cond_5
@@ -720,7 +720,7 @@
 
     move-result-object v8
 
-    invoke-virtual {v8}, Landroid/animation/ValueAnimator;->cancel()V
+    # invoke-virtual {v8}, Landroid/animation/ValueAnimator;->cancel()V
 
     .line 918
     iget-object v8, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
@@ -761,7 +761,7 @@
 
     move-result-object v8
 
-    invoke-virtual {v8}, Landroid/animation/ValueAnimator;->start()V
+    # invoke-virtual {v8}, Landroid/animation/ValueAnimator;->start()V
 
     goto :goto_4
 
@@ -773,7 +773,7 @@
 
     move-result-object v8
 
-    invoke-virtual {v8, v3}, Landroid/widget/TextView;->setVisibility(I)V
+    # invoke-virtual {v8, v3}, Landroid/widget/TextView;->setVisibility(I)V
 
     .line 926
     :cond_7
@@ -784,7 +784,7 @@
 
     move-result-object v8
 
-    invoke-virtual {v8, v2}, Lcom/android/keyguard/KeyguardStatusView;->setCharging(Z)V
+    # invoke-virtual {v8, v2}, Lcom/android/keyguard/KeyguardStatusView;->setCharging(Z)V
 
     goto :goto_5
 
@@ -820,7 +820,7 @@
 
     move-result-object v2
 
-    invoke-virtual {v2, v3}, Lcom/android/keyguard/KeyguardStatusView;->setCharging(Z)V
+    # invoke-virtual {v2, v3}, Lcom/android/keyguard/KeyguardStatusView;->setCharging(Z)V
 
     .line 932
     iget-object v2, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
@@ -829,7 +829,7 @@
 
     move-result-object v2
 
-    invoke-virtual {v2, v7}, Landroid/widget/TextView;->setVisibility(I)V
+    # invoke-virtual {v2, v7}, Landroid/widget/TextView;->setVisibility(I)V
 
     goto :goto_5
 
@@ -841,7 +841,7 @@
 
     move-result-object v2
 
-    invoke-virtual {v2}, Landroid/animation/ValueAnimator;->cancel()V
+    # invoke-virtual {v2}, Landroid/animation/ValueAnimator;->cancel()V
 
     .line 936
     iget-object v2, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
@@ -850,11 +850,32 @@
 
     move-result-object v2
 
-    invoke-virtual {v2}, Landroid/animation/ValueAnimator;->start()V
+    # invoke-virtual {v2}, Landroid/animation/ValueAnimator;->start()V
 
     .line 941
     :cond_a
     :goto_5
+
+    const v2, 0x0
+
+    if-nez v4, :update_indication
+
+    iget-object v8, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
+
+    invoke-static {v8}, Lcom/android/systemui/statusbar/KeyguardIndicationController;->access$1000(Lcom/android/systemui/statusbar/KeyguardIndicationController;)Z
+
+    move-result v8
+
+    if-eqz v8, :update_indication
+
+    const v2, 0x1
+
+    :update_indication
+
+    iget-object v8, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
+
+    invoke-static {v8, v2}, Lcom/android/systemui/statusbar/KeyguardIndicationController;->updateIndicationStatic(Lcom/android/systemui/statusbar/KeyguardIndicationController;Z)V
+
     iget-object v2, p0, Lcom/android/systemui/statusbar/KeyguardIndicationController$BaseKeyguardCallback;->this$0:Lcom/android/systemui/statusbar/KeyguardIndicationController;
 
     invoke-static {v2}, Lcom/android/systemui/statusbar/KeyguardIndicationController;->access$2300(Lcom/android/systemui/statusbar/KeyguardIndicationController;)Z
