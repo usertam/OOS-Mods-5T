@@ -5,9 +5,9 @@ All credit goes to [paphonb](https://github.com/paphonb), the author of the mod.
 ## Status
 - Up to date with OxygenOS Open Beta 33
 - Added AOSP-style charging indication support
+- Added Android Q battery icon
+- Added Google Sans patch
 
-## Features not implemented
+## Main features not implemented
 - AOSP style clear all notifications button
 - Battery icon in AOD
-- Android Q battery icon
-- Google Sans
