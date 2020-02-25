@@ -426,7 +426,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_1
+    if-eqz v0, :cond_1
 
     const/4 v1, 0x1
 

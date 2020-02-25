@@ -132,6 +132,8 @@
 
 .field private mIsImmersiveSticky:Z
 
+.field private mIsInBrickMode:Z
+
 .field private mIsLightBar:Z
 
 .field public mIsSupportHideNavBar:Z
@@ -216,7 +218,7 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
-    .line 316
+    .line 319
     invoke-direct {p0, p1, p2}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 115
@@ -363,35 +365,38 @@
     .line 206
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsSupportHideNavBar:Z
 
-    .line 256
+    .line 208
+    iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsInBrickMode:Z
+
+    .line 259
     new-instance v2, Lcom/android/systemui/statusbar/phone/NavigationBarView$1;
 
     invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView$1;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     iput-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mImeSwitcherClickListener:Landroid/view/View$OnClickListener;
 
-    .line 287
+    .line 290
     new-instance v2, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;
 
     invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     iput-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mQuickStepAccessibilityDelegate:Landroid/view/View$AccessibilityDelegate;
 
-    .line 454
+    .line 460
     new-instance v2, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;
 
     invoke-direct {v2, p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;Lcom/android/systemui/statusbar/phone/NavigationBarView$1;)V
 
     iput-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHandler:Lcom/android/systemui/statusbar/phone/NavigationBarView$H;
 
-    .line 1685
+    .line 1697
     new-instance v0, Lcom/android/systemui/statusbar/phone/-$$Lambda$NavigationBarView$rZTKiGVTHMScp1MOeQG9jGW8tDA;
 
     invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/phone/-$$Lambda$NavigationBarView$rZTKiGVTHMScp1MOeQG9jGW8tDA;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedListener:Ljava/util/function/Consumer;
 
-    .line 318
+    .line 321
     const-string/jumbo v0, "window"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -400,26 +405,26 @@
 
     check-cast v0, Landroid/view/WindowManager;
 
-    .line 319
+    .line 322
     invoke-interface {v0}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisplay:Landroid/view/Display;
 
-    .line 321
+    .line 324
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
-    .line 322
+    .line 325
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
-    .line 324
+    .line 327
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowAccessibilityButton:Z
 
-    .line 325
+    .line 328
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLongClickableAccessibilityButton:Z
 
-    .line 327
+    .line 330
     const-class v0, Lcom/android/systemui/OverviewProxyService;
 
     invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
@@ -430,7 +435,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
-    .line 328
+    .line 331
     new-instance v0, Lcom/android/systemui/recents/RecentsOnboarding;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
@@ -439,14 +444,14 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
-    .line 330
+    .line 333
     new-instance v0, Landroid/content/res/Configuration;
 
     invoke-direct {v0}, Landroid/content/res/Configuration;-><init>()V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mConfiguration:Landroid/content/res/Configuration;
 
-    .line 331
+    .line 334
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mConfiguration:Landroid/content/res/Configuration;
 
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -459,17 +464,17 @@
 
     invoke-virtual {v0, v1}, Landroid/content/res/Configuration;->updateFrom(Landroid/content/res/Configuration;)I
 
-    .line 332
+    .line 335
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reloadNavIcons()V
 
-    .line 334
+    .line 337
     new-instance v0, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
-    .line 336
+    .line 339
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -480,7 +485,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 337
+    .line 340
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -491,7 +496,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 338
+    .line 341
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -502,7 +507,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 339
+    .line 342
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -513,7 +518,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 340
+    .line 343
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -524,7 +529,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 341
+    .line 344
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -535,7 +540,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 343
+    .line 346
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -546,7 +551,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 345
+    .line 348
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -557,26 +562,26 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 349
+    .line 352
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportCustomNavBar()Z
 
     move-result v0
 
     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
-    .line 350
+    .line 353
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportHideNavBar()Z
 
     move-result v0
 
     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsSupportHideNavBar:Z
 
-    .line 352
+    .line 355
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsSupportHideNavBar:Z
 
     if-eqz v0, :cond_0
 
-    .line 353
+    .line 356
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -587,7 +592,7 @@
 
     invoke-virtual {v0, v2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 356
+    .line 359
     :cond_0
     const v0, 0x7f060365
 
@@ -597,7 +602,7 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_BACKGROUND_LIGHT:I
 
-    .line 357
+    .line 360
     const v0, 0x7f060364
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
@@ -606,7 +611,7 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_BACKGROUND_DARK:I
 
-    .line 358
+    .line 361
     const v0, 0x7f060366
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
@@ -615,7 +620,7 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_BACKGROUND_TRANSPARENT:I
 
-    .line 359
+    .line 362
     const v0, 0x7f060368
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
@@ -624,7 +629,7 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
-    .line 360
+    .line 363
     const v0, 0x7f060367
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
@@ -633,7 +638,7 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_DARK:I
 
-    .line 361
+    .line 364
     const v0, 0x7f060369
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
@@ -642,14 +647,29 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
-    .line 363
+    .line 366
     new-instance v0, Lcom/android/systemui/statusbar/policy/DeadZone;
 
     invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/policy/DeadZone;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZone:Lcom/android/systemui/statusbar/policy/DeadZone;
 
-    .line 364
+    .line 368
+    const-class v0, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    invoke-virtual {v0}, Lcom/oneplus/scene/OPSceneModeObserver;->isInBrickMode()Z
+
+    move-result v0
+
+    iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsInBrickMode:Z
+
+    .line 370
     return-void
 .end method
 
@@ -666,7 +686,7 @@
 .method private applyAppCustomColor()V
     .locals 2
 
-    .line 672
+    .line 678
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isLightColor(I)Z
@@ -675,7 +695,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 673
+    .line 679
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     const/high16 v1, -0x1000000
@@ -684,7 +704,7 @@
 
     goto :goto_0
 
-    .line 674
+    .line 680
     :cond_0
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
@@ -696,20 +716,20 @@
 
     if-eqz v0, :cond_1
 
-    .line 675
+    .line 681
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_DARK:I
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
     goto :goto_0
 
-    .line 677
+    .line 683
     :cond_1
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 679
+    .line 685
     :goto_0
     return-void
 .end method
@@ -721,31 +741,31 @@
     .param p3, "icon"    # I
     .param p4, "quickStepIcon"    # I
 
-    .line 899
+    .line 911
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
 
     move-result v0
 
-    .line 900
+    .line 912
     .local v0, "quickStepEnabled":Z
     if-eqz v0, :cond_0
 
-    .line 901
+    .line 913
     invoke-direct {p0, p1, p2, p4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     move-result-object v1
 
     goto :goto_0
 
-    .line 902
+    .line 914
     :cond_0
     invoke-direct {p0, p1, p2, p3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     move-result-object v1
 
-    .line 900
+    .line 912
     :goto_0
     return-object v1
 .end method
@@ -756,7 +776,7 @@
     .param p1, "caption"    # Ljava/lang/String;
     .param p2, "button"    # Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
-    .line 1670
+    .line 1682
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -777,17 +797,17 @@
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 1671
+    .line 1683
     if-nez p2, :cond_0
 
-    .line 1672
+    .line 1684
     const-string v0, "null"
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     goto :goto_0
 
-    .line 1674
+    .line 1686
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -807,7 +827,7 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1675
+    .line 1687
     invoke-virtual {p2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->getAlpha()F
 
     move-result v1
@@ -818,14 +838,14 @@
 
     move-result-object v0
 
-    .line 1674
+    .line 1686
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 1678
+    .line 1690
     :goto_0
     invoke-virtual {p0}, Ljava/io/PrintWriter;->println()V
 
-    .line 1679
+    .line 1691
     return-void
 .end method
 
@@ -834,10 +854,10 @@
     .param p1, "carMode"    # Z
     .param p2, "landscape"    # Z
 
-    .line 944
+    .line 956
     if-eqz p2, :cond_1
 
-    .line 945
+    .line 957
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackLandCarModeIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -849,7 +869,7 @@
 
     goto :goto_0
 
-    .line 946
+    .line 958
     :cond_1
     if-eqz p1, :cond_2
 
@@ -860,7 +880,7 @@
     :cond_2
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 944
+    .line 956
     :goto_0
     return-object v0
 .end method
@@ -870,10 +890,10 @@
     .param p1, "carMode"    # Z
     .param p2, "landscape"    # Z
 
-    .line 938
+    .line 950
     if-eqz p2, :cond_1
 
-    .line 939
+    .line 951
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackAltLandCarModeIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -885,7 +905,7 @@
 
     goto :goto_0
 
-    .line 940
+    .line 952
     :cond_1
     if-eqz p1, :cond_2
 
@@ -896,7 +916,7 @@
     :cond_2
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 938
+    .line 950
     :goto_0
     return-object v0
 .end method
@@ -907,17 +927,17 @@
     .param p2, "lightIcon"    # I
     .param p3, "darkIcon"    # I
 
-    .line 919
+    .line 931
     invoke-virtual {p1, p2}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 920
+    .line 932
     invoke-virtual {p1, p3}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    .line 919
+    .line 931
     const/4 v2, 0x0
 
     invoke-static {p1, v0, v1, v2}, Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;->create(Landroid/content/Context;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Z)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -933,7 +953,7 @@
     .param p2, "darkContext"    # Landroid/content/Context;
     .param p3, "icon"    # I
 
-    .line 907
+    .line 919
     const/4 v0, 0x1
 
     invoke-direct {p0, p1, p2, p3, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;IZ)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -950,17 +970,17 @@
     .param p3, "icon"    # I
     .param p4, "hasShadow"    # Z
 
-    .line 912
+    .line 924
     invoke-virtual {p1, p3}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 913
+    .line 925
     invoke-virtual {p2, p3}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    .line 912
+    .line 924
     invoke-static {p1, v0, v1, p4}, Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;->create(Landroid/content/Context;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Z)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     move-result-object v0
@@ -975,7 +995,7 @@
     .param p3, "lightColor"    # I
     .param p4, "darkColor"    # I
 
-    .line 925
+    .line 937
     invoke-virtual {p1, p2}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
@@ -991,10 +1011,10 @@
     .locals 3
     .param p1, "resId"    # I
 
-    .line 1551
+    .line 1563
     if-eqz p1, :cond_0
 
-    .line 1552
+    .line 1564
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -1003,7 +1023,7 @@
 
     move-result-object v0
 
-    .line 1554
+    .line 1566
     .local v0, "res":Landroid/content/res/Resources;
     :try_start_0
     invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
@@ -1014,17 +1034,17 @@
 
     return-object v1
 
-    .line 1555
+    .line 1567
     :catch_0
     move-exception v1
 
-    .line 1556
+    .line 1568
     .local v1, "ex":Landroid/content/res/Resources$NotFoundException;
     const-string v2, "(unknown)"
 
     return-object v2
 
-    .line 1559
+    .line 1571
     .end local v0    # "res":Landroid/content/res/Resources;
     .end local v1    # "ex":Landroid/content/res/Resources$NotFoundException;
     :cond_0
@@ -1036,7 +1056,7 @@
 .method private hasPinnedHeadsUp()Z
     .locals 1
 
-    .line 779
+    .line 791
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHeadsUpManager:Lcom/android/systemui/statusbar/policy/HeadsUpManager;
 
     if-eqz v0, :cond_0
@@ -1064,7 +1084,7 @@
     .locals 1
     .param p1, "color"    # I
 
-    .line 566
+    .line 572
     const/high16 v0, -0x1000000
 
     invoke-direct {p0, v0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isLegible(II)Z
@@ -1081,14 +1101,14 @@
     .param p1, "foreground"    # I
     .param p2, "background"    # I
 
-    .line 571
+    .line 577
     const/16 v0, 0xff
 
     invoke-static {p2, v0}, Lcom/android/internal/graphics/ColorUtils;->setAlphaComponent(II)I
 
     move-result p2
 
-    .line 572
+    .line 578
     invoke-static {p1, p2}, Lcom/android/internal/graphics/ColorUtils;->calculateContrast(II)D
 
     move-result-wide v0
@@ -1114,7 +1134,7 @@
     .locals 1
     .param p1, "color"    # I
 
-    .line 562
+    .line 568
     const/4 v0, -0x1
 
     invoke-direct {p0, v0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isLegible(II)Z
@@ -1130,17 +1150,17 @@
     .locals 1
     .param p1, "exists"    # Ljava/lang/Boolean;
 
-    .line 1686
+    .line 1698
     invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v0
 
     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedStackExists:Z
 
-    .line 1687
+    .line 1699
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateRecentsIcon()V
 
-    .line 1688
+    .line 1700
     return-void
 .end method
 
@@ -1148,7 +1168,7 @@
     .locals 2
     .param p1, "exists"    # Ljava/lang/Boolean;
 
-    .line 1685
+    .line 1697
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHandler:Lcom/android/systemui/statusbar/phone/NavigationBarView$H;
 
     new-instance v1, Lcom/android/systemui/statusbar/phone/-$$Lambda$NavigationBarView$4XDnqGNkJ613pDIbZ7uGeE4B1z4;
@@ -1165,7 +1185,7 @@
     .param p1, "color"    # I
     .param p2, "expanded"    # Z
 
-    .line 582
+    .line 588
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isCTS()Z
 
     move-result v0
@@ -1174,15 +1194,15 @@
 
     if-eqz v0, :cond_0
 
-    .line 583
+    .line 589
     const/high16 v0, -0x67000000
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 584
+    .line 590
     return-void
 
-    .line 588
+    .line 594
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -1190,7 +1210,7 @@
 
     if-eqz v0, :cond_2
 
-    .line 589
+    .line 595
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -1211,7 +1231,7 @@
     :goto_0
     invoke-virtual {v0, v2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 592
+    .line 598
     :cond_2
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
@@ -1219,13 +1239,13 @@
 
     move-result v0
 
-    .line 593
+    .line 599
     .local v0, "barMode":I
     sget-boolean v2, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     if-eqz v2, :cond_3
 
-    .line 594
+    .line 600
     const-string v2, "StatusBar/NavBarView"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -1264,7 +1284,7 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 598
+    .line 604
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->hasPinnedHeadsUp()Z
 
     move-result v4
@@ -1291,7 +1311,7 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 601
+    .line 607
     invoke-static {p1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v4
@@ -1302,10 +1322,10 @@
 
     move-result-object v3
 
-    .line 594
+    .line 600
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 604
+    .line 610
     :cond_3
     iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mImeShow:Z
 
@@ -1315,27 +1335,27 @@
 
     if-eqz v2, :cond_5
 
-    .line 605
+    .line 611
     if-ne v0, v3, :cond_4
 
-    .line 606
+    .line 612
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
     goto :goto_1
 
-    .line 608
+    .line 614
     :cond_4
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 610
+    .line 616
     :goto_1
     return-void
 
-    .line 613
+    .line 619
     :cond_5
     iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mKeyguardShow:Z
 
@@ -1358,7 +1378,7 @@
 
     if-nez v2, :cond_7
 
-    .line 617
+    .line 623
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isScreenSaverOn()Z
 
     move-result v2
@@ -1367,32 +1387,32 @@
 
     if-eqz v0, :cond_7
 
-    .line 621
+    .line 627
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 622
+    .line 628
     return-void
 
-    .line 625
+    .line 631
     :cond_7
     iput p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
-    .line 627
+    .line 633
     iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedStackExists:Z
 
     if-eqz v2, :cond_8
 
-    .line 628
+    .line 634
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 629
+    .line 635
     return-void
 
-    .line 632
+    .line 638
     :cond_8
     const/4 v2, 0x1
 
@@ -1402,35 +1422,35 @@
 
     goto/16 :goto_5
 
-    .line 635
+    .line 641
     :cond_9
     if-nez v0, :cond_b
 
-    .line 636
+    .line 642
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isScreenCompat()Z
 
     move-result v2
 
     if-eqz v2, :cond_a
 
-    .line 637
+    .line 643
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_DARK:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
     goto :goto_2
 
-    .line 639
+    .line 645
     :cond_a
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 641
+    .line 647
     :goto_2
     return-void
 
-    .line 642
+    .line 648
     :cond_b
     const/4 v2, 0x3
 
@@ -1442,15 +1462,15 @@
 
     if-eqz v2, :cond_c
 
-    .line 643
+    .line 649
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 644
+    .line 650
     return-void
 
-    .line 647
+    .line 653
     :cond_c
     iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isHideNavBarOn:Z
 
@@ -1462,15 +1482,15 @@
 
     if-nez v2, :cond_d
 
-    .line 648
+    .line 654
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 649
+    .line 655
     return-void
 
-    .line 652
+    .line 658
     :cond_d
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isScreenCompat()Z
 
@@ -1478,46 +1498,18 @@
 
     if-eqz v2, :cond_e
 
-    .line 653
+    .line 659
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_DARK:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
     goto :goto_4
 
-    .line 655
+    .line 661
     :cond_e
     iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsLightBar:Z
 
     if-eqz v2, :cond_f
-
-    .line 656
-    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
-
-    invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
-
-    goto :goto_4
-
-    .line 658
-    :cond_f
-    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
-
-    if-nez v2, :cond_10
-
-    .line 659
-    iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
-
-    invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
-
-    goto :goto_4
-
-    .line 661
-    :cond_10
-    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
-
-    iget v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_BACKGROUND_LIGHT:I
-
-    if-ne v2, v3, :cond_11
 
     .line 662
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
@@ -1526,7 +1518,35 @@
 
     goto :goto_4
 
-    .line 663
+    .line 664
+    :cond_f
+    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
+
+    if-nez v2, :cond_10
+
+    .line 665
+    iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
+
+    invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
+
+    goto :goto_4
+
+    .line 667
+    :cond_10
+    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
+
+    iget v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_BACKGROUND_LIGHT:I
+
+    if-ne v2, v3, :cond_11
+
+    .line 668
+    iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
+
+    invoke-direct {p0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
+
+    goto :goto_4
+
+    .line 669
     :cond_11
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
@@ -1540,31 +1560,31 @@
 
     goto :goto_3
 
-    .line 667
+    .line 673
     :cond_12
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->applyAppCustomColor()V
 
     goto :goto_4
 
-    .line 665
+    .line 671
     :cond_13
     :goto_3
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_DARK:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 669
+    .line 675
     :goto_4
     return-void
 
-    .line 633
+    .line 639
     :cond_14
     :goto_5
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     invoke-direct {p0, v1, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(II)V
 
-    .line 634
+    .line 640
     return-void
 .end method
 
@@ -1572,17 +1592,17 @@
     .locals 1
     .param p1, "newVertical"    # Z
 
-    .line 1484
+    .line 1496
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOnVerticalChangedListener:Lcom/android/systemui/statusbar/phone/NavigationBarView$OnVerticalChangedListener;
 
     if-eqz v0, :cond_0
 
-    .line 1485
+    .line 1497
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOnVerticalChangedListener:Lcom/android/systemui/statusbar/phone/NavigationBarView$OnVerticalChangedListener;
 
     invoke-interface {v0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView$OnVerticalChangedListener;->onVerticalChanged(Z)V
 
-    .line 1487
+    .line 1499
     :cond_0
     return-void
 .end method
@@ -1591,7 +1611,7 @@
     .locals 3
     .param p1, "drawable"    # Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 887
+    .line 899
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationIconHints:I
 
     const/4 v1, 0x1
@@ -1607,12 +1627,12 @@
     :cond_0
     const/4 v0, 0x0
 
-    .line 889
+    .line 901
     .local v0, "useAltBack":Z
     :goto_0
     if-eqz v0, :cond_1
 
-    .line 890
+    .line 902
     const/high16 v1, -0x3d4c0000    # -90.0f
 
     goto :goto_1
@@ -1631,11 +1651,11 @@
     :cond_2
     const/4 v1, 0x0
 
-    .line 889
+    .line 901
     :goto_1
     invoke-virtual {p1, v1}, Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;->setRotation(F)V
 
-    .line 891
+    .line 903
     return-void
 .end method
 
@@ -1643,7 +1663,7 @@
     .locals 1
     .param p1, "drawable"    # Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 894
+    .line 906
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
     if-eqz v0, :cond_0
@@ -1658,7 +1678,7 @@
     :goto_0
     invoke-virtual {p1, v0}, Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;->setRotation(F)V
 
-    .line 895
+    .line 907
     return-void
 .end method
 
@@ -1666,7 +1686,7 @@
     .locals 3
     .param p1, "how"    # Ljava/lang/String;
 
-    .line 1564
+    .line 1576
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHandler:Lcom/android/systemui/statusbar/phone/NavigationBarView$H;
 
     const/4 v1, 0x0
@@ -1679,14 +1699,14 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 1565
+    .line 1577
     return-void
 .end method
 
 .method private reloadNavIcons()V
     .locals 3
 
-    .line 537
+    .line 543
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mContext:Landroid/content/Context;
 
     sget-object v1, Landroid/content/res/Configuration;->EMPTY:Landroid/content/res/Configuration;
@@ -1695,7 +1715,7 @@
 
     invoke-direct {p0, v0, v1, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateIcons(Landroid/content/Context;Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
 
-    .line 538
+    .line 544
     return-void
 .end method
 
@@ -1703,10 +1723,10 @@
     .locals 5
     .param p1, "slippery"    # Z
 
-    .line 1167
+    .line 1179
     const/4 v0, 0x0
 
-    .line 1168
+    .line 1180
     .local v0, "changed":Z
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getParent()Landroid/view/ViewParent;
 
@@ -1714,25 +1734,25 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 1169
+    .line 1181
     .local v1, "navbarView":Landroid/view/ViewGroup;
     nop
 
-    .line 1170
+    .line 1182
     invoke-virtual {v1}, Landroid/view/ViewGroup;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v2
 
     check-cast v2, Landroid/view/WindowManager$LayoutParams;
 
-    .line 1171
+    .line 1183
     .local v2, "lp":Landroid/view/WindowManager$LayoutParams;
     if-nez v2, :cond_0
 
-    .line 1172
+    .line 1184
     return-void
 
-    .line 1174
+    .line 1186
     :cond_0
     const/high16 v3, 0x20000000
 
@@ -1744,19 +1764,19 @@
 
     if-nez v4, :cond_1
 
-    .line 1175
+    .line 1187
     iget v4, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
 
     or-int/2addr v3, v4
 
     iput v3, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 1176
+    .line 1188
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 1177
+    .line 1189
     :cond_1
     if-nez p1, :cond_2
 
@@ -1766,7 +1786,7 @@
 
     if-eqz v3, :cond_2
 
-    .line 1178
+    .line 1190
     iget v3, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
 
     const v4, -0x20000001
@@ -1775,10 +1795,10 @@
 
     iput v3, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 1179
+    .line 1191
     const/4 v0, 0x1
 
-    .line 1183
+    .line 1195
     :cond_2
     :goto_0
     if-eqz v0, :cond_3
@@ -1789,21 +1809,21 @@
 
     if-nez v3, :cond_3
 
-    .line 1184
+    .line 1196
     const-string v3, "StatusBar/NavBarView"
 
     const-string v4, "isn\'t attached"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1185
+    .line 1197
     return-void
 
-    .line 1189
+    .line 1201
     :cond_3
     if-eqz v0, :cond_4
 
-    .line 1190
+    .line 1202
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v3
@@ -1816,11 +1836,11 @@
 
     check-cast v3, Landroid/view/WindowManager;
 
-    .line 1191
+    .line 1203
     .local v3, "wm":Landroid/view/WindowManager;
     invoke-interface {v3, v1, v2}, Landroid/view/WindowManager;->updateViewLayout(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 1193
+    .line 1205
     .end local v3    # "wm":Landroid/view/WindowManager;
     :cond_4
     return-void
@@ -1830,23 +1850,23 @@
     .locals 1
     .param p1, "connectedToOverviewProxy"    # Z
 
-    .line 1600
+    .line 1612
     if-eqz p1, :cond_0
 
-    .line 1601
+    .line 1613
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
     invoke-virtual {v0}, Lcom/android/systemui/recents/RecentsOnboarding;->onConnectedToLauncher()V
 
     goto :goto_0
 
-    .line 1603
+    .line 1615
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
     invoke-virtual {v0}, Lcom/android/systemui/recents/RecentsOnboarding;->onDisconnectedFromLauncher()V
 
-    .line 1605
+    .line 1617
     :goto_0
     return-void
 .end method
@@ -1855,25 +1875,25 @@
     .locals 4
     .param p1, "useFadingAnimations"    # Z
 
-    .line 1108
+    .line 1120
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getParent()Landroid/view/ViewParent;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 1109
+    .line 1121
     invoke-virtual {v0}, Landroid/view/ViewGroup;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/WindowManager$LayoutParams;
 
-    .line 1110
+    .line 1122
     .local v0, "lp":Landroid/view/WindowManager$LayoutParams;
     if-eqz v0, :cond_4
 
-    .line 1111
+    .line 1123
     iget v1, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
 
     const/4 v2, 0x0
@@ -1887,30 +1907,30 @@
     :cond_0
     move v1, v2
 
-    .line 1112
+    .line 1124
     .local v1, "old":Z
     :goto_0
     if-nez v1, :cond_1
 
     if-eqz p1, :cond_1
 
-    .line 1113
+    .line 1125
     const v2, 0x7f12000d
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
 
     goto :goto_1
 
-    .line 1114
+    .line 1126
     :cond_1
     if-eqz v1, :cond_3
 
     if-nez p1, :cond_3
 
-    .line 1115
+    .line 1127
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
 
-    .line 1120
+    .line 1132
     :goto_1
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isAttachedToWindow()Z
 
@@ -1918,17 +1938,17 @@
 
     if-nez v2, :cond_2
 
-    .line 1121
+    .line 1133
     const-string v2, "StatusBar/NavBarView"
 
     const-string/jumbo v3, "view isn\'t attached"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1122
+    .line 1134
     return-void
 
-    .line 1126
+    .line 1138
     :cond_2
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
@@ -1942,7 +1962,7 @@
 
     check-cast v2, Landroid/view/WindowManager;
 
-    .line 1127
+    .line 1139
     .local v2, "wm":Landroid/view/WindowManager;
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getParent()Landroid/view/ViewParent;
 
@@ -1952,17 +1972,17 @@
 
     invoke-interface {v2, v3, v0}, Landroid/view/WindowManager;->updateViewLayout(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 1127
+    .line 1139
     .end local v1    # "old":Z
     .end local v2    # "wm":Landroid/view/WindowManager;
     goto :goto_2
 
-    .line 1117
+    .line 1129
     .restart local v1    # "old":Z
     :cond_3
     return-void
 
-    .line 1129
+    .line 1141
     .end local v1    # "old":Z
     :cond_4
     :goto_2
@@ -1973,7 +1993,7 @@
     .locals 4
     .param p1, "event"    # Landroid/view/MotionEvent;
 
-    .line 427
+    .line 433
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZone:Lcom/android/systemui/statusbar/policy/DeadZone;
 
     invoke-virtual {v0, p1}, Lcom/android/systemui/statusbar/policy/DeadZone;->onTouchEvent(Landroid/view/MotionEvent;)Z
@@ -1990,11 +2010,11 @@
 
     goto :goto_0
 
-    .line 443
+    .line 449
     :cond_0
     return v1
 
-    .line 428
+    .line 434
     :cond_1
     :goto_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
@@ -2011,25 +2031,25 @@
 
     goto :goto_1
 
-    .line 431
+    .line 437
     :pswitch_0
     invoke-direct {p0, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setSlippery(Z)V
 
-    .line 432
+    .line 438
     iput-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZoneConsuming:Z
 
-    .line 433
+    .line 439
     goto :goto_1
 
-    .line 437
+    .line 443
     :cond_2
     :pswitch_1
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateSlippery()V
 
-    .line 438
+    .line 444
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZoneConsuming:Z
 
-    .line 441
+    .line 447
     :goto_1
     return v3
 
@@ -2045,12 +2065,12 @@
 .method private showNavKey()Z
     .locals 3
 
-    .line 712
+    .line 718
     sget-boolean v0, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
     if-eqz v0, :cond_0
 
-    .line 713
+    .line 719
     const-string v0, "StatusBar/NavBarView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -2069,7 +2089,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 714
+    .line 720
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isHomeApp()Z
 
     move-result v2
@@ -2080,7 +2100,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 715
+    .line 721
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isScreenCompat()Z
 
     move-result v2
@@ -2115,7 +2135,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 719
+    .line 725
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isScreenSaverOn()Z
 
     move-result v2
@@ -2134,10 +2154,18 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 721
+    .line 727
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSystemUI()Z
 
     move-result v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    const-string v2, " isInBrickMode: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsInBrickMode:Z
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
@@ -2145,23 +2173,23 @@
 
     move-result-object v1
 
-    .line 713
+    .line 719
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 724
+    .line 733
     :cond_0
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowNavKey:Z
 
     if-eqz v0, :cond_1
 
-    .line 725
+    .line 734
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isHomeApp()Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 726
+    .line 735
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isScreenCompat()Z
 
     move-result v0
@@ -2180,7 +2208,7 @@
 
     if-nez v0, :cond_1
 
-    .line 730
+    .line 739
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isScreenSaverOn()Z
 
     move-result v0
@@ -2195,10 +2223,14 @@
 
     if-nez v0, :cond_1
 
-    .line 733
+    .line 742
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSystemUI()Z
 
     move-result v0
+
+    if-nez v0, :cond_1
+
+    iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsInBrickMode:Z
 
     if-nez v0, :cond_1
 
@@ -2209,7 +2241,7 @@
     :cond_1
     const/4 v0, 0x0
 
-    .line 724
+    .line 733
     :goto_0
     return v0
 .end method
@@ -2219,12 +2251,12 @@
     .param p1, "buttonColor"    # I
     .param p2, "rippleColor"    # I
 
-    .line 682
+    .line 688
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(IIZ)V
 
-    .line 683
+    .line 689
     return-void
 .end method
 
@@ -2234,12 +2266,12 @@
     .param p2, "rippleColor"    # I
     .param p3, "force"    # Z
 
-    .line 686
+    .line 692
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 687
+    .line 693
     const-string v0, "StatusBar/NavBarView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -2274,7 +2306,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 690
+    .line 696
     :cond_0
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLastButtonColor:I
 
@@ -2286,7 +2318,7 @@
 
     if-nez p3, :cond_2
 
-    .line 691
+    .line 697
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     if-eqz v0, :cond_1
@@ -2297,23 +2329,23 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 692
+    .line 698
     :cond_1
     return-void
 
-    .line 694
+    .line 700
     :cond_2
     iput p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLastButtonColor:I
 
-    .line 695
+    .line 701
     iput p2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLastRippleColor:I
 
-    .line 697
+    .line 703
     const/4 v0, 0x0
 
     move v1, v0
 
-    .line 697
+    .line 703
     .local v1, "i":I
     :goto_0
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
@@ -2324,7 +2356,7 @@
 
     if-ge v1, v2, :cond_5
 
-    .line 698
+    .line 704
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     invoke-virtual {v2, v1}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
@@ -2337,22 +2369,22 @@
 
     move-result-object v2
 
-    .line 699
+    .line 705
     .local v2, "views":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/view/View;>;"
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    .line 700
+    .line 706
     .local v3, "N":I
     move v4, v0
 
-    .line 700
+    .line 706
     .local v4, "j":I
     :goto_1
     if-ge v4, v3, :cond_4
 
-    .line 701
+    .line 707
     invoke-virtual {v2, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v5
@@ -2361,28 +2393,28 @@
 
     if-eqz v5, :cond_3
 
-    .line 702
+    .line 708
     invoke-virtual {v2, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v5
 
     check-cast v5, Lcom/android/systemui/statusbar/policy/KeyButtonView;
 
-    .line 703
+    .line 709
     .local v5, "v":Lcom/android/systemui/statusbar/policy/KeyButtonView;
     invoke-virtual {v5, p1}, Lcom/android/systemui/statusbar/policy/KeyButtonView;->updateThemeColor(I)V
 
-    .line 704
+    .line 710
     invoke-virtual {v5, p2}, Lcom/android/systemui/statusbar/policy/KeyButtonView;->setRippleColor(I)V
 
-    .line 700
+    .line 706
     .end local v5    # "v":Lcom/android/systemui/statusbar/policy/KeyButtonView;
     :cond_3
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
 
-    .line 697
+    .line 703
     .end local v2    # "views":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/view/View;>;"
     .end local v3    # "N":I
     .end local v4    # "j":I
@@ -2391,12 +2423,12 @@
 
     goto :goto_0
 
-    .line 708
+    .line 714
     .end local v1    # "i":I
     :cond_5
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->postInvalidate()V
 
-    .line 709
+    .line 715
     return-void
 .end method
 
@@ -2405,48 +2437,48 @@
     .param p1, "button"    # Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .param p2, "buttonBounds"    # Landroid/graphics/Rect;
 
-    .line 1365
+    .line 1377
     invoke-virtual {p1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->getCurrentView()Landroid/view/View;
 
     move-result-object v0
 
-    .line 1366
+    .line 1378
     .local v0, "view":Landroid/view/View;
     if-nez v0, :cond_0
 
-    .line 1367
+    .line 1379
     invoke-virtual {p2}, Landroid/graphics/Rect;->setEmpty()V
 
-    .line 1368
+    .line 1380
     return-void
 
-    .line 1371
+    .line 1383
     :cond_0
     invoke-virtual {v0}, Landroid/view/View;->getTranslationX()F
 
     move-result v1
 
-    .line 1372
+    .line 1384
     .local v1, "posX":F
     invoke-virtual {v0}, Landroid/view/View;->getTranslationY()F
 
     move-result v2
 
-    .line 1373
+    .line 1385
     .local v2, "posY":F
     const/4 v3, 0x0
 
     invoke-virtual {v0, v3}, Landroid/view/View;->setTranslationX(F)V
 
-    .line 1374
+    .line 1386
     invoke-virtual {v0, v3}, Landroid/view/View;->setTranslationY(F)V
 
-    .line 1375
+    .line 1387
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTmpPosition:[I
 
     invoke-virtual {v0, v3}, Landroid/view/View;->getLocationInWindow([I)V
 
-    .line 1376
+    .line 1388
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTmpPosition:[I
 
     const/4 v4, 0x0
@@ -2463,7 +2495,7 @@
 
     aget v4, v7, v4
 
-    .line 1377
+    .line 1389
     invoke-virtual {v0}, Landroid/view/View;->getMeasuredWidth()I
 
     move-result v7
@@ -2474,23 +2506,23 @@
 
     aget v6, v7, v6
 
-    .line 1378
+    .line 1390
     invoke-virtual {v0}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v7
 
     add-int/2addr v6, v7
 
-    .line 1376
+    .line 1388
     invoke-virtual {p2, v3, v5, v4, v6}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 1379
+    .line 1391
     invoke-virtual {v0, v1}, Landroid/view/View;->setTranslationX(F)V
 
-    .line 1380
+    .line 1392
     invoke-virtual {v0, v2}, Landroid/view/View;->setTranslationY(F)V
 
-    .line 1381
+    .line 1393
     return-void
 .end method
 
@@ -2498,19 +2530,19 @@
     .locals 5
     .param p1, "newConfig"    # Landroid/content/res/Configuration;
 
-    .line 1509
+    .line 1521
     const/4 v0, 0x0
 
-    .line 1510
+    .line 1522
     .local v0, "uiCarModeChanged":Z
     if-eqz p1, :cond_1
 
-    .line 1511
+    .line 1523
     iget v1, p1, Landroid/content/res/Configuration;->uiMode:I
 
     and-int/lit8 v1, v1, 0xf
 
-    .line 1512
+    .line 1524
     .local v1, "uiMode":I
     const/4 v2, 0x3
 
@@ -2525,20 +2557,20 @@
     :cond_0
     move v2, v3
 
-    .line 1514
+    .line 1526
     .local v2, "isCarMode":Z
     :goto_0
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mInCarMode:Z
 
     if-eq v2, v4, :cond_1
 
-    .line 1515
+    .line 1527
     iput-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mInCarMode:Z
 
-    .line 1521
+    .line 1533
     iput-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
 
-    .line 1525
+    .line 1537
     .end local v1    # "uiMode":I
     .end local v2    # "isCarMode":Z
     :cond_1
@@ -2548,14 +2580,14 @@
 .method private updateCurrentView()V
     .locals 5
 
-    .line 1397
+    .line 1409
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisplay:Landroid/view/Display;
 
     invoke-virtual {v0}, Landroid/view/Display;->getRotation()I
 
     move-result v0
 
-    .line 1398
+    .line 1410
     .local v0, "rot":I
     const/4 v1, 0x0
 
@@ -2567,7 +2599,7 @@
 
     if-ge v2, v3, :cond_0
 
-    .line 1399
+    .line 1411
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
 
     aget-object v3, v3, v2
@@ -2576,12 +2608,12 @@
 
     invoke-virtual {v3, v4}, Landroid/view/View;->setVisibility(I)V
 
-    .line 1398
+    .line 1410
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1401
+    .line 1413
     .end local v2    # "i":I
     :cond_0
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
@@ -2590,12 +2622,12 @@
 
     iput-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentView:Landroid/view/View;
 
-    .line 1402
+    .line 1414
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentView:Landroid/view/View;
 
     invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
 
-    .line 1403
+    .line 1415
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     const/4 v3, 0x1
@@ -2609,18 +2641,18 @@
     :cond_1
     invoke-virtual {v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;->setAlternativeOrder(Z)V
 
-    .line 1404
+    .line 1416
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;->updateButtonDispatchersCurrentView()V
 
-    .line 1405
+    .line 1417
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateLayoutTransitionsEnabled()V
 
-    .line 1406
+    .line 1418
     iput v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentRotation:I
 
-    .line 1407
+    .line 1419
     return-void
 .end method
 
@@ -2630,14 +2662,14 @@
     .param p2, "oldConfig"    # Landroid/content/res/Configuration;
     .param p3, "newConfig"    # Landroid/content/res/Configuration;
 
-    .line 796
+    .line 808
     const v0, 0x7f04010a
 
     invoke-static {p1, v0}, Lcom/android/settingslib/Utils;->getThemeAttr(Landroid/content/Context;I)I
 
     move-result v0
 
-    .line 797
+    .line 809
     .local v0, "dualToneDarkTheme":I
     const v1, 0x7f040242
 
@@ -2645,19 +2677,19 @@
 
     move-result v1
 
-    .line 798
+    .line 810
     .local v1, "dualToneLightTheme":I
     new-instance v2, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v2, p1, v1}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
-    .line 799
+    .line 811
     .local v2, "lightContext":Landroid/content/Context;
     new-instance v3, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v3, p1, v0}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
-    .line 801
+    .line 813
     .local v3, "darkContext":Landroid/content/Context;
     iget v4, p2, Landroid/content/res/Configuration;->orientation:I
 
@@ -2671,13 +2703,13 @@
 
     if-eq v4, v5, :cond_2
 
-    .line 804
+    .line 816
     :cond_0
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v4, :cond_1
 
-    .line 805
+    .line 817
     const v4, 0x7f0803e9
 
     invoke-direct {p0, v2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -2686,7 +2718,7 @@
 
     goto :goto_0
 
-    .line 806
+    .line 818
     :cond_1
     const v4, 0x7f0803e8
 
@@ -2697,14 +2729,14 @@
     :goto_0
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 808
+    .line 820
     invoke-virtual {p0, v2, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeDrawable(Landroid/content/Context;Landroid/content/Context;)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     move-result-object v4
 
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHomeDefaultIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 810
+    .line 822
     :cond_2
     iget v4, p2, Landroid/content/res/Configuration;->densityDpi:I
 
@@ -2712,7 +2744,7 @@
 
     if-ne v4, v5, :cond_3
 
-    .line 811
+    .line 823
     invoke-virtual {p2}, Landroid/content/res/Configuration;->getLayoutDirection()I
 
     move-result v4
@@ -2723,7 +2755,7 @@
 
     if-eq v4, v5, :cond_6
 
-    .line 812
+    .line 824
     :cond_3
     invoke-virtual {p0, v2, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackDrawable(Landroid/content/Context;Landroid/content/Context;)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
@@ -2731,19 +2763,19 @@
 
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 814
+    .line 826
     invoke-virtual {p0, v2, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackAltDrawable(Landroid/content/Context;Landroid/content/Context;)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     move-result-object v4
 
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackAltIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 818
+    .line 830
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v4, :cond_4
 
-    .line 819
+    .line 831
     const v4, 0x7f0803f6
 
     invoke-direct {p0, v2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -2752,7 +2784,7 @@
 
     goto :goto_1
 
-    .line 820
+    .line 832
     :cond_4
     const v4, 0x7f0803f5
 
@@ -2763,12 +2795,12 @@
     :goto_1
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 822
+    .line 834
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v4, :cond_5
 
-    .line 823
+    .line 835
     const v4, 0x7f0803f2
 
     invoke-direct {p0, v2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -2777,7 +2809,7 @@
 
     goto :goto_2
 
-    .line 824
+    .line 836
     :cond_5
     const v4, 0x7f0803f1
 
@@ -2788,7 +2820,7 @@
     :goto_2
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mMenuIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 827
+    .line 839
     const v4, 0x7f0803de
 
     const/4 v5, 0x0
@@ -2799,7 +2831,7 @@
 
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mAccessibilityIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 830
+    .line 842
     const v4, 0x7f080298
 
     invoke-direct {p0, v2, v3, v4, v5}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;IZ)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -2808,12 +2840,12 @@
 
     iput-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mImeIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 833
+    .line 845
     iget v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateBtnStyle:I
 
     invoke-virtual {p0, v4, v5}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateRotateSuggestionButtonStyle(IZ)V
 
-    .line 839
+    .line 851
     :cond_6
     return-void
 .end method
@@ -2821,7 +2853,7 @@
 .method private updateLayoutTransitionsEnabled()V
     .locals 7
 
-    .line 1089
+    .line 1101
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mWakeAndUnlocking:Z
 
     const/4 v1, 0x0
@@ -2841,7 +2873,7 @@
     :cond_0
     move v0, v1
 
-    .line 1090
+    .line 1102
     .local v0, "enabled":Z
     :goto_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
@@ -2856,51 +2888,51 @@
 
     check-cast v3, Landroid/view/ViewGroup;
 
-    .line 1091
+    .line 1103
     .local v3, "navButtons":Landroid/view/ViewGroup;
     invoke-virtual {v3}, Landroid/view/ViewGroup;->getLayoutTransition()Landroid/animation/LayoutTransition;
 
     move-result-object v4
 
-    .line 1092
+    .line 1104
     .local v4, "lt":Landroid/animation/LayoutTransition;
     if-eqz v4, :cond_2
 
-    .line 1093
+    .line 1105
     const/4 v5, 0x3
 
     const/4 v6, 0x2
 
     if-eqz v0, :cond_1
 
-    .line 1094
+    .line 1106
     invoke-virtual {v4, v6}, Landroid/animation/LayoutTransition;->enableTransitionType(I)V
 
-    .line 1095
+    .line 1107
     invoke-virtual {v4, v5}, Landroid/animation/LayoutTransition;->enableTransitionType(I)V
 
-    .line 1096
+    .line 1108
     invoke-virtual {v4, v1}, Landroid/animation/LayoutTransition;->enableTransitionType(I)V
 
-    .line 1097
+    .line 1109
     invoke-virtual {v4, v2}, Landroid/animation/LayoutTransition;->enableTransitionType(I)V
 
     goto :goto_1
 
-    .line 1099
+    .line 1111
     :cond_1
     invoke-virtual {v4, v6}, Landroid/animation/LayoutTransition;->disableTransitionType(I)V
 
-    .line 1100
+    .line 1112
     invoke-virtual {v4, v5}, Landroid/animation/LayoutTransition;->disableTransitionType(I)V
 
-    .line 1101
+    .line 1113
     invoke-virtual {v4, v1}, Landroid/animation/LayoutTransition;->disableTransitionType(I)V
 
-    .line 1102
+    .line 1114
     invoke-virtual {v4, v2}, Landroid/animation/LayoutTransition;->disableTransitionType(I)V
 
-    .line 1105
+    .line 1117
     :cond_2
     :goto_1
     return-void
@@ -2909,7 +2941,7 @@
 .method private updateRecentsIcon()V
     .locals 2
 
-    .line 1410
+    .line 1422
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
     iget-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedStackExists:Z
@@ -2930,7 +2962,7 @@
     :goto_0
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;->setRotation(F)V
 
-    .line 1411
+    .line 1423
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -2949,24 +2981,24 @@
     :goto_1
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1412
+    .line 1424
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;->reapplyDarkIntensity()V
 
-    .line 1413
+    .line 1425
     return-void
 .end method
 
 .method private updateRotatedViews()V
     .locals 4
 
-    .line 1384
+    .line 1396
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
 
-    .line 1385
+    .line 1397
     const v2, 0x7f0a035f
 
     invoke-virtual {p0, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->findViewById(I)Landroid/view/View;
@@ -2981,12 +3013,12 @@
 
     aput-object v2, v0, v1
 
-    .line 1386
+    .line 1398
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotatedViews:[Landroid/view/View;
 
-    .line 1387
+    .line 1399
     const v2, 0x7f0a0360
 
     invoke-virtual {p0, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->findViewById(I)Landroid/view/View;
@@ -3001,17 +3033,17 @@
 
     aput-object v2, v0, v1
 
-    .line 1389
+    .line 1401
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateCurrentView()V
 
-    .line 1390
+    .line 1402
     return-void
 .end method
 
 .method private updateSlippery()V
     .locals 1
 
-    .line 1162
+    .line 1174
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isQuickStepSwipeUpEnabled()Z
 
     move-result v0
@@ -3044,21 +3076,21 @@
     :goto_1
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setSlippery(Z)V
 
-    .line 1164
+    .line 1176
     return-void
 .end method
 
 .method private updateTaskSwitchHelper()V
     .locals 3
 
-    .line 1461
+    .line 1473
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     if-nez v0, :cond_0
 
     return-void
 
-    .line 1462
+    .line 1474
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getLayoutDirection()I
 
@@ -3076,7 +3108,7 @@
     :goto_0
     move v0, v1
 
-    .line 1463
+    .line 1475
     .local v0, "isRtl":Z
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
@@ -3084,7 +3116,7 @@
 
     invoke-interface {v1, v2, v0}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->setBarState(ZZ)V
 
-    .line 1464
+    .line 1476
     return-void
 .end method
 
@@ -3092,7 +3124,7 @@
     .locals 1
     .param p0, "vis"    # I
 
-    .line 1568
+    .line 1580
     const/4 v0, 0x4
 
     if-eq p0, v0, :cond_1
@@ -3101,18 +3133,18 @@
 
     if-eq p0, v0, :cond_0
 
-    .line 1574
+    .line 1586
     const-string v0, "VISIBLE"
 
     return-object v0
 
-    .line 1572
+    .line 1584
     :cond_0
     const-string v0, "GONE"
 
     return-object v0
 
-    .line 1570
+    .line 1582
     :cond_1
     const-string v0, "INVISIBLE"
 
@@ -3124,14 +3156,14 @@
 .method public abortCurrentGesture()V
     .locals 1
 
-    .line 451
+    .line 457
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->abortCurrentGesture()V
 
-    .line 452
+    .line 458
     return-void
 .end method
 
@@ -3141,29 +3173,29 @@
     .param p2, "pw"    # Ljava/io/PrintWriter;
     .param p3, "args"    # [Ljava/lang/String;
 
-    .line 1625
+    .line 1637
     const-string v0, "NavigationBarView {"
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1626
+    .line 1638
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
-    .line 1627
+    .line 1639
     .local v0, "r":Landroid/graphics/Rect;
     new-instance v1, Landroid/graphics/Point;
 
     invoke-direct {v1}, Landroid/graphics/Point;-><init>()V
 
-    .line 1628
+    .line 1640
     .local v1, "size":Landroid/graphics/Point;
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisplay:Landroid/view/Display;
 
     invoke-virtual {v2, v1}, Landroid/view/Display;->getRealSize(Landroid/graphics/Point;)V
 
-    .line 1630
+    .line 1642
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -3182,7 +3214,7 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1631
+    .line 1643
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getVisibility()I
 
     move-result v3
@@ -3201,17 +3233,17 @@
 
     new-array v4, v3, [Ljava/lang/Object;
 
-    .line 1630
+    .line 1642
     invoke-static {v2, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
     invoke-virtual {p2, v2}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1633
+    .line 1645
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
 
-    .line 1634
+    .line 1646
     iget v2, v0, Landroid/graphics/Rect;->right:I
 
     iget v4, v1, Landroid/graphics/Point;->x:I
@@ -3237,7 +3269,7 @@
     :goto_0
     move v2, v5
 
-    .line 1635
+    .line 1647
     .local v2, "offscreen":Z
     :goto_1
     new-instance v4, Ljava/lang/StringBuilder;
@@ -3248,7 +3280,7 @@
 
     invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1636
+    .line 1648
     invoke-virtual {v0}, Landroid/graphics/Rect;->toShortString()Ljava/lang/String;
 
     move-result-object v6
@@ -3259,7 +3291,7 @@
 
     invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1637
+    .line 1649
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getWindowVisibility()I
 
     move-result v6
@@ -3270,7 +3302,7 @@
 
     invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1638
+    .line 1650
     if-eqz v2, :cond_2
 
     const-string v6, " OFFSCREEN!"
@@ -3287,17 +3319,17 @@
 
     move-result-object v4
 
-    .line 1635
+    .line 1647
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1640
+    .line 1652
     const-string v4, "      mCurrentView: id=%s (%dx%d) %s %f"
 
     const/4 v6, 0x5
 
     new-array v6, v6, [Ljava/lang/Object;
 
-    .line 1641
+    .line 1653
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
 
     move-result-object v7
@@ -3312,7 +3344,7 @@
 
     aput-object v7, v6, v3
 
-    .line 1642
+    .line 1654
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
 
     move-result-object v7
@@ -3343,7 +3375,7 @@
 
     aput-object v7, v6, v8
 
-    .line 1643
+    .line 1655
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
 
     move-result-object v7
@@ -3362,7 +3394,7 @@
 
     const/4 v7, 0x4
 
-    .line 1644
+    .line 1656
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
 
     move-result-object v10
@@ -3377,28 +3409,28 @@
 
     aput-object v10, v6, v7
 
-    .line 1640
+    .line 1652
     invoke-static {v4, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v4
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1646
+    .line 1658
     const-string v4, "      disabled=0x%08x vertical=%s menu=%s"
 
     new-array v6, v9, [Ljava/lang/Object;
 
     iget v7, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
 
-    .line 1647
+    .line 1659
     invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v7
 
     aput-object v7, v6, v3
 
-    .line 1648
+    .line 1660
     iget-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
     if-eqz v3, :cond_3
@@ -3413,7 +3445,7 @@
     :goto_3
     aput-object v3, v6, v5
 
-    .line 1649
+    .line 1661
     iget-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
     if-eqz v3, :cond_4
@@ -3428,14 +3460,14 @@
     :goto_4
     aput-object v3, v6, v8
 
-    .line 1646
+    .line 1658
     invoke-static {v4, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v3
 
     invoke-virtual {p2, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1651
+    .line 1663
     const-string v3, "back"
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -3444,7 +3476,7 @@
 
     invoke-static {p2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->dumpButton(Ljava/io/PrintWriter;Ljava/lang/String;Lcom/android/systemui/statusbar/phone/ButtonDispatcher;)V
 
-    .line 1652
+    .line 1664
     const-string v3, "home"
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -3453,7 +3485,7 @@
 
     invoke-static {p2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->dumpButton(Ljava/io/PrintWriter;Ljava/lang/String;Lcom/android/systemui/statusbar/phone/ButtonDispatcher;)V
 
-    .line 1653
+    .line 1665
     const-string v3, "rcnt"
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -3462,7 +3494,7 @@
 
     invoke-static {p2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->dumpButton(Ljava/io/PrintWriter;Ljava/lang/String;Lcom/android/systemui/statusbar/phone/ButtonDispatcher;)V
 
-    .line 1654
+    .line 1666
     const-string v3, "menu"
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getMenuButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -3471,7 +3503,7 @@
 
     invoke-static {p2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->dumpButton(Ljava/io/PrintWriter;Ljava/lang/String;Lcom/android/systemui/statusbar/phone/ButtonDispatcher;)V
 
-    .line 1655
+    .line 1667
     const-string v3, "a11y"
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getAccessibilityButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -3480,24 +3512,24 @@
 
     invoke-static {p2, v3, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->dumpButton(Ljava/io/PrintWriter;Ljava/lang/String;Lcom/android/systemui/statusbar/phone/ButtonDispatcher;)V
 
-    .line 1657
+    .line 1669
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
     invoke-virtual {v3, p2}, Lcom/android/systemui/recents/RecentsOnboarding;->dump(Ljava/io/PrintWriter;)V
 
-    .line 1659
+    .line 1671
     const-string v3, "    }"
 
     invoke-virtual {p2, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1660
+    .line 1672
     return-void
 .end method
 
 .method public getAccessibilityButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 491
+    .line 497
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a000c
@@ -3516,18 +3548,18 @@
     .param p1, "lightContext"    # Landroid/content/Context;
     .param p2, "darkContext"    # Landroid/content/Context;
 
-    .line 858
+    .line 870
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
 
     move-result v0
 
-    .line 859
+    .line 871
     .local v0, "quickStepEnabled":Z
     if-eqz v0, :cond_0
 
-    .line 860
+    .line 872
     const v1, 0x7f0803e4
 
     invoke-direct {p0, p1, p2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -3536,7 +3568,7 @@
 
     goto :goto_0
 
-    .line 861
+    .line 873
     :cond_0
     const v1, 0x7f0803e2
 
@@ -3544,7 +3576,7 @@
 
     move-result-object v1
 
-    .line 859
+    .line 871
     :goto_0
     return-object v1
 .end method
@@ -3552,7 +3584,7 @@
 .method public getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 479
+    .line 485
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a006f
@@ -3571,14 +3603,14 @@
     .param p1, "lightContext"    # Landroid/content/Context;
     .param p2, "darkContext"    # Landroid/content/Context;
 
-    .line 843
+    .line 855
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportCustomNavBar()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 844
+    .line 856
     const v0, 0x7f0803e0
 
     const v1, 0x7f0803e7
@@ -3587,14 +3619,14 @@
 
     move-result-object v0
 
-    .line 846
+    .line 858
     .local v0, "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientBackButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 847
+    .line 859
     return-object v0
 
-    .line 850
+    .line 862
     .end local v0    # "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :cond_0
     const v0, 0x7f0803df
@@ -3605,18 +3637,18 @@
 
     move-result-object v0
 
-    .line 852
+    .line 864
     .restart local v0    # "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientBackButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 853
+    .line 865
     return-object v0
 .end method
 
 .method public getBarTransitions()Lcom/android/systemui/statusbar/phone/BarTransitions;
     .locals 1
 
-    .line 367
+    .line 373
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     return-object v0
@@ -3627,7 +3659,7 @@
     .param p1, "x"    # I
     .param p2, "y"    # I
 
-    .line 1298
+    .line 1310
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -3640,7 +3672,7 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 1299
+    .line 1311
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     invoke-virtual {v1, v0}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
@@ -3649,27 +3681,27 @@
 
     check-cast v1, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
-    .line 1300
+    .line 1312
     .local v1, "button":Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->getCurrentView()Landroid/view/View;
 
     move-result-object v2
 
-    .line 1301
+    .line 1313
     .local v2, "buttonView":Landroid/view/View;
     if-eqz v2, :cond_0
 
-    .line 1302
+    .line 1314
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTmpRect:Landroid/graphics/Rect;
 
     invoke-virtual {v2, v3}, Landroid/view/View;->getHitRect(Landroid/graphics/Rect;)V
 
-    .line 1303
+    .line 1315
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTmpRect:Landroid/graphics/Rect;
 
     invoke-virtual {p0, v2, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->offsetDescendantRectToMyCoords(Landroid/view/View;Landroid/graphics/Rect;)V
 
-    .line 1304
+    .line 1316
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTmpRect:Landroid/graphics/Rect;
 
     invoke-virtual {v3, p1, p2}, Landroid/graphics/Rect;->contains(II)Z
@@ -3678,10 +3710,10 @@
 
     if-eqz v3, :cond_0
 
-    .line 1305
+    .line 1317
     return-object v1
 
-    .line 1298
+    .line 1310
     .end local v1    # "button":Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .end local v2    # "buttonView":Landroid/view/View;
     :cond_0
@@ -3689,7 +3721,7 @@
 
     goto :goto_0
 
-    .line 1309
+    .line 1321
     .end local v0    # "i":I
     :cond_1
     const/4 v0, 0x0
@@ -3708,7 +3740,7 @@
         }
     .end annotation
 
-    .line 503
+    .line 509
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     return-object v0
@@ -3717,7 +3749,7 @@
 .method public getCurrentView()Landroid/view/View;
     .locals 1
 
-    .line 457
+    .line 463
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentView:Landroid/view/View;
 
     return-object v0
@@ -3726,7 +3758,7 @@
 .method public getDownHitTarget()I
     .locals 1
 
-    .line 447
+    .line 453
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
     return v0
@@ -3735,7 +3767,7 @@
 .method public getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 483
+    .line 489
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a0195
@@ -3754,7 +3786,7 @@
     .param p1, "lightContext"    # Landroid/content/Context;
     .param p2, "darkContext"    # Landroid/content/Context;
 
-    .line 867
+    .line 879
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportCustomNavBar()Z
 
     move-result v0
@@ -3763,18 +3795,18 @@
 
     if-eqz v0, :cond_1
 
-    .line 868
+    .line 880
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
 
     move-result v0
 
-    .line 869
+    .line 881
     .local v0, "quickStepEnabled":Z
     if-eqz v0, :cond_0
 
-    .line 870
+    .line 882
     const v1, 0x7f0803ee
 
     invoke-direct {p0, p1, p2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -3783,7 +3815,7 @@
 
     goto :goto_0
 
-    .line 871
+    .line 883
     :cond_0
     const v2, 0x7f0803eb
 
@@ -3791,15 +3823,15 @@
 
     move-result-object v1
 
-    .line 873
+    .line 885
     .local v1, "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :goto_0
     invoke-direct {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientHomeButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 874
+    .line 886
     return-object v1
 
-    .line 877
+    .line 889
     .end local v0    # "quickStepEnabled":Z
     .end local v1    # "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :cond_1
@@ -3809,11 +3841,11 @@
 
     move-result v0
 
-    .line 878
+    .line 890
     .restart local v0    # "quickStepEnabled":Z
     if-eqz v0, :cond_2
 
-    .line 879
+    .line 891
     const v1, 0x7f0803ed
 
     invoke-direct {p0, p1, p2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;Landroid/content/Context;I)Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -3822,7 +3854,7 @@
 
     goto :goto_1
 
-    .line 880
+    .line 892
     :cond_2
     const v2, 0x7f0803ea
 
@@ -3830,19 +3862,19 @@
 
     move-result-object v1
 
-    .line 882
+    .line 894
     .restart local v1    # "drawable":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :goto_1
     invoke-direct {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientHomeButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 883
+    .line 895
     return-object v1
 .end method
 
 .method public getImeSwitchButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 487
+    .line 493
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a01a7
@@ -3859,7 +3891,7 @@
 .method public getLightTransitionsController()Lcom/android/systemui/statusbar/phone/LightBarTransitionsController;
     .locals 1
 
-    .line 371
+    .line 377
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;->getLightTransitionsController()Lcom/android/systemui/statusbar/phone/LightBarTransitionsController;
@@ -3872,7 +3904,7 @@
 .method public getMenuButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 475
+    .line 481
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a023f
@@ -3889,7 +3921,7 @@
 .method public getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 466
+    .line 472
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a0279
@@ -3906,7 +3938,7 @@
 .method public getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 471
+    .line 477
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a0347
@@ -3923,7 +3955,7 @@
 .method public getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
     .locals 2
 
-    .line 495
+    .line 501
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     const v1, 0x7f0a0361
@@ -3940,7 +3972,7 @@
 .method public inScreenPinning()Z
     .locals 1
 
-    .line 1074
+    .line 1086
     invoke-static {}, Lcom/android/systemui/shared/system/ActivityManagerWrapper;->getInstance()Lcom/android/systemui/shared/system/ActivityManagerWrapper;
 
     move-result-object v0
@@ -3955,7 +3987,7 @@
 .method public isOverviewEnabled()Z
     .locals 2
 
-    .line 511
+    .line 517
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
 
     const/high16 v1, 0x1000000
@@ -3978,7 +4010,7 @@
 .method public isQuickScrubEnabled()Z
     .locals 2
 
-    .line 519
+    .line 525
     const-string v0, "persist.quickstep.scrub.enabled"
 
     const/4 v1, 0x1
@@ -3991,7 +4023,7 @@
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
-    .line 520
+    .line 526
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->isEnabled()Z
 
     move-result v0
@@ -4006,7 +4038,7 @@
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
-    .line 521
+    .line 527
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->getInteractionFlags()I
 
     move-result v0
@@ -4020,7 +4052,7 @@
     :cond_0
     const/4 v1, 0x0
 
-    .line 519
+    .line 525
     :goto_0
     return v1
 .end method
@@ -4028,7 +4060,7 @@
 .method public isQuickStepSwipeUpEnabled()Z
     .locals 1
 
-    .line 515
+    .line 521
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
@@ -4057,7 +4089,7 @@
 .method public isRecentsButtonVisible()Z
     .locals 1
 
-    .line 507
+    .line 513
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4082,7 +4114,7 @@
 .method public isRotateButtonVisible()Z
     .locals 1
 
-    .line 1292
+    .line 1304
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowRotateButton:Z
 
     return v0
@@ -4091,7 +4123,7 @@
 .method public isScreenSaverOn()Z
     .locals 1
 
-    .line 791
+    .line 803
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->getInstance(Landroid/content/Context;)Lcom/android/keyguard/KeyguardUpdateMonitor;
@@ -4131,7 +4163,7 @@
     .locals 1
     .param p1, "rotation"    # I
 
-    .line 1393
+    .line 1405
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentRotation:I
 
     if-eq v0, p1, :cond_0
@@ -4151,12 +4183,12 @@
     .locals 1
     .param p1, "color"    # I
 
-    .line 576
+    .line 582
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(IZ)V
 
-    .line 577
+    .line 583
     return-void
 .end method
 
@@ -4164,7 +4196,7 @@
     .locals 4
     .param p1, "insets"    # Landroid/view/WindowInsets;
 
-    .line 1664
+    .line 1676
     invoke-virtual {p1}, Landroid/view/WindowInsets;->getSystemWindowInsetLeft()I
 
     move-result v0
@@ -4173,7 +4205,7 @@
 
     move-result v1
 
-    .line 1665
+    .line 1677
     invoke-virtual {p1}, Landroid/view/WindowInsets;->getSystemWindowInsetRight()I
 
     move-result v2
@@ -4182,10 +4214,10 @@
 
     move-result v3
 
-    .line 1664
+    .line 1676
     invoke-virtual {p0, v0, v1, v2, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setPadding(IIII)V
 
-    .line 1666
+    .line 1678
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onApplyWindowInsets(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;
 
     move-result-object v0
@@ -4196,21 +4228,21 @@
 .method protected onAttachedToWindow()V
     .locals 3
 
-    .line 1580
+    .line 1592
     invoke-super {p0}, Landroid/widget/FrameLayout;->onAttachedToWindow()V
 
-    .line 1581
+    .line 1593
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->requestApplyInsets()V
 
-    .line 1582
+    .line 1594
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reorient()V
 
-    .line 1583
+    .line 1595
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->onPluginDisconnected(Lcom/android/systemui/plugins/statusbar/phone/NavGesture;)V
 
-    .line 1584
+    .line 1596
     const-class v0, Lcom/android/systemui/plugins/PluginManager;
 
     invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
@@ -4225,14 +4257,25 @@
 
     invoke-interface {v0, p0, v1, v2}, Lcom/android/systemui/plugins/PluginManager;->addPluginListener(Lcom/android/systemui/plugins/PluginListener;Ljava/lang/Class;Z)V
 
-    .line 1586
+    .line 1598
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isQuickStepSwipeUpEnabled()Z
 
     move-result v0
 
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setUpSwipeUpOnboarding(Z)V
 
-    .line 1587
+    .line 1599
+    return-void
+.end method
+
+.method public onBrickModeChanged(Z)V
+    .locals 0
+    .param p1, "isOn"    # Z
+
+    .line 1704
+    iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsInBrickMode:Z
+
+    .line 1705
     return-void
 .end method
 
@@ -4240,19 +4283,19 @@
     .locals 3
     .param p1, "newConfig"    # Landroid/content/res/Configuration;
 
-    .line 1491
+    .line 1503
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 1492
+    .line 1504
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateCarMode(Landroid/content/res/Configuration;)Z
 
     move-result v0
 
-    .line 1493
+    .line 1505
     .local v0, "uiCarModeChanged":Z
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateTaskSwitchHelper()V
 
-    .line 1494
+    .line 1506
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v1
@@ -4261,15 +4304,15 @@
 
     invoke-direct {p0, v1, v2, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateIcons(Landroid/content/Context;Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
 
-    .line 1495
+    .line 1507
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateRecentsIcon()V
 
-    .line 1496
+    .line 1508
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
     invoke-virtual {v1, p1}, Lcom/android/systemui/recents/RecentsOnboarding;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 1497
+    .line 1509
     if-nez v0, :cond_0
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mConfiguration:Landroid/content/res/Configuration;
@@ -4282,7 +4325,7 @@
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mConfiguration:Landroid/content/res/Configuration;
 
-    .line 1498
+    .line 1510
     invoke-virtual {v1}, Landroid/content/res/Configuration;->getLayoutDirection()I
 
     move-result v1
@@ -4293,17 +4336,17 @@
 
     if-eq v1, v2, :cond_1
 
-    .line 1500
+    .line 1512
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 1502
+    .line 1514
     :cond_1
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mConfiguration:Landroid/content/res/Configuration;
 
     invoke-virtual {v1, p1}, Landroid/content/res/Configuration;->updateFrom(Landroid/content/res/Configuration;)I
 
-    .line 1503
+    .line 1515
     return-void
 .end method
 
@@ -4311,17 +4354,17 @@
     .locals 1
     .param p1, "intensity"    # F
 
-    .line 1341
+    .line 1353
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     if-eqz v0, :cond_0
 
-    .line 1342
+    .line 1354
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     invoke-interface {v0, p1}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->onDarkIntensityChange(F)V
 
-    .line 1344
+    .line 1356
     :cond_0
     return-void
 .end method
@@ -4329,10 +4372,10 @@
 .method protected onDetachedFromWindow()V
     .locals 1
 
-    .line 1591
+    .line 1603
     invoke-super {p0}, Landroid/widget/FrameLayout;->onDetachedFromWindow()V
 
-    .line 1592
+    .line 1604
     const-class v0, Lcom/android/systemui/plugins/PluginManager;
 
     invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
@@ -4343,23 +4386,23 @@
 
     invoke-interface {v0, p0}, Lcom/android/systemui/plugins/PluginManager;->removePluginListener(Lcom/android/systemui/plugins/PluginListener;)V
 
-    .line 1593
+    .line 1605
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     if-eqz v0, :cond_0
 
-    .line 1594
+    .line 1606
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     invoke-interface {v0}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->destroy()V
 
-    .line 1596
+    .line 1608
     :cond_0
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setUpSwipeUpOnboarding(Z)V
 
-    .line 1597
+    .line 1609
     return-void
 .end method
 
@@ -4367,27 +4410,27 @@
     .locals 1
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
-    .line 1348
+    .line 1360
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     invoke-interface {v0, p1}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 1349
+    .line 1361
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZone:Lcom/android/systemui/statusbar/policy/DeadZone;
 
     invoke-virtual {v0, p1}, Lcom/android/systemui/statusbar/policy/DeadZone;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 1350
+    .line 1362
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onDraw(Landroid/graphics/Canvas;)V
 
-    .line 1351
+    .line 1363
     return-void
 .end method
 
 .method public onFinishInflate()V
     .locals 4
 
-    .line 1314
+    .line 1326
     const v0, 0x7f0a0280
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->findViewById(I)Landroid/view/View;
@@ -4398,14 +4441,14 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
-    .line 1315
+    .line 1327
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mButtonDispatchers:Landroid/util/SparseArray;
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;->setButtonDispatchers(Landroid/util/SparseArray;)V
 
-    .line 1317
+    .line 1329
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getImeSwitchButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4414,15 +4457,15 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 1319
+    .line 1331
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDockedListener:Ljava/util/function/Consumer;
 
     invoke-static {v0}, Lcom/android/systemui/DockedStackExistsListener;->register(Ljava/util/function/Consumer;)V
 
-    .line 1320
+    .line 1332
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateRotatedViews()V
 
-    .line 1325
+    .line 1337
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
@@ -4437,7 +4480,7 @@
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mContext:Landroid/content/Context;
 
-    .line 1326
+    .line 1338
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
@@ -4452,7 +4495,7 @@
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mContext:Landroid/content/Context;
 
-    .line 1331
+    .line 1343
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
@@ -4473,14 +4516,14 @@
     :goto_0
     iput-boolean v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowNavKey:Z
 
-    .line 1334
+    .line 1346
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz v0, :cond_2
 
-    .line 1335
+    .line 1347
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4499,7 +4542,7 @@
     :goto_1
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1338
+    .line 1350
     :cond_2
     return-void
 .end method
@@ -4508,7 +4551,7 @@
     .locals 3
     .param p1, "isImmersiveSticky"    # Z
 
-    .line 764
+    .line 776
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     if-eqz v0, :cond_0
@@ -4531,18 +4574,18 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 765
+    .line 777
     :cond_0
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsImmersiveSticky:Z
 
-    .line 766
+    .line 778
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz v0, :cond_2
 
-    .line 767
+    .line 779
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4563,7 +4606,7 @@
     :goto_0
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 769
+    .line 781
     :cond_2
     return-void
 .end method
@@ -4572,7 +4615,7 @@
     .locals 4
     .param p1, "event"    # Landroid/view/MotionEvent;
 
-    .line 392
+    .line 398
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->shouldDeadZoneConsumeTouchEvents(Landroid/view/MotionEvent;)Z
 
     move-result v0
@@ -4581,10 +4624,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 393
+    .line 399
     return v1
 
-    .line 395
+    .line 401
     :cond_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
@@ -4594,7 +4637,7 @@
 
     goto :goto_0
 
-    .line 397
+    .line 403
     :cond_1
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -4602,7 +4645,7 @@
 
     float-to-int v0, v0
 
-    .line 398
+    .line 404
     .local v0, "x":I
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -4610,13 +4653,13 @@
 
     float-to-int v2, v2
 
-    .line 399
+    .line 405
     .local v2, "y":I
     const/4 v3, 0x0
 
     iput v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
-    .line 400
+    .line 406
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v3
@@ -4635,12 +4678,12 @@
 
     if-eqz v3, :cond_2
 
-    .line 401
+    .line 407
     iput v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
     goto :goto_0
 
-    .line 402
+    .line 408
     :cond_2
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -4660,14 +4703,14 @@
 
     if-eqz v1, :cond_3
 
-    .line 403
+    .line 409
     const/4 v1, 0x2
 
     iput v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
     goto :goto_0
 
-    .line 404
+    .line 410
     :cond_3
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -4687,14 +4730,14 @@
 
     if-eqz v1, :cond_4
 
-    .line 405
+    .line 411
     const/4 v1, 0x3
 
     iput v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
     goto :goto_0
 
-    .line 406
+    .line 412
     :cond_4
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -4708,19 +4751,19 @@
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotationButtonBounds:Landroid/graphics/Rect;
 
-    .line 407
+    .line 413
     invoke-virtual {v1, v0, v2}, Landroid/graphics/Rect;->contains(II)Z
 
     move-result v1
 
     if-eqz v1, :cond_5
 
-    .line 408
+    .line 414
     const/4 v1, 0x4
 
     iput v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDownHitTarget:I
 
-    .line 412
+    .line 418
     .end local v0    # "x":I
     .end local v2    # "y":I
     :cond_5
@@ -4742,10 +4785,10 @@
     .param p4, "right"    # I
     .param p5, "bottom"    # I
 
-    .line 1355
+    .line 1367
     invoke-super/range {p0 .. p5}, Landroid/widget/FrameLayout;->onLayout(ZIIII)V
 
-    .line 1356
+    .line 1368
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4754,7 +4797,7 @@
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonLocationOnScreen(Lcom/android/systemui/statusbar/phone/ButtonDispatcher;Landroid/graphics/Rect;)V
 
-    .line 1357
+    .line 1369
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4763,7 +4806,7 @@
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonLocationOnScreen(Lcom/android/systemui/statusbar/phone/ButtonDispatcher;Landroid/graphics/Rect;)V
 
-    .line 1358
+    .line 1370
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4772,7 +4815,7 @@
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonLocationOnScreen(Lcom/android/systemui/statusbar/phone/ButtonDispatcher;Landroid/graphics/Rect;)V
 
-    .line 1359
+    .line 1371
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -4781,7 +4824,7 @@
 
     invoke-direct {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonLocationOnScreen(Lcom/android/systemui/statusbar/phone/ButtonDispatcher;Landroid/graphics/Rect;)V
 
-    .line 1360
+    .line 1372
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     move v3, p1
@@ -4796,7 +4839,7 @@
 
     invoke-interface/range {v2 .. v7}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->onLayout(ZIIII)V
 
-    .line 1361
+    .line 1373
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsOnboarding:Lcom/android/systemui/recents/RecentsOnboarding;
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getMeasuredHeight()I
@@ -4805,7 +4848,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/recents/RecentsOnboarding;->setNavBarHeight(I)V
 
-    .line 1362
+    .line 1374
     return-void
 .end method
 
@@ -4813,12 +4856,12 @@
     .locals 1
     .param p1, "v"    # Landroid/view/View;
 
-    .line 1132
+    .line 1144
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     invoke-interface {v0, p1}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->onNavigationButtonLongPress(Landroid/view/View;)V
 
-    .line 1133
+    .line 1145
     return-void
 .end method
 
@@ -4826,10 +4869,10 @@
     .locals 0
     .param p1, "expanded"    # Z
 
-    .line 1136
+    .line 1148
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateSlippery()V
 
-    .line 1137
+    .line 1149
     return-void
 .end method
 
@@ -4849,17 +4892,17 @@
     .param p1, "plugin"    # Lcom/android/systemui/plugins/statusbar/phone/NavGesture;
     .param p2, "context"    # Landroid/content/Context;
 
-    .line 1609
+    .line 1621
     invoke-interface {p1}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture;->getGestureHelper()Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
-    .line 1610
+    .line 1622
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateTaskSwitchHelper()V
 
-    .line 1611
+    .line 1623
     return-void
 .end method
 
@@ -4878,7 +4921,7 @@
     .locals 3
     .param p1, "plugin"    # Lcom/android/systemui/plugins/statusbar/phone/NavGesture;
 
-    .line 1615
+    .line 1627
     new-instance v0, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
@@ -4887,7 +4930,7 @@
 
     invoke-direct {v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;-><init>(Landroid/content/Context;)V
 
-    .line 1616
+    .line 1628
     .local v0, "defaultHelper":Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsComponent:Lcom/android/systemui/RecentsComponent;
 
@@ -4895,24 +4938,24 @@
 
     invoke-virtual {v0, v1, v2, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;->setComponents(Lcom/android/systemui/RecentsComponent;Lcom/android/systemui/stackdivider/Divider;Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
-    .line 1617
+    .line 1629
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     if-eqz v1, :cond_0
 
-    .line 1618
+    .line 1630
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     invoke-interface {v1}, Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;->destroy()V
 
-    .line 1620
+    .line 1632
     :cond_0
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
-    .line 1621
+    .line 1633
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateTaskSwitchHelper()V
 
-    .line 1622
+    .line 1634
     return-void
 .end method
 
@@ -4920,26 +4963,26 @@
     .locals 2
     .param p1, "show"    # Z
 
-    .line 738
+    .line 750
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mKeyguardShow:Z
 
     if-ne v0, p1, :cond_0
 
-    .line 739
+    .line 751
     return-void
 
-    .line 742
+    .line 754
     :cond_0
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mKeyguardShow:Z
 
-    .line 744
+    .line 756
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportCustomNavBar()Z
 
     move-result v0
 
     if-eqz v0, :cond_3
 
-    .line 745
+    .line 757
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mKeyguardShow:Z
 
     const/4 v1, 0x0
@@ -4959,7 +5002,7 @@
     :cond_1
     move v0, v1
 
-    .line 746
+    .line 758
     .local v0, "shoudldBlockChangeColor":Z
     :goto_0
     if-eqz p1, :cond_2
@@ -4969,15 +5012,15 @@
     :cond_2
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
-    .line 748
+    .line 760
     .local v1, "naviBarColor":I
     :goto_1
     if-nez v0, :cond_3
 
-    .line 749
+    .line 761
     invoke-virtual {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(I)V
 
-    .line 752
+    .line 764
     .end local v0    # "shoudldBlockChangeColor":Z
     .end local v1    # "naviBarColor":I
     :cond_3
@@ -4991,7 +5034,7 @@
     .param p3, "oldw"    # I
     .param p4, "oldh"    # I
 
-    .line 1468
+    .line 1480
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     const/4 v1, 0x1
@@ -5008,7 +5051,7 @@
 
     new-array v4, v4, [Ljava/lang/Object;
 
-    .line 1469
+    .line 1481
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v5
@@ -5037,14 +5080,14 @@
 
     aput-object v6, v4, v5
 
-    .line 1468
+    .line 1480
     invoke-static {v3, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v3
 
     invoke-static {v0, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1471
+    .line 1483
     :cond_0
     if-lez p1, :cond_1
 
@@ -5058,31 +5101,31 @@
     :goto_0
     move v0, v1
 
-    .line 1472
+    .line 1484
     .local v0, "newVertical":Z
     iget-boolean v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
     if-eq v0, v1, :cond_2
 
-    .line 1473
+    .line 1485
     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
-    .line 1475
+    .line 1487
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reorient()V
 
-    .line 1476
+    .line 1488
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyVerticalChangedListener(Z)V
 
-    .line 1479
+    .line 1491
     :cond_2
     const-string v1, "sizeChanged"
 
     invoke-direct {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->postCheckForInvalidLayout(Ljava/lang/String;)V
 
-    .line 1480
+    .line 1492
     invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/FrameLayout;->onSizeChanged(IIII)V
 
-    .line 1481
+    .line 1493
     return-void
 .end method
 
@@ -5090,7 +5133,7 @@
     .locals 2
     .param p1, "event"    # Landroid/view/MotionEvent;
 
-    .line 417
+    .line 423
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->shouldDeadZoneConsumeTouchEvents(Landroid/view/MotionEvent;)Z
 
     move-result v0
@@ -5099,10 +5142,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 418
+    .line 424
     return v1
 
-    .line 420
+    .line 426
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
@@ -5112,10 +5155,10 @@
 
     if-eqz v0, :cond_1
 
-    .line 421
+    .line 427
     return v1
 
-    .line 423
+    .line 429
     :cond_1
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
@@ -5127,7 +5170,7 @@
 .method public refreshButtonColor()V
     .locals 3
 
-    .line 783
+    .line 795
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLastButtonColor:I
 
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLastRippleColor:I
@@ -5136,17 +5179,17 @@
 
     invoke-direct {p0, v0, v1, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateButtonColor(IIZ)V
 
-    .line 784
+    .line 796
     return-void
 .end method
 
 .method public reorient()V
     .locals 3
 
-    .line 1430
+    .line 1442
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateCurrentView()V
 
-    .line 1432
+    .line 1444
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRootView()Landroid/view/View;
 
     move-result-object v0
@@ -5157,33 +5200,33 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFrame;->setDeadZone(Lcom/android/systemui/statusbar/policy/DeadZone;)V
 
-    .line 1433
+    .line 1445
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDeadZone:Lcom/android/systemui/statusbar/policy/DeadZone;
 
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mCurrentRotation:I
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/policy/DeadZone;->onConfigurationChanged(I)V
 
-    .line 1436
+    .line 1448
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;->init()V
 
-    .line 1437
+    .line 1449
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
     const/4 v1, 0x1
 
     invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setMenuVisibility(ZZ)V
 
-    .line 1440
+    .line 1452
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz v0, :cond_1
 
-    .line 1441
+    .line 1453
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -5204,13 +5247,13 @@
     :goto_0
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1445
+    .line 1457
     :cond_1
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->DEBUG:Z
 
     if-eqz v0, :cond_2
 
-    .line 1446
+    .line 1458
     const-string v0, "StatusBar/NavBarView"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -5231,7 +5274,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1451
+    .line 1463
     :cond_2
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isLayoutDirectionResolved()Z
 
@@ -5239,17 +5282,17 @@
 
     if-nez v0, :cond_3
 
-    .line 1452
+    .line 1464
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->resolveLayoutDirection()Z
 
-    .line 1454
+    .line 1466
     :cond_3
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateTaskSwitchHelper()V
 
-    .line 1455
+    .line 1467
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 1457
+    .line 1469
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -5258,7 +5301,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVertical(Z)V
 
-    .line 1458
+    .line 1470
     return-void
 .end method
 
@@ -5267,35 +5310,35 @@
     .param p1, "visible"    # Z
     .param p2, "longClickable"    # Z
 
-    .line 1214
+    .line 1226
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowAccessibilityButton:Z
 
-    .line 1215
+    .line 1227
     iput-boolean p2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLongClickableAccessibilityButton:Z
 
-    .line 1216
+    .line 1228
     const/4 v0, 0x4
 
     const/4 v1, 0x0
 
     if-eqz p1, :cond_0
 
-    .line 1218
+    .line 1230
     const/4 v2, 0x1
 
     invoke-virtual {p0, v1, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setMenuVisibility(ZZ)V
 
-    .line 1219
+    .line 1231
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getImeSwitchButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v2
 
     invoke-virtual {v2, v0}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1220
+    .line 1232
     invoke-virtual {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setRotateButtonVisibility(Z)I
 
-    .line 1223
+    .line 1235
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getAccessibilityButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -5310,14 +5353,14 @@
     :cond_1
     invoke-virtual {v2, v0}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1224
+    .line 1236
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getAccessibilityButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     invoke-virtual {v0, p2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setLongClickable(Z)V
 
-    .line 1225
+    .line 1237
     return-void
 .end method
 
@@ -5327,30 +5370,30 @@
     .param p2, "divider"    # Lcom/android/systemui/stackdivider/Divider;
     .param p3, "panel"    # Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 376
+    .line 382
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRecentsComponent:Lcom/android/systemui/RecentsComponent;
 
-    .line 377
+    .line 383
     iput-object p2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDivider:Lcom/android/systemui/stackdivider/Divider;
 
-    .line 378
+    .line 384
     iput-object p3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mPanelView:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 379
+    .line 385
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     instance-of v0, v0, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;
 
     if-eqz v0, :cond_0
 
-    .line 380
+    .line 386
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mGestureHelper:Lcom/android/systemui/plugins/statusbar/phone/NavGesture$GestureHelper;
 
     check-cast v0, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;
 
     invoke-virtual {v0, p1, p2, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarGestureHelper;->setComponents(Lcom/android/systemui/RecentsComponent;Lcom/android/systemui/stackdivider/Divider;Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
-    .line 383
+    .line 389
     :cond_0
     return-void
 .end method
@@ -5359,24 +5402,24 @@
     .locals 2
     .param p1, "disabledFlags"    # I
 
-    .line 976
+    .line 988
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
 
     if-ne v0, p1, :cond_0
 
     return-void
 
-    .line 978
+    .line 990
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isOverviewEnabled()Z
 
     move-result v0
 
-    .line 979
+    .line 991
     .local v0, "overviewEnabledBefore":Z
     iput p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
 
-    .line 982
+    .line 994
     if-nez v0, :cond_1
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isOverviewEnabled()Z
@@ -5385,24 +5428,24 @@
 
     if-eqz v1, :cond_1
 
-    .line 983
+    .line 995
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reloadNavIcons()V
 
-    .line 986
+    .line 998
     :cond_1
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 987
+    .line 999
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateSlippery()V
 
-    .line 988
+    .line 1000
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isQuickStepSwipeUpEnabled()Z
 
     move-result v1
 
     invoke-direct {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setUpSwipeUpOnboarding(Z)V
 
-    .line 989
+    .line 1001
     return-void
 .end method
 
@@ -5410,15 +5453,15 @@
     .locals 2
     .param p1, "value"    # Z
 
-    .line 543
+    .line 549
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isHideNavBarOn:Z
 
-    .line 544
+    .line 550
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isHideNavBarOn:Z
 
     if-eqz v0, :cond_0
 
-    .line 545
+    .line 551
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_TRANSPARENT:I
 
     const/4 v1, -0x1
@@ -5427,13 +5470,13 @@
 
     goto :goto_0
 
-    .line 547
+    .line 553
     :cond_0
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(I)V
 
-    .line 549
+    .line 555
     :goto_0
     return-void
 .end method
@@ -5442,15 +5485,15 @@
     .locals 1
     .param p1, "layoutDirection"    # I
 
-    .line 930
+    .line 942
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reloadNavIcons()V
 
-    .line 933
+    .line 945
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;->onLikelyDefaultLayoutChange()V
 
-    .line 935
+    .line 947
     return-void
 .end method
 
@@ -5458,13 +5501,13 @@
     .locals 0
     .param p1, "enabled"    # Z
 
-    .line 1078
+    .line 1090
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLayoutTransitionsEnabled:Z
 
-    .line 1079
+    .line 1091
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateLayoutTransitionsEnabled()V
 
-    .line 1080
+    .line 1092
     return-void
 .end method
 
@@ -5472,10 +5515,10 @@
     .locals 1
     .param p1, "isLightBar"    # Z
 
-    .line 772
+    .line 784
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsLightBar:Z
 
-    .line 774
+    .line 786
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v0, :cond_0
@@ -5484,7 +5527,7 @@
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(I)V
 
-    .line 776
+    .line 788
     :cond_0
     return-void
 .end method
@@ -5493,12 +5536,12 @@
     .locals 1
     .param p1, "show"    # Z
 
-    .line 1196
+    .line 1208
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setMenuVisibility(ZZ)V
 
-    .line 1197
+    .line 1209
     return-void
 .end method
 
@@ -5507,7 +5550,7 @@
     .param p1, "show"    # Z
     .param p2, "force"    # Z
 
-    .line 1200
+    .line 1212
     if-nez p2, :cond_0
 
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
@@ -5516,11 +5559,11 @@
 
     return-void
 
-    .line 1202
+    .line 1214
     :cond_0
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
-    .line 1205
+    .line 1217
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
     const/4 v1, 0x0
@@ -5548,7 +5591,7 @@
     :cond_1
     move v0, v1
 
-    .line 1210
+    .line 1222
     .local v0, "shouldShow":Z
     :goto_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getMenuButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -5565,7 +5608,7 @@
     :goto_1
     invoke-virtual {v2, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1211
+    .line 1223
     return-void
 .end method
 
@@ -5573,14 +5616,14 @@
     .locals 3
     .param p1, "hints"    # I
 
-    .line 950
+    .line 962
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationIconHints:I
 
     if-ne p1, v0, :cond_0
 
     return-void
 
-    .line 951
+    .line 963
     :cond_0
     and-int/lit8 v0, p1, 0x1
 
@@ -5595,7 +5638,7 @@
     :cond_1
     const/4 v0, 0x0
 
-    .line 952
+    .line 964
     .local v0, "backAlt":Z
     :goto_0
     iget v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationIconHints:I
@@ -5606,45 +5649,45 @@
 
     if-nez v0, :cond_2
 
-    .line 953
+    .line 965
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTransitionListener:Lcom/android/systemui/statusbar/phone/NavigationBarView$NavTransitionListener;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView$NavTransitionListener;->onBackAltCleared()V
 
-    .line 960
+    .line 972
     :cond_2
     iput p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationIconHints:I
 
-    .line 961
+    .line 973
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 964
+    .line 976
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportCustomNavBar()Z
 
     move-result v1
 
     if-eqz v1, :cond_4
 
-    .line 965
+    .line 977
     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mImeShow:Z
 
-    .line 966
+    .line 978
     if-eqz v0, :cond_3
 
-    .line 967
+    .line 979
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->COLOR_KEY_LIGHT:I
 
     invoke-virtual {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(I)V
 
     goto :goto_1
 
-    .line 969
+    .line 981
     :cond_3
     iget v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackgroundColor:I
 
     invoke-virtual {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyNavBarColorChange(I)V
 
-    .line 973
+    .line 985
     :cond_4
     :goto_1
     return-void
@@ -5654,15 +5697,15 @@
     .locals 1
     .param p1, "onVerticalChangedListener"    # Lcom/android/systemui/statusbar/phone/NavigationBarView$OnVerticalChangedListener;
 
-    .line 386
+    .line 392
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOnVerticalChangedListener:Lcom/android/systemui/statusbar/phone/NavigationBarView$OnVerticalChangedListener;
 
-    .line 387
+    .line 393
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
 
     invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->notifyVerticalChangedListener(Z)V
 
-    .line 388
+    .line 394
     return-void
 .end method
 
@@ -5670,7 +5713,7 @@
     .locals 4
     .param p1, "visible"    # Z
 
-    .line 1266
+    .line 1278
     const/4 v0, 0x0
 
     if-eqz p1, :cond_0
@@ -5686,7 +5729,7 @@
     :cond_0
     move v1, v0
 
-    .line 1267
+    .line 1279
     .local v1, "adjVisible":Z
     :goto_0
     if-eqz v1, :cond_1
@@ -5698,7 +5741,7 @@
     :cond_1
     const/4 v2, 0x4
 
-    .line 1270
+    .line 1282
     .local v2, "vis":I
     :goto_1
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -5713,7 +5756,7 @@
 
     return v2
 
-    .line 1272
+    .line 1284
     :cond_2
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -5721,44 +5764,44 @@
 
     invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1273
+    .line 1285
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowRotateButton:Z
 
-    .line 1276
+    .line 1288
     if-nez p1, :cond_3
 
-    .line 1277
+    .line 1289
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateSuggestionIcon:Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
 
     invoke-virtual {v3, v0}, Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 1278
+    .line 1290
     .local v0, "d":Landroid/graphics/drawable/Drawable;
     instance-of v3, v0, Landroid/graphics/drawable/AnimatedVectorDrawable;
 
     if-eqz v3, :cond_3
 
-    .line 1279
+    .line 1291
     move-object v3, v0
 
     check-cast v3, Landroid/graphics/drawable/AnimatedVectorDrawable;
 
-    .line 1280
+    .line 1292
     .local v3, "avd":Landroid/graphics/drawable/AnimatedVectorDrawable;
     invoke-virtual {v3}, Landroid/graphics/drawable/AnimatedVectorDrawable;->clearAnimationCallbacks()V
 
-    .line 1281
+    .line 1293
     invoke-virtual {v3}, Landroid/graphics/drawable/AnimatedVectorDrawable;->reset()V
 
-    .line 1286
+    .line 1298
     .end local v0    # "d":Landroid/graphics/drawable/Drawable;
     .end local v3    # "avd":Landroid/graphics/drawable/AnimatedVectorDrawable;
     :cond_3
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 1289
+    .line 1301
     return v2
 .end method
 
@@ -5766,16 +5809,16 @@
     .locals 0
     .param p1, "wakeAndUnlocking"    # Z
 
-    .line 1083
+    .line 1095
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setUseFadingAnimations(Z)V
 
-    .line 1084
+    .line 1096
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mWakeAndUnlocking:Z
 
-    .line 1085
+    .line 1097
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateLayoutTransitionsEnabled()V
 
-    .line 1086
+    .line 1098
     return-void
 .end method
 
@@ -5783,21 +5826,21 @@
     .locals 3
     .param p1, "mHide"    # Z
 
-    .line 1417
+    .line 1429
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz v0, :cond_1
 
-    .line 1418
+    .line 1430
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz p1, :cond_0
 
-    .line 1419
+    .line 1431
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v1
@@ -5810,7 +5853,7 @@
 
     goto :goto_0
 
-    .line 1420
+    .line 1432
     :cond_0
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
@@ -5822,11 +5865,11 @@
 
     move-result-object v1
 
-    .line 1418
+    .line 1430
     :goto_0
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1422
+    .line 1434
     :cond_1
     return-void
 .end method
@@ -5834,7 +5877,7 @@
 .method public updateNavButtonIcons()V
     .locals 14
 
-    .line 995
+    .line 1007
     iget v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationIconHints:I
 
     const/4 v1, 0x1
@@ -5852,14 +5895,14 @@
     :cond_0
     move v0, v2
 
-    .line 999
+    .line 1011
     .local v0, "useAltBack":Z
     :goto_0
     iget-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v3, :cond_2
 
-    .line 1000
+    .line 1012
     if-eqz v0, :cond_1
 
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBackAltIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
@@ -5880,7 +5923,7 @@
     :cond_2
     if-eqz v0, :cond_3
 
-    .line 1002
+    .line 1014
     iget-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
 
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mVertical:Z
@@ -5891,7 +5934,7 @@
 
     goto :goto_1
 
-    .line 1003
+    .line 1015
     :cond_3
     iget-boolean v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
 
@@ -5901,7 +5944,7 @@
 
     move-result-object v3
 
-    .line 1004
+    .line 1016
     .local v3, "backIcon":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :goto_1
     iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
@@ -5915,20 +5958,20 @@
     :cond_4
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mHomeDefaultIcon:Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
 
-    .line 1005
+    .line 1017
     .local v4, "homeIcon":Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;
     :goto_2
     iget-boolean v5, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
 
     if-nez v5, :cond_5
 
-    .line 1006
+    .line 1018
     invoke-direct {p0, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientBackButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1007
+    .line 1019
     invoke-direct {p0, v4}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->orientHomeButton(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1009
+    .line 1021
     :cond_5
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
@@ -5936,17 +5979,17 @@
 
     invoke-virtual {v5, v4}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1010
+    .line 1022
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v5
 
     invoke-virtual {v5, v3}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1012
+    .line 1024
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateRecentsIcon()V
 
-    .line 1015
+    .line 1027
     iget-boolean v5, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowAccessibilityButton:Z
 
     if-nez v5, :cond_6
@@ -5968,7 +6011,7 @@
     :cond_6
     move v5, v2
 
-    .line 1019
+    .line 1031
     .local v5, "showImeButton":Z
     :goto_3
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getImeSwitchButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -5989,7 +6032,7 @@
     :goto_4
     invoke-virtual {v6, v8}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1020
+    .line 1032
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getImeSwitchButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v6
@@ -5998,12 +6041,12 @@
 
     invoke-virtual {v6, v8}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1023
+    .line 1035
     iget-boolean v6, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowMenu:Z
 
     invoke-virtual {p0, v6, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setMenuVisibility(ZZ)V
 
-    .line 1024
+    .line 1036
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getMenuButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v6
@@ -6012,7 +6055,7 @@
 
     invoke-virtual {v6, v8}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1027
+    .line 1039
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRotateSuggestionButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v6
@@ -6021,14 +6064,14 @@
 
     invoke-virtual {v6, v8}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1030
+    .line 1042
     iget-boolean v6, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowAccessibilityButton:Z
 
     iget-boolean v8, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mLongClickableAccessibilityButton:Z
 
     invoke-virtual {p0, v6, v8}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setAccessibilityButtonState(ZZ)V
 
-    .line 1031
+    .line 1043
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getAccessibilityButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v6
@@ -6037,12 +6080,12 @@
 
     invoke-virtual {v6, v8}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1033
+    .line 1045
     iget-object v6, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mBarTransitions:Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;
 
     invoke-virtual {v6}, Lcom/android/systemui/statusbar/phone/NavigationBarTransitions;->reapplyDarkIntensity()V
 
-    .line 1035
+    .line 1047
     iget v6, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
 
     const/high16 v8, 0x200000
@@ -6058,7 +6101,7 @@
     :cond_8
     move v6, v2
 
-    .line 1038
+    .line 1050
     .local v6, "disableHome":Z
     :goto_5
     iget-boolean v8, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mUseCarModeUi:Z
@@ -6082,7 +6125,7 @@
     :goto_6
     move v8, v1
 
-    .line 1040
+    .line 1052
     .local v8, "disableRecent":Z
     :goto_7
     iget v9, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mDisabledFlags:I
@@ -6102,7 +6145,7 @@
     :cond_b
     move v9, v2
 
-    .line 1045
+    .line 1057
     .local v9, "disableBack":Z
     :goto_8
     invoke-static {}, Lcom/android/systemui/shared/system/ActivityManagerWrapper;->getInstance()Lcom/android/systemui/shared/system/ActivityManagerWrapper;
@@ -6113,7 +6156,7 @@
 
     move-result v10
 
-    .line 1046
+    .line 1058
     .local v10, "pinningActive":Z
     iget-object v11, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
@@ -6123,14 +6166,14 @@
 
     if-eqz v11, :cond_e
 
-    .line 1049
+    .line 1061
     iget-object v11, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v11}, Lcom/android/systemui/OverviewProxyService;->getInteractionFlags()I
 
     move-result v11
 
-    .line 1050
+    .line 1062
     .local v11, "flags":I
     and-int/lit8 v12, v11, 0x4
 
@@ -6144,17 +6187,17 @@
     :goto_9
     or-int/2addr v8, v1
 
-    .line 1051
+    .line 1063
     if-eqz v10, :cond_d
 
-    .line 1052
+    .line 1064
     move v1, v2
 
     .end local v6    # "disableHome":Z
     .local v1, "disableHome":Z
     move v6, v2
 
-    .line 1054
+    .line 1066
     .end local v9    # "disableBack":Z
     .end local v11    # "flags":I
     .local v6, "disableBack":Z
@@ -6171,12 +6214,12 @@
     :cond_e
     if-eqz v10, :cond_f
 
-    .line 1055
+    .line 1067
     move v8, v2
 
     move v9, v2
 
-    .line 1058
+    .line 1070
     :cond_f
     :goto_a
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getCurrentView()Landroid/view/View;
@@ -6191,20 +6234,20 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 1059
+    .line 1071
     .local v1, "navButtons":Landroid/view/ViewGroup;
     if-eqz v1, :cond_10
 
-    .line 1060
+    .line 1072
     invoke-virtual {v1}, Landroid/view/ViewGroup;->getLayoutTransition()Landroid/animation/LayoutTransition;
 
     move-result-object v11
 
-    .line 1061
+    .line 1073
     .local v11, "lt":Landroid/animation/LayoutTransition;
     if-eqz v11, :cond_10
 
-    .line 1062
+    .line 1074
     invoke-virtual {v11}, Landroid/animation/LayoutTransition;->getTransitionListeners()Ljava/util/List;
 
     move-result-object v12
@@ -6217,12 +6260,12 @@
 
     if-nez v12, :cond_10
 
-    .line 1063
+    .line 1075
     iget-object v12, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mTransitionListener:Lcom/android/systemui/statusbar/phone/NavigationBarView$NavTransitionListener;
 
     invoke-virtual {v11, v12}, Landroid/animation/LayoutTransition;->addTransitionListener(Landroid/animation/LayoutTransition$TransitionListener;)V
 
-    .line 1068
+    .line 1080
     .end local v11    # "lt":Landroid/animation/LayoutTransition;
     :cond_10
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getBackButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
@@ -6241,7 +6284,7 @@
     :goto_b
     invoke-virtual {v11, v12}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1069
+    .line 1081
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v11
@@ -6258,7 +6301,7 @@
     :goto_c
     invoke-virtual {v11, v12}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1070
+    .line 1082
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getRecentsButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v11
@@ -6272,7 +6315,7 @@
     :cond_13
     invoke-virtual {v11, v2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 1071
+    .line 1083
     return-void
 .end method
 
@@ -6280,17 +6323,17 @@
     .locals 2
     .param p1, "state"    # Z
 
-    .line 553
+    .line 559
     iput-boolean p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mShowNavKey:Z
 
-    .line 554
+    .line 560
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
 
     if-eqz v0, :cond_1
 
-    .line 555
+    .line 561
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getNavButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v0
@@ -6311,7 +6354,7 @@
     :goto_0
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setVisibility(I)V
 
-    .line 557
+    .line 563
     :cond_1
     return-void
 .end method
@@ -6321,15 +6364,15 @@
     .param p1, "style"    # I
     .param p2, "setIcon"    # Z
 
-    .line 1228
+    .line 1240
     iput p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateBtnStyle:I
 
-    .line 1229
+    .line 1241
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 1232
+    .line 1244
     .local v0, "ctx":Landroid/content/Context;
     const v1, 0x7f04010a
 
@@ -6337,7 +6380,7 @@
 
     move-result v1
 
-    .line 1233
+    .line 1245
     .local v1, "dualToneDarkTheme":I
     const v2, 0x7f040242
 
@@ -6345,19 +6388,19 @@
 
     move-result v2
 
-    .line 1234
+    .line 1246
     .local v2, "dualToneLightTheme":I
     new-instance v3, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v3, v0, v1}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
-    .line 1235
+    .line 1247
     .local v3, "darkContext":Landroid/content/Context;
     new-instance v4, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v4, v0, v2}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
-    .line 1236
+    .line 1248
     .local v4, "lightContext":Landroid/content/Context;
     const v5, 0x7f0403c5
 
@@ -6365,38 +6408,38 @@
 
     move-result v6
 
-    .line 1237
+    .line 1249
     .local v6, "lightColor":I
     invoke-static {v3, v5}, Lcom/android/settingslib/Utils;->getColorAttr(Landroid/content/Context;I)I
 
     move-result v5
 
-    .line 1240
+    .line 1252
     .local v5, "darkColor":I
     new-instance v7, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v7, v0, p1}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
-    .line 1243
+    .line 1255
     .local v7, "rotateContext":Landroid/content/Context;
     iget-object v8, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateSuggestionIcon:Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
 
-    .line 1249
+    .line 1261
     .local v8, "priorIcon":Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
     iget-boolean v9, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mIsCustomNavBar:Z
 
     if-eqz v9, :cond_0
 
-    .line 1250
+    .line 1262
     const v9, 0x7f0803f8
 
     goto :goto_0
 
-    .line 1251
+    .line 1263
     :cond_0
     const v9, 0x7f0803f7
 
-    .line 1252
+    .line 1264
     .local v9, "rotateButtonResId":I
     :goto_0
     invoke-direct {p0, v7, v9, v6, v5}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getDrawable(Landroid/content/Context;III)Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
@@ -6405,7 +6448,7 @@
 
     iput-object v10, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateSuggestionIcon:Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
 
-    .line 1257
+    .line 1269
     if-eqz v8, :cond_1
 
     invoke-virtual {v8}, Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;->isDarkIntensitySet()Z
@@ -6414,7 +6457,7 @@
 
     if-eqz v10, :cond_1
 
-    .line 1258
+    .line 1270
     iget-object v10, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mRotateSuggestionIcon:Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;
 
     invoke-virtual {v8}, Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;->getDarkIntensity()F
@@ -6423,7 +6466,7 @@
 
     invoke-virtual {v10, v11}, Lcom/android/systemui/statusbar/policy/TintedKeyButtonDrawable;->setDarkIntensity(F)V
 
-    .line 1261
+    .line 1273
     :cond_1
     if-eqz p2, :cond_2
 
@@ -6435,7 +6478,7 @@
 
     invoke-virtual {v10, v11}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setImageDrawable(Lcom/android/systemui/statusbar/policy/KeyButtonDrawable;)V
 
-    .line 1262
+    .line 1274
     :cond_2
     return-void
 .end method
@@ -6443,14 +6486,14 @@
 .method public updateStates()V
     .locals 3
 
-    .line 1140
+    .line 1152
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mOverviewProxyService:Lcom/android/systemui/OverviewProxyService;
 
     invoke-virtual {v0}, Lcom/android/systemui/OverviewProxyService;->shouldShowSwipeUpUI()Z
 
     move-result v0
 
-    .line 1142
+    .line 1154
     .local v0, "showSwipeUpUI":Z
     if-eqz v0, :cond_0
 
@@ -6458,35 +6501,35 @@
 
     invoke-virtual {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonState(Z)V
 
-    .line 1145
+    .line 1157
     :cond_0
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     if-eqz v1, :cond_1
 
-    .line 1147
+    .line 1159
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mNavigationInflaterView:Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/NavigationBarInflaterView;->onLikelyDefaultLayoutChange()V
 
-    .line 1150
+    .line 1162
     :cond_1
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateSlippery()V
 
-    .line 1151
+    .line 1163
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->reloadNavIcons()V
 
-    .line 1152
+    .line 1164
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonIcons()V
 
-    .line 1153
+    .line 1165
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->isQuickStepSwipeUpEnabled()Z
 
     move-result v1
 
     invoke-direct {p0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setUpSwipeUpOnboarding(Z)V
 
-    .line 1154
+    .line 1166
     invoke-static {}, Lcom/android/systemui/shared/system/WindowManagerWrapper;->getInstance()Lcom/android/systemui/shared/system/WindowManagerWrapper;
 
     move-result-object v1
@@ -6495,12 +6538,12 @@
 
     invoke-virtual {v1, v2}, Lcom/android/systemui/shared/system/WindowManagerWrapper;->setNavBarVirtualKeyHapticFeedbackEnabled(Z)V
 
-    .line 1155
+    .line 1167
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getHomeButton()Lcom/android/systemui/statusbar/phone/ButtonDispatcher;
 
     move-result-object v1
 
-    .line 1156
+    .line 1168
     if-eqz v0, :cond_2
 
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView;->mQuickStepAccessibilityDelegate:Landroid/view/View$AccessibilityDelegate;
@@ -6510,10 +6553,10 @@
     :cond_2
     const/4 v2, 0x0
 
-    .line 1155
+    .line 1167
     :goto_0
     invoke-virtual {v1, v2}, Lcom/android/systemui/statusbar/phone/ButtonDispatcher;->setAccessibilityDelegate(Landroid/view/View$AccessibilityDelegate;)V
 
-    .line 1157
+    .line 1169
     return-void
 .end method

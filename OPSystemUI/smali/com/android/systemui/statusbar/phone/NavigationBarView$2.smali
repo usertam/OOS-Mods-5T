@@ -25,7 +25,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
-    .line 288
+    .line 291
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
     invoke-direct {p0}, Landroid/view/View$AccessibilityDelegate;-><init>()V
@@ -40,22 +40,22 @@
     .param p1, "host"    # Landroid/view/View;
     .param p2, "info"    # Landroid/view/accessibility/AccessibilityNodeInfo;
 
-    .line 293
+    .line 296
     invoke-super {p0, p1, p2}, Landroid/view/View$AccessibilityDelegate;->onInitializeAccessibilityNodeInfo(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
-    .line 294
+    .line 297
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->mToggleOverviewAction:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     if-nez v0, :cond_0
 
-    .line 295
+    .line 298
     new-instance v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     const v1, 0x7f0a0038
 
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
-    .line 296
+    .line 299
     invoke-virtual {v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->getContext()Landroid/content/Context;
 
     move-result-object v2
@@ -70,13 +70,13 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->mToggleOverviewAction:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
-    .line 298
+    .line 301
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->mToggleOverviewAction:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     invoke-virtual {p2, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->addAction(Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;)V
 
-    .line 299
+    .line 302
     return-void
 .end method
 
@@ -86,19 +86,19 @@
     .param p2, "action"    # I
     .param p3, "args"    # Landroid/os/Bundle;
 
-    .line 303
+    .line 306
     const v0, 0x7f0a0038
 
     if-eq p2, v0, :cond_0
 
-    .line 309
+    .line 312
     invoke-super {p0, p1, p2, p3}, Landroid/view/View$AccessibilityDelegate;->performAccessibilityAction(Landroid/view/View;ILandroid/os/Bundle;)Z
 
     move-result v0
 
     return v0
 
-    .line 305
+    .line 308
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$2;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
@@ -114,13 +114,13 @@
 
     check-cast v0, Lcom/android/systemui/recents/Recents;
 
-    .line 306
+    .line 309
     invoke-virtual {v0}, Lcom/android/systemui/recents/Recents;->toggleRecentApps()V
 
-    .line 307
+    .line 310
     nop
 
-    .line 311
+    .line 314
     const/4 v0, 0x1
 
     return v0

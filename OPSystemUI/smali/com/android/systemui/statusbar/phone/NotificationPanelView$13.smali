@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 1305
+    .line 1314
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$13;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,7 +39,7 @@
 .method public run()V
     .locals 2
 
-    .line 1308
+    .line 1317
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$13;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->mKeyguardBottomArea:Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;
@@ -48,6 +48,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->setVisibility(I)V
 
-    .line 1309
+    .line 1318
     return-void
 .end method

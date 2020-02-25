@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    .line 1377
+    .line 1378
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$6;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .param p1, "rotationLocked"    # Z
     .param p2, "affordanceVisible"    # Z
 
-    .line 1380
+    .line 1381
     sget-boolean v0, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
     if-eqz v0, :cond_0
@@ -64,7 +64,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1381
+    .line 1382
     :cond_0
     if-nez p1, :cond_1
 
@@ -74,7 +74,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->setRotateSuggestionButtonState(Z)V
 
-    .line 1382
+    .line 1383
     :cond_1
     return-void
 .end method

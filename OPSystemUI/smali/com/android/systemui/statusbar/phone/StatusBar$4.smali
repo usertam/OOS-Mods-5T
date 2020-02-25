@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/StatusBar;
 
-    .line 652
+    .line 653
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-direct {p0}, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;-><init>()V
@@ -37,17 +37,17 @@
     .locals 2
     .param p1, "dreaming"    # Z
 
-    .line 655
+    .line 656
     if-eqz p1, :cond_0
 
-    .line 656
+    .line 657
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->maybeEscalateHeadsUp(Z)V
 
-    .line 658
+    .line 659
     :cond_0
     return-void
 .end method
@@ -56,15 +56,15 @@
     .locals 2
     .param p1, "phoneState"    # I
 
-    .line 677
+    .line 678
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v0, p1}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$302(Lcom/android/systemui/statusbar/phone/StatusBar;I)I
 
-    .line 679
+    .line 680
     if-nez p1, :cond_0
 
-    .line 680
+    .line 681
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanel:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
@@ -75,7 +75,7 @@
 
     goto :goto_0
 
-    .line 682
+    .line 683
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
@@ -85,7 +85,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->setCallStateIdle(Z)V
 
-    .line 684
+    .line 685
     :goto_0
     return-void
 .end method
@@ -94,26 +94,26 @@
     .locals 1
     .param p1, "userId"    # I
 
-    .line 662
+    .line 663
     invoke-super {p0, p1}, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;->onStrongAuthStateChanged(I)V
 
-    .line 663
+    .line 664
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$4;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mEntryManager:Lcom/android/systemui/statusbar/NotificationEntryManager;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/NotificationEntryManager;->updateNotifications()V
 
-    .line 664
+    .line 665
     return-void
 .end method
 
 .method public onTimeChanged()V
     .locals 0
 
-    .line 669
+    .line 670
     invoke-static {}, Landroid/widget/DateTimeView;->onTimeChangeByKeyguard()V
 
-    .line 670
+    .line 671
     return-void
 .end method

@@ -3204,7 +3204,7 @@
     .line 346
     iget-object v7, p0, Lcom/android/systemui/fingerprint/FingerprintDialogView;->mBundle:Landroid/os/Bundle;
 
-    const-string v8, "subtitle"
+    const-string/jumbo v8, "subtitle"
 
     invoke-virtual {v7, v8}, Landroid/os/Bundle;->getCharSequence(Ljava/lang/String;)Ljava/lang/CharSequence;
 

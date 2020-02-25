@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/StatusBar;
     .param p2, "x0"    # Landroid/os/Handler;
 
-    .line 6619
+    .line 6694
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$23;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -38,7 +38,7 @@
     .locals 5
     .param p1, "selfChange"    # Z
 
-    .line 6622
+    .line 6697
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$23;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
@@ -67,7 +67,7 @@
     :goto_0
     move v0, v1
 
-    .line 6624
+    .line 6699
     .local v0, "swap":Z
     const-string v1, "StatusBar"
 
@@ -99,7 +99,7 @@
 
     invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 6625
+    .line 6700
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$23;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$3200(Lcom/android/systemui/statusbar/phone/StatusBar;)Z
@@ -108,12 +108,12 @@
 
     if-eq v1, v0, :cond_1
 
-    .line 6626
+    .line 6701
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$23;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v1, v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$3202(Lcom/android/systemui/statusbar/phone/StatusBar;Z)Z
 
-    .line 6627
+    .line 6702
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$23;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$3300(Lcom/android/systemui/statusbar/phone/StatusBar;)Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
@@ -130,7 +130,7 @@
 
     invoke-virtual {v1, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->refreshLayout(I)V
 
-    .line 6629
+    .line 6704
     :cond_1
     return-void
 .end method

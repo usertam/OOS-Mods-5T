@@ -27,13 +27,13 @@
     .param p2, "width"    # I
     .param p3, "height"    # I
 
-    .line 469
+    .line 477
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$LayoutParams;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
-    .line 470
+    .line 478
     invoke-direct {p0, p2, p3}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
 
-    .line 471
+    .line 479
     return-void
 .end method
 
@@ -43,20 +43,20 @@
     .param p2, "c"    # Landroid/content/Context;
     .param p3, "attrs"    # Landroid/util/AttributeSet;
 
-    .line 473
+    .line 481
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$LayoutParams;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
-    .line 474
+    .line 482
     invoke-direct {p0, p2, p3}, Landroid/widget/FrameLayout$LayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 476
+    .line 484
     sget-object v0, Lcom/android/systemui/R$styleable;->StatusBarWindowView_Layout:[I
 
     invoke-virtual {p2, p3, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 477
+    .line 485
     .local v0, "a":Landroid/content/res/TypedArray;
     const/4 v1, 0x0
 
@@ -66,9 +66,9 @@
 
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$LayoutParams;->ignoreRightInset:Z
 
-    .line 479
+    .line 487
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 480
+    .line 488
     return-void
 .end method

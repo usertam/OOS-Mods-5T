@@ -35,7 +35,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/oneplus/notification/OPNotificationController;
 
-    .line 515
+    .line 570
     iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$2;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -49,23 +49,23 @@
     .locals 2
     .param p1, "exists"    # Ljava/lang/Boolean;
 
-    .line 518
+    .line 573
     iget-object v0, p0, Lcom/oneplus/notification/OPNotificationController$2;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
     invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v1
 
-    invoke-static {v0, v1}, Lcom/oneplus/notification/OPNotificationController;->access$802(Lcom/oneplus/notification/OPNotificationController;Z)Z
+    invoke-static {v0, v1}, Lcom/oneplus/notification/OPNotificationController;->access$1102(Lcom/oneplus/notification/OPNotificationController;Z)Z
 
-    .line 519
+    .line 574
     return-void
 .end method
 
 .method public bridge synthetic accept(Ljava/lang/Object;)V
     .locals 0
 
-    .line 515
+    .line 570
     check-cast p1, Ljava/lang/Boolean;
 
     invoke-virtual {p0, p1}, Lcom/oneplus/notification/OPNotificationController$2;->accept(Ljava/lang/Boolean;)V

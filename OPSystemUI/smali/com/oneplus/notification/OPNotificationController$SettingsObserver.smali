@@ -35,63 +35,63 @@
     .locals 0
     .param p2, "handler"    # Landroid/os/Handler;
 
-    .line 262
+    .line 268
     iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    .line 263
+    .line 269
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 246
+    .line 252
     const-string p1, "op_quickreply_im_list"
 
     iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->OP_QUICKREPLY_IM_LIST_KEY:Ljava/lang/String;
 
-    .line 247
-    const-string p1, "op_quickreply_im_list"
-
-    .line 248
-    invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object p1
-
-    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->OP_QUICKREPLY_IM_LIST_URI:Landroid/net/Uri;
-
-    .line 251
-    const-string p1, "game_mode_block_notification"
-
-    .line 252
-    invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object p1
-
-    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_BLOCK_NOTIFICATION_URI:Landroid/net/Uri;
-
     .line 253
-    const-string p1, "game_mode_notifications_3rd_calls_uid"
+    const-string p1, "op_quickreply_im_list"
 
     .line 254
     invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object p1
 
-    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_NOTIFICATIONS_3RD_CALLS_UID_URI:Landroid/net/Uri;
+    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->OP_QUICKREPLY_IM_LIST_URI:Landroid/net/Uri;
 
     .line 257
+    const-string p1, "game_mode_block_notification"
+
+    .line 258
+    invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_BLOCK_NOTIFICATION_URI:Landroid/net/Uri;
+
+    .line 259
+    const-string p1, "game_mode_notifications_3rd_calls_uid"
+
+    .line 260
+    invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_NOTIFICATIONS_3RD_CALLS_UID_URI:Landroid/net/Uri;
+
+    .line 263
     const-string p1, "esport_mode_enabled"
 
     iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->ESPORT_MODE_KEY:Ljava/lang/String;
 
-    .line 258
+    .line 264
     const-string p1, "esport_mode_enabled"
 
-    .line 259
+    .line 265
     invoke-static {p1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object p1
 
     iput-object p1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->ESPORT_MODE_ENABLED:Landroid/net/Uri;
 
-    .line 264
+    .line 270
     return-void
 .end method
 
@@ -100,10 +100,10 @@
 .method observe()V
     .locals 4
 
-    .line 267
+    .line 273
     iget-object v0, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v0}, Lcom/oneplus/notification/OPNotificationController;->access$000(Lcom/oneplus/notification/OPNotificationController;)Landroid/content/Context;
+    invoke-static {v0}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Landroid/content/Context;
 
     move-result-object v0
 
@@ -111,7 +111,7 @@
 
     move-result-object v0
 
-    .line 269
+    .line 275
     .local v0, "resolver":Landroid/content/ContentResolver;
     iget-object v1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_BLOCK_NOTIFICATION_URI:Landroid/net/Uri;
 
@@ -121,27 +121,27 @@
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 271
+    .line 277
     iget-object v1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->GAME_MODE_NOTIFICATIONS_3RD_CALLS_UID_URI:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 274
+    .line 280
     iget-object v1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->OP_QUICKREPLY_IM_LIST_URI:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 278
+    .line 284
     iget-object v1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->ESPORT_MODE_ENABLED:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 281
+    .line 287
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1}, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->update(Landroid/net/Uri;)V
 
-    .line 282
+    .line 288
     return-void
 .end method
 
@@ -150,10 +150,10 @@
     .param p1, "selfChange"    # Z
     .param p2, "uri"    # Landroid/net/Uri;
 
-    .line 285
+    .line 292
     invoke-virtual {p0, p2}, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->update(Landroid/net/Uri;)V
 
-    .line 286
+    .line 293
     return-void
 .end method
 
@@ -161,10 +161,10 @@
     .locals 7
     .param p1, "uri"    # Landroid/net/Uri;
 
-    .line 289
+    .line 296
     iget-object v0, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v0}, Lcom/oneplus/notification/OPNotificationController;->access$000(Lcom/oneplus/notification/OPNotificationController;)Landroid/content/Context;
+    invoke-static {v0}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Landroid/content/Context;
 
     move-result-object v0
 
@@ -172,7 +172,7 @@
 
     move-result-object v0
 
-    .line 290
+    .line 297
     .local v0, "resolver":Landroid/content/ContentResolver;
     const/4 v1, -0x2
 
@@ -188,7 +188,7 @@
 
     if-eqz v3, :cond_2
 
-    .line 291
+    .line 298
     :cond_0
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
@@ -198,31 +198,31 @@
 
     move-result v4
 
-    invoke-static {v3, v4}, Lcom/oneplus/notification/OPNotificationController;->access$102(Lcom/oneplus/notification/OPNotificationController;I)I
+    invoke-static {v3, v4}, Lcom/oneplus/notification/OPNotificationController;->access$302(Lcom/oneplus/notification/OPNotificationController;I)I
 
-    .line 293
+    .line 300
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$100(Lcom/oneplus/notification/OPNotificationController;)I
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$300(Lcom/oneplus/notification/OPNotificationController;)I
 
     move-result v3
 
     if-eqz v3, :cond_1
 
-    .line 294
+    .line 301
     sget-object v3, Lcom/oneplus/oimc/OIMCRule;->Rule_Disable_HeadsUpNotification:Lcom/oneplus/oimc/OIMCRule;
 
     invoke-static {v3}, Lcom/oneplus/oimc/OIMCManager;->addFuncRuleGlobal(Lcom/oneplus/oimc/OIMCRule;)V
 
     goto :goto_0
 
-    .line 296
+    .line 303
     :cond_1
     sget-object v3, Lcom/oneplus/oimc/OIMCRule;->Rule_Disable_HeadsUpNotification:Lcom/oneplus/oimc/OIMCRule;
 
     invoke-static {v3}, Lcom/oneplus/oimc/OIMCManager;->removeFuncRuleGlobal(Lcom/oneplus/oimc/OIMCRule;)V
 
-    .line 299
+    .line 306
     :cond_2
     :goto_0
     if-eqz p1, :cond_3
@@ -235,7 +235,7 @@
 
     if-eqz v3, :cond_5
 
-    .line 300
+    .line 307
     :cond_3
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
@@ -245,12 +245,12 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Lcom/oneplus/notification/OPNotificationController;->access$202(Lcom/oneplus/notification/OPNotificationController;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v3, v4}, Lcom/oneplus/notification/OPNotificationController;->access$402(Lcom/oneplus/notification/OPNotificationController;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 302
+    .line 309
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
 
     move-result-object v3
 
@@ -260,7 +260,7 @@
 
     iget-object v4, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v4}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
+    invoke-static {v4}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
 
     move-result-object v4
 
@@ -270,10 +270,10 @@
 
     if-nez v3, :cond_5
 
-    .line 303
+    .line 310
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$300(Lcom/oneplus/notification/OPNotificationController;)Lcom/android/systemui/statusbar/NotificationEntryManager;
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$500(Lcom/oneplus/notification/OPNotificationController;)Lcom/android/systemui/statusbar/NotificationEntryManager;
 
     move-result-object v3
 
@@ -281,23 +281,23 @@
 
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$300(Lcom/oneplus/notification/OPNotificationController;)Lcom/android/systemui/statusbar/NotificationEntryManager;
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$500(Lcom/oneplus/notification/OPNotificationController;)Lcom/android/systemui/statusbar/NotificationEntryManager;
 
     move-result-object v3
 
     invoke-virtual {v3}, Lcom/android/systemui/statusbar/NotificationEntryManager;->removeHeadsUps()V
 
-    .line 304
+    .line 311
     :cond_4
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Z
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$600(Lcom/oneplus/notification/OPNotificationController;)Z
 
     move-result v3
 
     if-eqz v3, :cond_5
 
-    .line 305
+    .line 312
     const-string v3, "OPNotificationController"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -310,7 +310,7 @@
 
     iget-object v5, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v5}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
+    invoke-static {v5}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
 
     move-result-object v5
 
@@ -322,7 +322,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 310
+    .line 317
     :cond_5
     if-eqz p1, :cond_6
 
@@ -334,7 +334,7 @@
 
     if-eqz v3, :cond_8
 
-    .line 311
+    .line 318
     :cond_6
     const-string v3, "op_quickreply_im_list"
 
@@ -342,7 +342,7 @@
 
     move-result-object v3
 
-    .line 312
+    .line 319
     .local v3, "list":Ljava/lang/String;
     if-eqz v3, :cond_7
 
@@ -352,7 +352,7 @@
 
     if-nez v4, :cond_7
 
-    .line 313
+    .line 320
     iget-object v4, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
     const-string v5, ";"
@@ -365,24 +365,24 @@
 
     move-result-object v5
 
-    invoke-static {v4, v5}, Lcom/oneplus/notification/OPNotificationController;->access$502(Lcom/oneplus/notification/OPNotificationController;Ljava/util/List;)Ljava/util/List;
+    invoke-static {v4, v5}, Lcom/oneplus/notification/OPNotificationController;->access$702(Lcom/oneplus/notification/OPNotificationController;Ljava/util/List;)Ljava/util/List;
 
-    .line 315
+    .line 322
     iget-object v4, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
     invoke-virtual {v4}, Lcom/oneplus/notification/OPNotificationController;->setQuickReplyFlags()V
 
-    .line 318
+    .line 325
     :cond_7
     iget-object v4, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v4}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Z
+    invoke-static {v4}, Lcom/oneplus/notification/OPNotificationController;->access$600(Lcom/oneplus/notification/OPNotificationController;)Z
 
     move-result v4
 
     if-eqz v4, :cond_8
 
-    .line 319
+    .line 326
     const-string v4, "OPNotificationController"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -401,7 +401,7 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 324
+    .line 331
     .end local v3    # "list":Ljava/lang/String;
     :cond_8
     if-eqz p1, :cond_9
@@ -414,7 +414,7 @@
 
     if-eqz v3, :cond_b
 
-    .line 325
+    .line 332
     :cond_9
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
@@ -433,19 +433,28 @@
     nop
 
     :cond_a
-    invoke-static {v3, v2}, Lcom/oneplus/notification/OPNotificationController;->access$602(Lcom/oneplus/notification/OPNotificationController;Z)Z
+    invoke-static {v3, v2}, Lcom/oneplus/notification/OPNotificationController;->access$802(Lcom/oneplus/notification/OPNotificationController;Z)Z
 
-    .line 330
+    .line 337
     :cond_b
+    if-nez p1, :cond_c
+
+    .line 338
+    sget-object v1, Lcom/oneplus/oimc/OIMCRule;->Rule_Disable_HeadsUpNotification_Breath:Lcom/oneplus/oimc/OIMCRule;
+
+    invoke-static {v1}, Lcom/oneplus/oimc/OIMCManager;->addFuncRuleGlobal(Lcom/oneplus/oimc/OIMCRule;)V
+
+    .line 341
+    :cond_c
     iget-object v1, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    invoke-static {v1}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Z
+    invoke-static {v1}, Lcom/oneplus/notification/OPNotificationController;->access$600(Lcom/oneplus/notification/OPNotificationController;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_c
+    if-eqz v1, :cond_d
 
-    .line 331
+    .line 342
     const-string v1, "OPNotificationController"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -464,8 +473,8 @@
 
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    .line 332
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$600(Lcom/oneplus/notification/OPNotificationController;)Z
+    .line 343
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$800(Lcom/oneplus/notification/OPNotificationController;)Z
 
     move-result v3
 
@@ -477,8 +486,8 @@
 
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    .line 333
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$100(Lcom/oneplus/notification/OPNotificationController;)I
+    .line 344
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$300(Lcom/oneplus/notification/OPNotificationController;)I
 
     move-result v3
 
@@ -490,8 +499,8 @@
 
     iget-object v3, p0, Lcom/oneplus/notification/OPNotificationController$SettingsObserver;->this$0:Lcom/oneplus/notification/OPNotificationController;
 
-    .line 334
-    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$200(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
+    .line 345
+    invoke-static {v3}, Lcom/oneplus/notification/OPNotificationController;->access$400(Lcom/oneplus/notification/OPNotificationController;)Ljava/lang/String;
 
     move-result-object v3
 
@@ -501,10 +510,10 @@
 
     move-result-object v2
 
-    .line 331
+    .line 342
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 336
-    :cond_c
+    .line 347
+    :cond_d
     return-void
 .end method

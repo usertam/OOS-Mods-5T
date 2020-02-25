@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/StatusBar;
 
-    .line 3616
+    .line 3645
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -38,12 +38,12 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
-    .line 3620
+    .line 3649
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 3621
+    .line 3650
     .local v0, "action":Ljava/lang/String;
     const-string v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
@@ -53,10 +53,10 @@
 
     if-eqz v1, :cond_2
 
-    .line 3622
+    .line 3651
     invoke-static {}, Lcom/android/systemui/statusbar/KeyboardShortcuts;->dismiss()V
 
-    .line 3623
+    .line 3652
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v1, v1, Lcom/android/systemui/statusbar/phone/StatusBar;->mRemoteInputManager:Lcom/android/systemui/statusbar/NotificationRemoteInputManager;
@@ -67,7 +67,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 3624
+    .line 3653
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v1, v1, Lcom/android/systemui/statusbar/phone/StatusBar;->mRemoteInputManager:Lcom/android/systemui/statusbar/NotificationRemoteInputManager;
@@ -78,7 +78,7 @@
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/RemoteInputController;->closeRemoteInputs()V
 
-    .line 3626
+    .line 3655
     :cond_0
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
@@ -94,10 +94,10 @@
 
     if-eqz v1, :cond_4
 
-    .line 3627
+    .line 3656
     const/4 v1, 0x0
 
-    .line 3628
+    .line 3657
     .local v1, "flags":I
     const-string v2, "reason"
 
@@ -105,7 +105,7 @@
 
     move-result-object v2
 
-    .line 3629
+    .line 3658
     .local v2, "reason":Ljava/lang/String;
     if-eqz v2, :cond_1
 
@@ -117,21 +117,21 @@
 
     if-eqz v3, :cond_1
 
-    .line 3630
+    .line 3659
     or-int/lit8 v1, v1, 0x2
 
-    .line 3632
+    .line 3661
     :cond_1
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-virtual {v3, v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->animateCollapsePanels(I)V
 
-    .line 3633
+    .line 3662
     .end local v1    # "flags":I
     .end local v2    # "reason":Ljava/lang/String;
     goto :goto_0
 
-    .line 3635
+    .line 3664
     :cond_2
     const-string v1, "android.intent.action.SCREEN_OFF"
 
@@ -141,24 +141,24 @@
 
     if-eqz v1, :cond_3
 
-    .line 3636
+    .line 3665
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$1100(Lcom/android/systemui/statusbar/phone/StatusBar;)V
 
-    .line 3637
+    .line 3666
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->resetUserExpandedStates()V
 
-    .line 3639
+    .line 3668
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->hideNavigationBarGuide()V
 
     goto :goto_0
 
-    .line 3642
+    .line 3671
     :cond_3
     const-string v1, "android.app.action.SHOW_DEVICE_MONITORING_DIALOG"
 
@@ -168,7 +168,7 @@
 
     if-eqz v1, :cond_4
 
-    .line 3643
+    .line 3672
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$12;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->access$1200(Lcom/android/systemui/statusbar/phone/StatusBar;)Lcom/android/systemui/qs/QSPanel;
@@ -177,7 +177,7 @@
 
     invoke-virtual {v1}, Lcom/android/systemui/qs/QSPanel;->showDeviceMonitoringDialog()V
 
-    .line 3645
+    .line 3674
     :cond_4
     :goto_0
     return-void

@@ -30,7 +30,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
-    .line 466
+    .line 470
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->this$0:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
     iput-boolean p2, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->val$userSwitcherVisible:Z
@@ -47,7 +47,7 @@
 .method public onPreDraw()Z
     .locals 5
 
-    .line 469
+    .line 473
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->this$0:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
@@ -56,7 +56,7 @@
 
     invoke-virtual {v0, p0}, Landroid/view/ViewTreeObserver;->removeOnPreDrawListener(Landroid/view/ViewTreeObserver$OnPreDrawListener;)V
 
-    .line 470
+    .line 474
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->val$userSwitcherVisible:Z
 
     const/4 v1, 0x1
@@ -65,7 +65,7 @@
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->this$0:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
-    .line 471
+    .line 475
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->access$000(Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;)Lcom/android/systemui/statusbar/phone/MultiUserSwitch;
 
     move-result-object v0
@@ -89,7 +89,7 @@
     :cond_0
     const/4 v0, 0x0
 
-    .line 472
+    .line 476
     .local v0, "userSwitcherHiding":Z
     :goto_0
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->this$0:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
@@ -104,7 +104,7 @@
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setX(F)V
 
-    .line 473
+    .line 477
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView$1;->this$0:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
     invoke-static {v2}, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->access$200(Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;)Landroid/view/View;
@@ -117,19 +117,19 @@
 
     const/4 v3, 0x0
 
-    .line 474
+    .line 478
     invoke-virtual {v2, v3}, Landroid/view/ViewPropertyAnimator;->translationX(F)Landroid/view/ViewPropertyAnimator;
 
     move-result-object v2
 
     const-wide/16 v3, 0x190
 
-    .line 475
+    .line 479
     invoke-virtual {v2, v3, v4}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
 
     move-result-object v2
 
-    .line 476
+    .line 480
     if-eqz v0, :cond_1
 
     const-wide/16 v3, 0x12c
@@ -146,14 +146,14 @@
 
     sget-object v3, Lcom/android/systemui/Interpolators;->FAST_OUT_SLOW_IN:Landroid/view/animation/Interpolator;
 
-    .line 477
+    .line 481
     invoke-virtual {v2, v3}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
 
     move-result-object v2
 
-    .line 478
+    .line 482
     invoke-virtual {v2}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 504
+    .line 508
     return v1
 .end method

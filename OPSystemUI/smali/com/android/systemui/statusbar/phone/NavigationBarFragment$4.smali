@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    .line 1215
+    .line 1220
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-direct {p0}, Landroid/view/IRotationWatcher$Stub;-><init>()V
@@ -35,10 +35,10 @@
     .locals 3
     .param p1, "rotation"    # I
 
-    .line 1225
+    .line 1230
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$900(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/statusbar/policy/RotationLockController;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$1000(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/statusbar/policy/RotationLockController;
 
     move-result-object v0
 
@@ -48,7 +48,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 1226
+    .line 1231
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->shouldOverrideUserLockPrefs(I)Z
 
     move-result v0
@@ -57,16 +57,16 @@
 
     if-eqz v0, :cond_0
 
-    .line 1227
+    .line 1232
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$900(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/statusbar/policy/RotationLockController;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$1000(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/statusbar/policy/RotationLockController;
 
     move-result-object v0
 
     invoke-interface {v0, v1, p1}, Lcom/android/systemui/statusbar/policy/RotationLockController;->setRotationLockedAtAngle(ZI)V
 
-    .line 1229
+    .line 1234
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
@@ -74,7 +74,7 @@
 
     invoke-virtual {v0, v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->setRotateSuggestionButtonState(ZZ)V
 
-    .line 1232
+    .line 1237
     :cond_1
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
@@ -86,19 +86,19 @@
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->mNavigationBarView:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
-    .line 1233
+    .line 1238
     invoke-virtual {v0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->needsReorient(I)Z
 
     move-result v0
 
     if-eqz v0, :cond_2
 
-    .line 1234
+    .line 1239
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$1000(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)V
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$1100(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)V
 
-    .line 1236
+    .line 1241
     :cond_2
     return-void
 .end method
@@ -107,7 +107,7 @@
     .locals 1
     .param p1, "rotation"    # I
 
-    .line 1244
+    .line 1249
     if-nez p1, :cond_0
 
     const/4 v0, 0x1
@@ -132,7 +132,7 @@
         }
     .end annotation
 
-    .line 1220
+    .line 1225
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$4;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->getView()Landroid/view/View;
@@ -143,7 +143,7 @@
 
     move-result-object v0
 
-    .line 1221
+    .line 1226
     .local v0, "h":Landroid/os/Handler;
     new-instance v1, Lcom/android/systemui/statusbar/phone/-$$Lambda$NavigationBarFragment$4$J3ynOL37e2gt1_6OALFveXnVcGY;
 
@@ -153,15 +153,15 @@
 
     move-result-object v1
 
-    .line 1237
+    .line 1242
     .local v1, "msg":Landroid/os/Message;
     const/4 v2, 0x1
 
     invoke-virtual {v1, v2}, Landroid/os/Message;->setAsynchronous(Z)V
 
-    .line 1238
+    .line 1243
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessageAtFrontOfQueue(Landroid/os/Message;)Z
 
-    .line 1239
+    .line 1244
     return-void
 .end method

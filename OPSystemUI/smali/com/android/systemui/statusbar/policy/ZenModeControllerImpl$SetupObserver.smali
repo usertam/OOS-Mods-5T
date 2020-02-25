@@ -27,13 +27,13 @@
     .locals 0
     .param p2, "handler"    # Landroid/os/Handler;
 
-    .line 247
+    .line 290
     iput-object p1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->this$0:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;
 
-    .line 248
+    .line 291
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 249
+    .line 292
     invoke-static {p1}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->access$300(Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;)Landroid/content/Context;
 
     move-result-object p1
@@ -44,7 +44,7 @@
 
     iput-object p1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
-    .line 250
+    .line 293
     return-void
 .end method
 
@@ -53,7 +53,7 @@
 .method public isDeviceProvisioned()Z
     .locals 3
 
-    .line 257
+    .line 300
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "device_provisioned"
@@ -77,7 +77,7 @@
 .method public isUserSetup()Z
     .locals 4
 
-    .line 253
+    .line 296
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
     const-string/jumbo v1, "user_setup_complete"
@@ -109,7 +109,7 @@
     .param p1, "selfChange"    # Z
     .param p2, "uri"    # Landroid/net/Uri;
 
-    .line 273
+    .line 316
     const-string v0, "device_provisioned"
 
     invoke-static {v0}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -124,7 +124,7 @@
 
     const-string/jumbo v0, "user_setup_complete"
 
-    .line 274
+    .line 317
     invoke-static {v0}, Landroid/provider/Settings$Secure;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
@@ -135,7 +135,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 275
+    .line 318
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->this$0:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;
 
@@ -147,7 +147,7 @@
 
     invoke-static {v0, v1}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->access$500(Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;Z)V
 
-    .line 277
+    .line 320
     :cond_1
     return-void
 .end method
@@ -155,38 +155,38 @@
 .method public register()V
     .locals 4
 
-    .line 261
+    .line 304
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mRegistered:Z
 
     if-eqz v0, :cond_0
 
-    .line 262
+    .line 305
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
     invoke-virtual {v0, p0}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 264
+    .line 307
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "device_provisioned"
 
-    .line 265
+    .line 308
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 264
+    .line 307
     const/4 v2, 0x0
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 266
+    .line 309
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->mResolver:Landroid/content/ContentResolver;
 
     const-string/jumbo v1, "user_setup_complete"
 
-    .line 267
+    .line 310
     invoke-static {v1}, Landroid/provider/Settings$Secure;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
@@ -197,10 +197,10 @@
 
     move-result v3
 
-    .line 266
+    .line 309
     invoke-virtual {v0, v1, v2, p0, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 268
+    .line 311
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->this$0:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->this$0:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;
@@ -211,6 +211,6 @@
 
     invoke-static {v0, v1}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->access$500(Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;Z)V
 
-    .line 269
+    .line 312
     return-void
 .end method

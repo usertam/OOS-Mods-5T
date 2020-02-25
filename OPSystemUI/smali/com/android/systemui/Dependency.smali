@@ -84,7 +84,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 144
+    .line 146
     new-instance v0, Lcom/android/systemui/Dependency$DependencyKey;
 
     const-string v1, "background_looper"
@@ -93,7 +93,7 @@
 
     sput-object v0, Lcom/android/systemui/Dependency;->BG_LOOPER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 148
+    .line 150
     new-instance v0, Lcom/android/systemui/Dependency$DependencyKey;
 
     const-string/jumbo v1, "time_tick_handler"
@@ -102,7 +102,7 @@
 
     sput-object v0, Lcom/android/systemui/Dependency;->TIME_TICK_HANDLER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 153
+    .line 155
     new-instance v0, Lcom/android/systemui/Dependency$DependencyKey;
 
     const-string v1, "main_handler"
@@ -111,7 +111,7 @@
 
     sput-object v0, Lcom/android/systemui/Dependency;->MAIN_HANDLER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 158
+    .line 160
     new-instance v0, Lcom/android/systemui/Dependency$DependencyKey;
 
     const-string v1, "leak_report_email"
@@ -126,17 +126,17 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 138
+    .line 140
     invoke-direct {p0}, Lcom/android/systemui/SystemUI;-><init>()V
 
-    .line 161
+    .line 163
     new-instance v0, Landroid/util/ArrayMap;
 
     invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
 
-    .line 162
+    .line 164
     new-instance v0, Landroid/util/ArrayMap;
 
     invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
@@ -149,12 +149,12 @@
 .method public static clearDependencies()V
     .locals 1
 
-    .line 451
+    .line 457
     const/4 v0, 0x0
 
     sput-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
-    .line 452
+    .line 458
     return-void
 .end method
 
@@ -172,7 +172,7 @@
         }
     .end annotation
 
-    .line 460
+    .line 466
     .local p0, "cls":Ljava/lang/Class;, "Ljava/lang/Class<TT;>;"
     .local p1, "destroy":Ljava/util/function/Consumer;, "Ljava/util/function/Consumer<TT;>;"
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
@@ -183,7 +183,7 @@
 
     invoke-direct {v0, p0, p1}, Lcom/android/systemui/Dependency;->destroyDependency(Ljava/lang/Class;Ljava/util/function/Consumer;)V
 
-    .line 462
+    .line 468
     :cond_0
     return-void
 .end method
@@ -202,7 +202,7 @@
         }
     .end annotation
 
-    .line 427
+    .line 433
     .local p1, "cls":Ljava/lang/Class;, "Ljava/lang/Class<TT;>;"
     .local p2, "destroy":Ljava/util/function/Consumer;, "Ljava/util/function/Consumer<TT;>;"
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
@@ -211,16 +211,16 @@
 
     move-result-object v0
 
-    .line 428
+    .line 434
     .local v0, "dep":Ljava/lang/Object;, "TT;"
     if-eqz v0, :cond_0
 
     if-eqz p2, :cond_0
 
-    .line 429
+    .line 435
     invoke-interface {p2, v0}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
 
-    .line 431
+    .line 437
     :cond_0
     return-void
 .end method
@@ -237,7 +237,7 @@
         }
     .end annotation
 
-    .line 473
+    .line 479
     .local p0, "cls":Lcom/android/systemui/Dependency$DependencyKey;, "Lcom/android/systemui/Dependency$DependencyKey<TT;>;"
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
@@ -247,7 +247,7 @@
 
     return-object v0
 
-    .line 475
+    .line 481
     :cond_0
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
@@ -270,7 +270,7 @@
         }
     .end annotation
 
-    .line 466
+    .line 472
     .local p0, "cls":Ljava/lang/Class;, "Ljava/lang/Class<TT;>;"
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
@@ -280,7 +280,7 @@
 
     return-object v0
 
-    .line 468
+    .line 474
     :cond_0
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
@@ -306,7 +306,7 @@
 
     monitor-enter p0
 
-    .line 399
+    .line 405
     :try_start_0
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
 
@@ -314,31 +314,31 @@
 
     move-result-object v0
 
-    .line 400
+    .line 406
     .local v0, "obj":Ljava/lang/Object;, "TT;"
     if-nez v0, :cond_0
 
-    .line 401
+    .line 407
     invoke-virtual {p0, p1}, Lcom/android/systemui/Dependency;->createDependency(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v1
 
     move-object v0, v1
 
-    .line 402
+    .line 408
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
 
     invoke-virtual {v1, p1, v0}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 404
+    .line 410
     :cond_0
     monitor-exit p0
 
     return-object v0
 
-    .line 398
+    .line 404
     .end local v0    # "obj":Ljava/lang/Object;, "TT;"
     .end local p1    # "key":Ljava/lang/Object;
     :catchall_0
@@ -354,55 +354,55 @@
     .locals 2
     .param p0, "context"    # Landroid/content/Context;
 
-    .line 437
+    .line 443
     sget-object v0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
     if-eqz v0, :cond_0
 
     return-void
 
-    .line 438
+    .line 444
     :cond_0
     new-instance v0, Lcom/android/systemui/Dependency;
 
     invoke-direct {v0}, Lcom/android/systemui/Dependency;-><init>()V
 
-    .line 439
+    .line 445
     .local v0, "d":Lcom/android/systemui/Dependency;
     iput-object p0, v0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
 
-    .line 440
+    .line 446
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
     iput-object v1, v0, Lcom/android/systemui/Dependency;->mComponents:Ljava/util/Map;
 
-    .line 441
+    .line 447
     invoke-virtual {v0}, Lcom/android/systemui/Dependency;->start()V
 
-    .line 442
+    .line 448
     return-void
 .end method
 
-.method static synthetic lambda$dump$62(Ljava/lang/Object;)Z
+.method static synthetic lambda$dump$63(Ljava/lang/Object;)Z
     .locals 1
     .param p0, "obj"    # Ljava/lang/Object;
 
-    .line 378
+    .line 384
     instance-of v0, p0, Lcom/android/systemui/Dumpable;
 
     return v0
 .end method
 
-.method static synthetic lambda$dump$63(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;Ljava/lang/Object;)V
+.method static synthetic lambda$dump$64(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;Ljava/lang/Object;)V
     .locals 1
     .param p0, "fd"    # Ljava/io/FileDescriptor;
     .param p1, "pw"    # Ljava/io/PrintWriter;
     .param p2, "args"    # [Ljava/lang/String;
     .param p3, "o"    # Ljava/lang/Object;
 
-    .line 379
+    .line 385
     move-object v0, p3
 
     check-cast v0, Lcom/android/systemui/Dumpable;
@@ -412,22 +412,22 @@
     return-void
 .end method
 
-.method static synthetic lambda$onConfigurationChanged$64(Ljava/lang/Object;)Z
+.method static synthetic lambda$onConfigurationChanged$65(Ljava/lang/Object;)Z
     .locals 1
     .param p0, "obj"    # Ljava/lang/Object;
 
-    .line 385
+    .line 391
     instance-of v0, p0, Lcom/android/systemui/ConfigurationChangedReceiver;
 
     return v0
 .end method
 
-.method static synthetic lambda$onConfigurationChanged$65(Landroid/content/res/Configuration;Ljava/lang/Object;)V
+.method static synthetic lambda$onConfigurationChanged$66(Landroid/content/res/Configuration;Ljava/lang/Object;)V
     .locals 1
     .param p0, "newConfig"    # Landroid/content/res/Configuration;
     .param p1, "o"    # Ljava/lang/Object;
 
-    .line 386
+    .line 392
     move-object v0, p1
 
     check-cast v0, Lcom/android/systemui/ConfigurationChangedReceiver;
@@ -440,18 +440,18 @@
 .method static synthetic lambda$start$0()Ljava/lang/Object;
     .locals 3
 
-    .line 169
+    .line 171
     new-instance v0, Landroid/os/HandlerThread;
 
     const-string v1, "TimeTick"
 
     invoke-direct {v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;)V
 
-    .line 170
+    .line 172
     .local v0, "thread":Landroid/os/HandlerThread;
     invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
 
-    .line 171
+    .line 173
     new-instance v1, Landroid/os/Handler;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
@@ -466,7 +466,7 @@
 .method static synthetic lambda$start$1()Ljava/lang/Object;
     .locals 3
 
-    .line 174
+    .line 176
     new-instance v0, Landroid/os/HandlerThread;
 
     const-string v1, "SysUiBg"
@@ -475,11 +475,11 @@
 
     invoke-direct {v0, v1, v2}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
 
-    .line 176
+    .line 178
     .local v0, "thread":Landroid/os/HandlerThread;
     invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
 
-    .line 177
+    .line 179
     invoke-virtual {v0}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
 
     move-result-object v1
@@ -490,7 +490,7 @@
 .method public static synthetic lambda$start$10(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 3
 
-    .line 201
+    .line 203
     new-instance v0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -511,7 +511,7 @@
 .method public static synthetic lambda$start$11(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 204
+    .line 206
     new-instance v0, Lcom/android/systemui/statusbar/policy/HotspotControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -524,7 +524,7 @@
 .method public static synthetic lambda$start$12(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 207
+    .line 209
     new-instance v0, Lcom/android/systemui/statusbar/policy/CastControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -537,7 +537,7 @@
 .method public static synthetic lambda$start$13(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 210
+    .line 212
     new-instance v0, Lcom/android/systemui/statusbar/policy/FlashlightControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -550,7 +550,7 @@
 .method public static synthetic lambda$start$14(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 213
+    .line 215
     new-instance v0, Lcom/android/systemui/statusbar/policy/KeyguardMonitorImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -563,7 +563,7 @@
 .method public static synthetic lambda$start$15(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 5
 
-    .line 216
+    .line 218
     new-instance v0, Lcom/android/systemui/statusbar/policy/UserSwitcherController;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -578,7 +578,7 @@
 
     sget-object v3, Lcom/android/systemui/Dependency;->MAIN_HANDLER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 217
+    .line 219
     invoke-virtual {p0, v3}, Lcom/android/systemui/Dependency;->getDependency(Lcom/android/systemui/Dependency$DependencyKey;)Ljava/lang/Object;
 
     move-result-object v3
@@ -595,14 +595,14 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/systemui/statusbar/policy/UserSwitcherController;-><init>(Landroid/content/Context;Lcom/android/systemui/statusbar/policy/KeyguardMonitor;Landroid/os/Handler;Lcom/android/systemui/plugins/ActivityStarter;)V
 
-    .line 216
+    .line 218
     return-object v0
 .end method
 
 .method public static synthetic lambda$start$16(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 220
+    .line 222
     new-instance v0, Lcom/android/systemui/statusbar/policy/UserInfoControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -615,7 +615,7 @@
 .method public static synthetic lambda$start$17(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 223
+    .line 225
     new-instance v0, Lcom/android/systemui/statusbar/policy/BatteryControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -628,7 +628,7 @@
 .method public static synthetic lambda$start$18(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 226
+    .line 228
     new-instance v0, Lcom/android/internal/app/ColorDisplayController;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -641,7 +641,7 @@
 .method public static synthetic lambda$start$19(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 229
+    .line 231
     new-instance v0, Lcom/android/systemui/statusbar/phone/ManagedProfileControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -654,7 +654,7 @@
 .method static synthetic lambda$start$2()Ljava/lang/Object;
     .locals 2
 
-    .line 179
+    .line 181
     new-instance v0, Landroid/os/Handler;
 
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
@@ -669,7 +669,7 @@
 .method public static synthetic lambda$start$20(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 232
+    .line 234
     new-instance v0, Lcom/android/systemui/statusbar/policy/NextAlarmControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -682,7 +682,7 @@
 .method static synthetic lambda$start$21()Ljava/lang/Object;
     .locals 1
 
-    .line 235
+    .line 237
     const-class v0, Lcom/android/systemui/statusbar/policy/NetworkController;
 
     invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
@@ -701,7 +701,7 @@
 .method public static synthetic lambda$start$22(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 238
+    .line 240
     new-instance v0, Lcom/android/systemui/statusbar/policy/AccessibilityController;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -714,7 +714,7 @@
 .method public static synthetic lambda$start$23(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 241
+    .line 243
     new-instance v0, Lcom/android/systemui/statusbar/policy/DeviceProvisionedControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -727,7 +727,7 @@
 .method public static synthetic lambda$start$24(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 244
+    .line 246
     new-instance v0, Lcom/android/systemui/plugins/PluginManagerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -740,7 +740,7 @@
 .method public static synthetic lambda$start$25(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 3
 
-    .line 247
+    .line 249
     new-instance v0, Lcom/android/systemui/assist/AssistManager;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/DeviceProvisionedController;
@@ -761,7 +761,7 @@
 .method public static synthetic lambda$start$26(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 250
+    .line 252
     new-instance v0, Lcom/android/systemui/statusbar/policy/SecurityControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -774,7 +774,7 @@
 .method static synthetic lambda$start$27()Ljava/lang/Object;
     .locals 1
 
-    .line 254
+    .line 256
     const/4 v0, 0x0
 
     return-object v0
@@ -783,14 +783,14 @@
 .method public static synthetic lambda$start$28(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 4
 
-    .line 256
+    .line 258
     new-instance v0, Lcom/android/systemui/util/leak/LeakReporter;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
 
     const-class v2, Lcom/android/systemui/util/leak/LeakDetector;
 
-    .line 258
+    .line 260
     invoke-virtual {p0, v2}, Lcom/android/systemui/Dependency;->getDependency(Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v2
@@ -799,7 +799,7 @@
 
     sget-object v3, Lcom/android/systemui/Dependency;->LEAK_REPORT_EMAIL:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 259
+    .line 261
     invoke-virtual {p0, v3}, Lcom/android/systemui/Dependency;->getDependency(Lcom/android/systemui/Dependency$DependencyKey;)Ljava/lang/Object;
 
     move-result-object v3
@@ -808,21 +808,21 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/systemui/util/leak/LeakReporter;-><init>(Landroid/content/Context;Lcom/android/systemui/util/leak/LeakDetector;Ljava/lang/String;)V
 
-    .line 256
+    .line 258
     return-object v0
 .end method
 
 .method public static synthetic lambda$start$29(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 5
 
-    .line 264
+    .line 266
     new-instance v0, Lcom/android/systemui/util/leak/GarbageMonitor;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
 
     sget-object v2, Lcom/android/systemui/Dependency;->BG_LOOPER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 266
+    .line 268
     invoke-virtual {p0, v2}, Lcom/android/systemui/Dependency;->getDependency(Lcom/android/systemui/Dependency$DependencyKey;)Ljava/lang/Object;
 
     move-result-object v2
@@ -831,7 +831,7 @@
 
     const-class v3, Lcom/android/systemui/util/leak/LeakDetector;
 
-    .line 267
+    .line 269
     invoke-virtual {p0, v3}, Lcom/android/systemui/Dependency;->getDependency(Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v3
@@ -840,7 +840,7 @@
 
     const-class v4, Lcom/android/systemui/util/leak/LeakReporter;
 
-    .line 268
+    .line 270
     invoke-virtual {p0, v4}, Lcom/android/systemui/Dependency;->getDependency(Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v4
@@ -849,14 +849,14 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/systemui/util/leak/GarbageMonitor;-><init>(Landroid/content/Context;Landroid/os/Looper;Lcom/android/systemui/util/leak/LeakDetector;Lcom/android/systemui/util/leak/LeakReporter;)V
 
-    .line 264
+    .line 266
     return-object v0
 .end method
 
 .method static synthetic lambda$start$3()Ljava/lang/Object;
     .locals 1
 
-    .line 180
+    .line 182
     new-instance v0, Lcom/android/systemui/ActivityStarterDelegate;
 
     invoke-direct {v0}, Lcom/android/systemui/ActivityStarterDelegate;-><init>()V
@@ -867,7 +867,7 @@
 .method public static synthetic lambda$start$30(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 271
+    .line 273
     new-instance v0, Lcom/android/systemui/tuner/TunerServiceImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -880,7 +880,7 @@
 .method public static synthetic lambda$start$31(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 274
+    .line 276
     new-instance v0, Lcom/android/systemui/statusbar/phone/StatusBarWindowManager;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -893,7 +893,7 @@
 .method public static synthetic lambda$start$32(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 277
+    .line 279
     new-instance v0, Lcom/android/systemui/statusbar/phone/DarkIconDispatcherImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -906,7 +906,7 @@
 .method public static synthetic lambda$start$33(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 280
+    .line 282
     new-instance v0, Lcom/android/systemui/statusbar/phone/ConfigurationControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -919,7 +919,7 @@
 .method public static synthetic lambda$start$34(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 283
+    .line 285
     new-instance v0, Lcom/android/systemui/statusbar/phone/StatusBarIconControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -932,7 +932,7 @@
 .method static synthetic lambda$start$35()Ljava/lang/Object;
     .locals 1
 
-    .line 286
+    .line 288
     new-instance v0, Lcom/android/systemui/keyguard/ScreenLifecycle;
 
     invoke-direct {v0}, Lcom/android/systemui/keyguard/ScreenLifecycle;-><init>()V
@@ -943,7 +943,7 @@
 .method static synthetic lambda$start$36()Ljava/lang/Object;
     .locals 1
 
-    .line 289
+    .line 291
     new-instance v0, Lcom/android/systemui/keyguard/WakefulnessLifecycle;
 
     invoke-direct {v0}, Lcom/android/systemui/keyguard/WakefulnessLifecycle;-><init>()V
@@ -954,7 +954,7 @@
 .method public static synthetic lambda$start$37(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 292
+    .line 294
     new-instance v0, Lcom/android/systemui/fragments/FragmentService;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -967,7 +967,7 @@
 .method public static synthetic lambda$start$38(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 295
+    .line 297
     new-instance v0, Lcom/android/systemui/statusbar/policy/ExtensionControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -980,7 +980,7 @@
 .method static synthetic lambda$start$39()Ljava/lang/Object;
     .locals 2
 
-    .line 298
+    .line 300
     new-instance v0, Lcom/android/systemui/plugins/PluginDependencyProvider;
 
     const-class v1, Lcom/android/systemui/plugins/PluginManager;
@@ -999,7 +999,7 @@
 .method public static synthetic lambda$start$4(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 1
 
-    .line 182
+    .line 184
     const-class v0, Lcom/android/systemui/plugins/ActivityStarter;
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/Dependency;->getDependency(Ljava/lang/Class;)Ljava/lang/Object;
@@ -1014,7 +1014,7 @@
 .method public static synthetic lambda$start$40(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 301
+    .line 303
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
 
     const/4 v1, 0x0
@@ -1029,7 +1029,7 @@
 .method public static synthetic lambda$start$41(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 304
+    .line 306
     new-instance v0, Lcom/android/systemui/volume/VolumeDialogControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1042,7 +1042,7 @@
 .method static synthetic lambda$start$42()Ljava/lang/Object;
     .locals 1
 
-    .line 306
+    .line 308
     new-instance v0, Lcom/android/internal/logging/MetricsLogger;
 
     invoke-direct {v0}, Lcom/android/internal/logging/MetricsLogger;-><init>()V
@@ -1053,7 +1053,7 @@
 .method public static synthetic lambda$start$43(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 309
+    .line 311
     new-instance v0, Lcom/android/systemui/statusbar/policy/AccessibilityManagerWrapper;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1066,7 +1066,7 @@
 .method public static synthetic lambda$start$44(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 314
+    .line 316
     new-instance v0, Lcom/android/systemui/colorextraction/SysuiColorExtractor;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1079,7 +1079,7 @@
 .method static synthetic lambda$start$45()Ljava/lang/Object;
     .locals 1
 
-    .line 316
+    .line 318
     new-instance v0, Lcom/android/systemui/tuner/TunablePadding$TunablePaddingService;
 
     invoke-direct {v0}, Lcom/android/systemui/tuner/TunablePadding$TunablePaddingService;-><init>()V
@@ -1090,7 +1090,7 @@
 .method public static synthetic lambda$start$46(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 319
+    .line 321
     new-instance v0, Lcom/android/systemui/ForegroundServiceControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1103,7 +1103,7 @@
 .method public static synthetic lambda$start$47(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 325
+    .line 327
     new-instance v0, Lcom/android/systemui/statusbar/phone/NetworkSpeedControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1116,7 +1116,7 @@
 .method public static synthetic lambda$start$48(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 327
+    .line 329
     new-instance v0, Lcom/android/systemui/power/PowerNotificationWarnings;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1129,14 +1129,14 @@
 .method public static synthetic lambda$start$49(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 4
 
-    .line 329
+    .line 331
     new-instance v0, Lcom/android/systemui/statusbar/policy/IconLoggerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
 
     sget-object v2, Lcom/android/systemui/Dependency;->BG_LOOPER:Lcom/android/systemui/Dependency$DependencyKey;
 
-    .line 330
+    .line 332
     invoke-virtual {p0, v2}, Lcom/android/systemui/Dependency;->getDependency(Lcom/android/systemui/Dependency$DependencyKey;)Ljava/lang/Object;
 
     move-result-object v2
@@ -1153,14 +1153,14 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/systemui/statusbar/policy/IconLoggerImpl;-><init>(Landroid/content/Context;Landroid/os/Looper;Lcom/android/internal/logging/MetricsLogger;)V
 
-    .line 329
+    .line 331
     return-object v0
 .end method
 
 .method public static synthetic lambda$start$5(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 3
 
-    .line 185
+    .line 187
     new-instance v0, Lcom/android/systemui/util/AsyncSensorManager;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1181,7 +1181,7 @@
 .method public static synthetic lambda$start$50(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 332
+    .line 334
     new-instance v0, Lcom/android/systemui/statusbar/phone/LightBarController;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1194,7 +1194,7 @@
 .method static synthetic lambda$start$51()Ljava/lang/Object;
     .locals 1
 
-    .line 334
+    .line 336
     invoke-static {}, Landroid/view/WindowManagerGlobal;->getWindowManagerService()Landroid/view/IWindowManager;
 
     move-result-object v0
@@ -1205,7 +1205,7 @@
 .method public static synthetic lambda$start$52(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 336
+    .line 338
     new-instance v0, Lcom/android/systemui/OverviewProxyService;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1218,7 +1218,7 @@
 .method static synthetic lambda$start$53()Ljava/lang/Object;
     .locals 1
 
-    .line 338
+    .line 340
     new-instance v0, Lcom/android/systemui/power/EnhancedEstimatesImpl;
 
     invoke-direct {v0}, Lcom/android/systemui/power/EnhancedEstimatesImpl;-><init>()V
@@ -1229,7 +1229,7 @@
 .method public static synthetic lambda$start$54(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 340
+    .line 342
     new-instance v0, Lcom/android/systemui/statusbar/AppOpsListener;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1242,7 +1242,7 @@
 .method public static synthetic lambda$start$55(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 342
+    .line 344
     new-instance v0, Lcom/android/systemui/statusbar/VibratorHelper;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1255,7 +1255,7 @@
 .method static synthetic lambda$start$56()Ljava/lang/Object;
     .locals 1
 
-    .line 345
+    .line 347
     new-instance v0, Lcom/android/systemui/statusbar/phone/HighlightHintControllerImpl;
 
     invoke-direct {v0}, Lcom/android/systemui/statusbar/phone/HighlightHintControllerImpl;-><init>()V
@@ -1266,7 +1266,7 @@
 .method public static synthetic lambda$start$57(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 351
+    .line 353
     new-instance v0, Lcom/android/systemui/statusbar/policy/OPZenModeControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1279,7 +1279,7 @@
 .method public static synthetic lambda$start$58(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 354
+    .line 356
     new-instance v0, Lcom/android/systemui/statusbar/policy/OPZenModeControllerImpl_dumy;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1292,7 +1292,7 @@
 .method public static synthetic lambda$start$59(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 358
+    .line 360
     new-instance v0, Lcom/oneplus/notification/OPNotificationController;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1305,7 +1305,7 @@
 .method public static synthetic lambda$start$6(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 3
 
-    .line 188
+    .line 190
     new-instance v0, Lcom/android/systemui/statusbar/policy/BluetoothControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1326,15 +1326,15 @@
 .method static synthetic lambda$start$60()Ljava/lang/Object;
     .locals 1
 
-    .line 361
+    .line 363
     const-string v0, "statusbar"
 
-    .line 362
+    .line 364
     invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 361
+    .line 363
     invoke-static {v0}, Lcom/android/internal/statusbar/IStatusBarService$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/statusbar/IStatusBarService;
 
     move-result-object v0
@@ -1345,7 +1345,7 @@
 .method public static synthetic lambda$start$61(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 365
+    .line 367
     new-instance v0, Lcom/android/systemui/statusbar/policy/ChargingAnimationControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1355,10 +1355,23 @@
     return-object v0
 .end method
 
+.method public static synthetic lambda$start$62(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
+    .locals 2
+
+    .line 371
+    new-instance v0, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
+
+    invoke-direct {v0, v1}, Lcom/oneplus/scene/OPSceneModeObserver;-><init>(Landroid/content/Context;)V
+
+    return-object v0
+.end method
+
 .method public static synthetic lambda$start$7(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 3
 
-    .line 191
+    .line 193
     new-instance v0, Lcom/android/systemui/statusbar/policy/LocationControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1379,7 +1392,7 @@
 .method public static synthetic lambda$start$8(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 2
 
-    .line 194
+    .line 196
     new-instance v0, Lcom/android/systemui/statusbar/policy/RotationLockControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1392,7 +1405,7 @@
 .method public static synthetic lambda$start$9(Lcom/android/systemui/Dependency;)Ljava/lang/Object;
     .locals 4
 
-    .line 197
+    .line 199
     new-instance v0, Lcom/android/systemui/statusbar/policy/NetworkControllerImpl;
 
     iget-object v1, p0, Lcom/android/systemui/Dependency;->mContext:Landroid/content/Context;
@@ -1407,7 +1420,7 @@
 
     const-class v3, Lcom/android/systemui/statusbar/policy/DeviceProvisionedController;
 
-    .line 198
+    .line 200
     invoke-virtual {p0, v3}, Lcom/android/systemui/Dependency;->getDependency(Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v3
@@ -1416,7 +1429,7 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/systemui/statusbar/policy/NetworkControllerImpl;-><init>(Landroid/content/Context;Landroid/os/Looper;Lcom/android/systemui/statusbar/policy/DeviceProvisionedController;)V
 
-    .line 197
+    .line 199
     return-object v0
 .end method
 
@@ -1438,7 +1451,7 @@
         }
     .end annotation
 
-    .line 409
+    .line 415
     instance-of v0, p1, Lcom/android/systemui/Dependency$DependencyKey;
 
     if-nez v0, :cond_1
@@ -1461,7 +1474,7 @@
     :goto_1
     invoke-static {v0}, Lcom/android/internal/util/Preconditions;->checkArgument(Z)V
 
-    .line 412
+    .line 418
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     invoke-virtual {v0, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1470,18 +1483,18 @@
 
     check-cast v0, Lcom/android/systemui/Dependency$DependencyProvider;
 
-    .line 413
+    .line 419
     .local v0, "provider":Lcom/android/systemui/Dependency$DependencyProvider;, "Lcom/android/systemui/Dependency$DependencyProvider<TT;>;"
     if-eqz v0, :cond_2
 
-    .line 417
+    .line 423
     invoke-interface {v0}, Lcom/android/systemui/Dependency$DependencyProvider;->createDependency()Ljava/lang/Object;
 
     move-result-object v1
 
     return-object v1
 
-    .line 414
+    .line 420
     :cond_2
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -1501,7 +1514,7 @@
 
     iget-object v3, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
-    .line 415
+    .line 421
     invoke-virtual {v3}, Landroid/util/ArrayMap;->size()I
 
     move-result v3
@@ -1529,16 +1542,16 @@
 
     monitor-enter p0
 
-    .line 376
+    .line 382
     :try_start_0
     invoke-super {p0, p1, p2, p3}, Lcom/android/systemui/SystemUI;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
 
-    .line 377
+    .line 383
     const-string v0, "Dumping existing controllers:"
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 378
+    .line 384
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
 
     invoke-virtual {v0}, Landroid/util/ArrayMap;->values()Ljava/util/Collection;
@@ -1549,27 +1562,27 @@
 
     move-result-object v0
 
-    sget-object v1, Lcom/android/systemui/-$$Lambda$Dependency$NySUi6fkqc-gpV3As7yS9xzQLGs;->INSTANCE:Lcom/android/systemui/-$$Lambda$Dependency$NySUi6fkqc-gpV3As7yS9xzQLGs;
+    sget-object v1, Lcom/android/systemui/-$$Lambda$Dependency$XCwznIiHcX3g3rwY-mrA4qIQSK0;->INSTANCE:Lcom/android/systemui/-$$Lambda$Dependency$XCwznIiHcX3g3rwY-mrA4qIQSK0;
 
     invoke-interface {v0, v1}, Ljava/util/stream/Stream;->filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
 
     move-result-object v0
 
-    new-instance v1, Lcom/android/systemui/-$$Lambda$Dependency$1Oj9fGkoz2JD_MXRvNkn7sBfmSU;
+    new-instance v1, Lcom/android/systemui/-$$Lambda$Dependency$WnWS57gf3WrSnVlO5O6npvVM2Q4;
 
-    invoke-direct {v1, p1, p2, p3}, Lcom/android/systemui/-$$Lambda$Dependency$1Oj9fGkoz2JD_MXRvNkn7sBfmSU;-><init>(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
+    invoke-direct {v1, p1, p2, p3}, Lcom/android/systemui/-$$Lambda$Dependency$WnWS57gf3WrSnVlO5O6npvVM2Q4;-><init>(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
 
-    .line 379
+    .line 385
     invoke-interface {v0, v1}, Ljava/util/stream/Stream;->forEach(Ljava/util/function/Consumer;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 380
+    .line 386
     monitor-exit p0
 
     return-void
 
-    .line 375
+    .line 381
     .end local p1    # "fd":Ljava/io/FileDescriptor;
     .end local p2    # "pw":Ljava/io/PrintWriter;
     .end local p3    # "args":[Ljava/lang/String;
@@ -1594,7 +1607,7 @@
         }
     .end annotation
 
-    .line 394
+    .line 400
     .local p1, "key":Lcom/android/systemui/Dependency$DependencyKey;, "Lcom/android/systemui/Dependency$DependencyKey<TT;>;"
     invoke-direct {p0, p1}, Lcom/android/systemui/Dependency;->getDependencyInner(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1615,7 +1628,7 @@
         }
     .end annotation
 
-    .line 390
+    .line 396
     .local p1, "cls":Ljava/lang/Class;, "Ljava/lang/Class<TT;>;"
     invoke-direct {p0, p1}, Lcom/android/systemui/Dependency;->getDependencyInner(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1630,11 +1643,11 @@
 
     monitor-enter p0
 
-    .line 384
+    .line 390
     :try_start_0
     invoke-super {p0, p1}, Lcom/android/systemui/SystemUI;->onConfigurationChanged(Landroid/content/res/Configuration;)V
 
-    .line 385
+    .line 391
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mDependencies:Landroid/util/ArrayMap;
 
     invoke-virtual {v0}, Landroid/util/ArrayMap;->values()Ljava/util/Collection;
@@ -1645,27 +1658,27 @@
 
     move-result-object v0
 
-    sget-object v1, Lcom/android/systemui/-$$Lambda$Dependency$6mCZlbc6lFgfLDCwSrONrXphdOw;->INSTANCE:Lcom/android/systemui/-$$Lambda$Dependency$6mCZlbc6lFgfLDCwSrONrXphdOw;
+    sget-object v1, Lcom/android/systemui/-$$Lambda$Dependency$iGzAwFWmOywN2rkAb5NlhHAYwFI;->INSTANCE:Lcom/android/systemui/-$$Lambda$Dependency$iGzAwFWmOywN2rkAb5NlhHAYwFI;
 
     invoke-interface {v0, v1}, Ljava/util/stream/Stream;->filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
 
     move-result-object v0
 
-    new-instance v1, Lcom/android/systemui/-$$Lambda$Dependency$A5sv7qh1B1leWEGLPGdGHeQ2GyI;
+    new-instance v1, Lcom/android/systemui/-$$Lambda$Dependency$D2-sED-tCq4TSs5t8td9cZaXV1A;
 
-    invoke-direct {v1, p1}, Lcom/android/systemui/-$$Lambda$Dependency$A5sv7qh1B1leWEGLPGdGHeQ2GyI;-><init>(Landroid/content/res/Configuration;)V
+    invoke-direct {v1, p1}, Lcom/android/systemui/-$$Lambda$Dependency$D2-sED-tCq4TSs5t8td9cZaXV1A;-><init>(Landroid/content/res/Configuration;)V
 
-    .line 386
+    .line 392
     invoke-interface {v0, v1}, Ljava/util/stream/Stream;->forEach(Ljava/util/function/Consumer;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 387
+    .line 393
     monitor-exit p0
 
     return-void
 
-    .line 383
+    .line 389
     .end local p1    # "newConfig":Landroid/content/res/Configuration;
     :catchall_0
     move-exception p1
@@ -1679,7 +1692,7 @@
 .method public start()V
     .locals 3
 
-    .line 168
+    .line 170
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     sget-object v1, Lcom/android/systemui/Dependency;->TIME_TICK_HANDLER:Lcom/android/systemui/Dependency$DependencyKey;
@@ -1688,7 +1701,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 173
+    .line 175
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     sget-object v1, Lcom/android/systemui/Dependency;->BG_LOOPER:Lcom/android/systemui/Dependency$DependencyKey;
@@ -1697,7 +1710,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 179
+    .line 181
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     sget-object v1, Lcom/android/systemui/Dependency;->MAIN_HANDLER:Lcom/android/systemui/Dependency$DependencyKey;
@@ -1706,7 +1719,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 180
+    .line 182
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/plugins/ActivityStarter;
@@ -1715,7 +1728,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 181
+    .line 183
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/ActivityStarterDelegate;
@@ -1726,7 +1739,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 184
+    .line 186
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/util/AsyncSensorManager;
@@ -1737,7 +1750,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 187
+    .line 189
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/BluetoothController;
@@ -1748,7 +1761,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 190
+    .line 192
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/LocationController;
@@ -1759,7 +1772,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 193
+    .line 195
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/RotationLockController;
@@ -1770,7 +1783,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 196
+    .line 198
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/NetworkController;
@@ -1781,7 +1794,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 200
+    .line 202
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/ZenModeController;
@@ -1792,7 +1805,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 203
+    .line 205
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/HotspotController;
@@ -1803,7 +1816,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 206
+    .line 208
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/CastController;
@@ -1814,7 +1827,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 209
+    .line 211
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/FlashlightController;
@@ -1825,7 +1838,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 212
+    .line 214
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/KeyguardMonitor;
@@ -1836,7 +1849,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 215
+    .line 217
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/UserSwitcherController;
@@ -1847,7 +1860,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 219
+    .line 221
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/UserInfoController;
@@ -1858,7 +1871,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 222
+    .line 224
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/BatteryController;
@@ -1869,7 +1882,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 225
+    .line 227
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/internal/app/ColorDisplayController;
@@ -1880,7 +1893,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 228
+    .line 230
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/ManagedProfileController;
@@ -1891,7 +1904,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 231
+    .line 233
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/NextAlarmController;
@@ -1902,7 +1915,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 234
+    .line 236
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/DataSaverController;
@@ -1911,7 +1924,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 237
+    .line 239
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/AccessibilityController;
@@ -1922,7 +1935,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 240
+    .line 242
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/DeviceProvisionedController;
@@ -1933,7 +1946,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 243
+    .line 245
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/plugins/PluginManager;
@@ -1944,7 +1957,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 246
+    .line 248
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/assist/AssistManager;
@@ -1955,7 +1968,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 249
+    .line 251
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/SecurityController;
@@ -1966,7 +1979,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 252
+    .line 254
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/util/leak/LeakDetector;
@@ -1975,7 +1988,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 254
+    .line 256
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     sget-object v1, Lcom/android/systemui/Dependency;->LEAK_REPORT_EMAIL:Lcom/android/systemui/Dependency$DependencyKey;
@@ -1984,7 +1997,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 256
+    .line 258
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/util/leak/LeakReporter;
@@ -1995,7 +2008,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 261
+    .line 263
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/util/leak/GarbageMonitor;
@@ -2006,7 +2019,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 270
+    .line 272
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/tuner/TunerService;
@@ -2017,7 +2030,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 273
+    .line 275
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/StatusBarWindowManager;
@@ -2028,7 +2041,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 276
+    .line 278
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/DarkIconDispatcher;
@@ -2039,7 +2052,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 279
+    .line 281
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/ConfigurationController;
@@ -2050,7 +2063,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 282
+    .line 284
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/StatusBarIconController;
@@ -2061,7 +2074,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 285
+    .line 287
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/keyguard/ScreenLifecycle;
@@ -2070,7 +2083,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 288
+    .line 290
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/keyguard/WakefulnessLifecycle;
@@ -2079,7 +2092,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 291
+    .line 293
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/fragments/FragmentService;
@@ -2090,7 +2103,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 294
+    .line 296
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/ExtensionController;
@@ -2101,7 +2114,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 297
+    .line 299
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/plugins/PluginDependencyProvider;
@@ -2110,7 +2123,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 300
+    .line 302
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/settingslib/bluetooth/LocalBluetoothManager;
@@ -2121,7 +2134,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 303
+    .line 305
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/plugins/VolumeDialogController;
@@ -2132,7 +2145,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 306
+    .line 308
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/internal/logging/MetricsLogger;
@@ -2141,7 +2154,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 308
+    .line 310
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/AccessibilityManagerWrapper;
@@ -2152,7 +2165,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 314
+    .line 316
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/colorextraction/SysuiColorExtractor;
@@ -2163,7 +2176,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 316
+    .line 318
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/tuner/TunablePadding$TunablePaddingService;
@@ -2172,7 +2185,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 318
+    .line 320
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/ForegroundServiceController;
@@ -2183,7 +2196,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 321
+    .line 323
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/UiOffloadThread;
@@ -2192,7 +2205,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 324
+    .line 326
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/NetworkSpeedController;
@@ -2203,7 +2216,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 327
+    .line 329
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/power/PowerUI$WarningsUI;
@@ -2214,7 +2227,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 329
+    .line 331
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/IconLogger;
@@ -2225,7 +2238,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 332
+    .line 334
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/LightBarController;
@@ -2236,7 +2249,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 334
+    .line 336
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Landroid/view/IWindowManager;
@@ -2245,7 +2258,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 336
+    .line 338
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/OverviewProxyService;
@@ -2256,7 +2269,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 338
+    .line 340
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/power/EnhancedEstimates;
@@ -2265,7 +2278,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 340
+    .line 342
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/AppOpsListener;
@@ -2276,7 +2289,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 342
+    .line 344
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/VibratorHelper;
@@ -2287,7 +2300,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 345
+    .line 347
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/phone/HighlightHintController;
@@ -2296,14 +2309,14 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 349
+    .line 351
     invoke-static {}, Lcom/android/systemui/util/OPUtils;->isSupportSOCThreekey()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 350
+    .line 352
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/OPZenModeController;
@@ -2316,7 +2329,7 @@
 
     goto :goto_0
 
-    .line 353
+    .line 355
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
@@ -2328,7 +2341,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 358
+    .line 360
     :goto_0
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
@@ -2340,7 +2353,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 361
+    .line 363
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/internal/statusbar/IStatusBarService;
@@ -2349,7 +2362,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 365
+    .line 367
     iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
 
     const-class v1, Lcom/android/systemui/statusbar/policy/ChargingAnimationController;
@@ -2360,7 +2373,18 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 369
+    .line 371
+    iget-object v0, p0, Lcom/android/systemui/Dependency;->mProviders:Landroid/util/ArrayMap;
+
+    const-class v1, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    new-instance v2, Lcom/android/systemui/-$$Lambda$Dependency$oQNm-Qk2u3Uq-Fl6qwqAUE8fd3o;
+
+    invoke-direct {v2, p0}, Lcom/android/systemui/-$$Lambda$Dependency$oQNm-Qk2u3Uq-Fl6qwqAUE8fd3o;-><init>(Lcom/android/systemui/Dependency;)V
+
+    invoke-virtual {v0, v1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 375
     invoke-static {}, Lcom/android/systemui/SystemUIFactory;->getInstance()Lcom/android/systemui/SystemUIFactory;
 
     move-result-object v0
@@ -2371,9 +2395,9 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/systemui/SystemUIFactory;->injectDependencies(Landroid/util/ArrayMap;Landroid/content/Context;)V
 
-    .line 371
+    .line 377
     sput-object p0, Lcom/android/systemui/Dependency;->sDependency:Lcom/android/systemui/Dependency;
 
-    .line 372
+    .line 378
     return-void
 .end method

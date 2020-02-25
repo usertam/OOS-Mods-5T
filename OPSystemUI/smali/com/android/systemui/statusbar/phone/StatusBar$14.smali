@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/StatusBar;
 
-    .line 3807
+    .line 3847
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$14;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,7 +39,7 @@
 .method public run()V
     .locals 2
 
-    .line 3810
+    .line 3850
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$14;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanel:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
@@ -54,7 +54,7 @@
 
     goto :goto_0
 
-    .line 3812
+    .line 3852
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$14;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
@@ -72,7 +72,7 @@
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarKeyguardViewManager:Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;
 
-    .line 3813
+    .line 3853
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;->isShowing()Z
 
     move-result v0
@@ -83,21 +83,21 @@
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarKeyguardViewManager:Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;
 
-    .line 3814
+    .line 3854
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;->isOccluded()Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 3815
+    .line 3855
     const-string v0, "StatusBar"
 
     const-string v1, "onUserSwitched to recover panel visibility"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3816
+    .line 3856
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$14;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanel:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
@@ -106,11 +106,11 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->setVisibility(I)V
 
-    .line 3818
+    .line 3858
     :cond_1
     return-void
 
-    .line 3810
+    .line 3850
     :cond_2
     :goto_0
     return-void

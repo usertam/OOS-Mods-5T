@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
 
-    .line 562
+    .line 564
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$2;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-direct {p0}, Landroid/telephony/SubscriptionManager$OnSubscriptionsChangedListener;-><init>()V
@@ -36,7 +36,7 @@
 .method public onSubscriptionsChanged()V
     .locals 2
 
-    .line 565
+    .line 567
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$2;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -47,6 +47,6 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 566
+    .line 568
     return-void
 .end method

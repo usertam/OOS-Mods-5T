@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
 
-    .line 1889
+    .line 1891
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$11;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-direct {p0}, Landroid/app/UserSwitchObserver;-><init>()V
@@ -42,7 +42,7 @@
         }
     .end annotation
 
-    .line 1897
+    .line 1899
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$11;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -65,7 +65,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1899
+    .line 1901
     return-void
 .end method
 
@@ -74,7 +74,7 @@
     .param p1, "newUserId"    # I
     .param p2, "reply"    # Landroid/os/IRemoteCallback;
 
-    .line 1892
+    .line 1894
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$11;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -97,6 +97,6 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1894
+    .line 1896
     return-void
 .end method

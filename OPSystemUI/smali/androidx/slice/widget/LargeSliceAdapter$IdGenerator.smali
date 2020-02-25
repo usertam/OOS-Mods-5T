@@ -155,7 +155,7 @@
 
     .line 291
     .local v0, "str":Ljava/lang/String;
-    const-string v1, "summary"
+    const-string/jumbo v1, "summary"
 
     const/4 v2, 0x0
 

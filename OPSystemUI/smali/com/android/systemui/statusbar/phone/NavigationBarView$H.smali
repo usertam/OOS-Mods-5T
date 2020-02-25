@@ -22,7 +22,7 @@
 .method private constructor <init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
     .locals 0
 
-    .line 264
+    .line 267
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -35,7 +35,7 @@
     .param p1, "x0"    # Lcom/android/systemui/statusbar/phone/NavigationBarView;
     .param p2, "x1"    # Lcom/android/systemui/statusbar/phone/NavigationBarView$1;
 
-    .line 264
+    .line 267
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarView;)V
 
     return-void
@@ -47,7 +47,7 @@
     .locals 10
     .param p1, "m"    # Landroid/os/Message;
 
-    .line 266
+    .line 269
     iget v0, p1, Landroid/os/Message;->what:I
 
     const/16 v1, 0x21ee
@@ -56,7 +56,7 @@
 
     goto :goto_0
 
-    .line 268
+    .line 271
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -74,7 +74,7 @@
 
     move-result-object v0
 
-    .line 269
+    .line 272
     .local v0, "how":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
@@ -82,7 +82,7 @@
 
     move-result v1
 
-    .line 270
+    .line 273
     .local v1, "w":I
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
@@ -90,7 +90,7 @@
 
     move-result v2
 
-    .line 271
+    .line 274
     .local v2, "h":I
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
@@ -102,7 +102,7 @@
 
     move-result v3
 
-    .line 272
+    .line 275
     .local v3, "vw":I
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
@@ -114,13 +114,13 @@
 
     move-result v4
 
-    .line 274
+    .line 277
     .local v4, "vh":I
     if-ne v2, v4, :cond_1
 
     if-eq v1, v3, :cond_2
 
-    .line 275
+    .line 278
     :cond_1
     const-string v5, "StatusBar/NavBarView"
 
@@ -136,7 +136,7 @@
 
     const/4 v8, 0x1
 
-    .line 277
+    .line 280
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v9
@@ -167,19 +167,19 @@
 
     aput-object v9, v7, v8
 
-    .line 275
+    .line 278
     invoke-static {v6, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v6
 
     invoke-static {v5, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 279
+    .line 282
     iget-object v5, p0, Lcom/android/systemui/statusbar/phone/NavigationBarView$H;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
     invoke-virtual {v5}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->requestLayout()V
 
-    .line 284
+    .line 287
     .end local v0    # "how":Ljava/lang/String;
     .end local v1    # "w":I
     .end local v2    # "h":I

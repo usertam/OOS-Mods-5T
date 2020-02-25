@@ -1,6 +1,6 @@
 Signature-Version: 1.0
 Created-By: 1.0 (Android SignApk)
-SHA-256-Digest-Manifest: 5Sb7h7SwUAg6xDivyfVPPtSaUyUnBMpOBae+erl+hhQ=
+SHA-256-Digest-Manifest: gJjRV4TNOdYRKN3CLu2XwhViouGkP2zuS1e4ceFnmxE=
 X-Android-APK-Signed: 2, 3
 
 Name: AndroidManifest.xml
@@ -19,7 +19,7 @@ Name: assets/qs_airplane_tile_inactive_android.json
 SHA-256-Digest: vuctRXAA3uOHBEAEqSbPDqozYKvrzT5nH0dkNmt1Iig=
 
 Name: classes.dex
-SHA-256-Digest: 6BnhcZUmBtBlzu/Ae5BiRdNHWahTQvyF3VzmfLCcgrk=
+SHA-256-Digest: tQ969bCi8/WBc7STE4+ZxmX98OrUk94u5N2Q+jje6kA=
 
 Name: res/anim-v21/design_bottom_sheet_slide_in.xml
 SHA-256-Digest: WYqDip/RI56bTts3iEaF/dVfN49ktvhj28W/EwvvLHE=
@@ -13548,5 +13548,5 @@ Name: res/xml/tuner_prefs.xml
 SHA-256-Digest: Lc2U2B6qps3A1rN5hKf9kzyhZg7z0laln5ZU3iDFZIg=
 
 Name: resources.arsc
-SHA-256-Digest: c/2rVGnZyiw9ihlMxOP5hzUHD7Ld0h44Wpqg0BK/YWo=
+SHA-256-Digest: 1ZdYf50ABOZNm/H5UdO9mhGNa0e4O02yDHkXi2wsk9o=
 

@@ -1008,7 +1008,7 @@
 
     if-eqz v6, :cond_9
 
-    const-string v6, "summary"
+    const-string/jumbo v6, "summary"
 
     invoke-virtual {v5, v6}, Landroidx/slice/SliceItem;->hasHint(Ljava/lang/String;)Z
 
@@ -1027,7 +1027,7 @@
 
     if-nez v6, :cond_a
 
-    const-string v6, "summary"
+    const-string/jumbo v6, "summary"
 
     invoke-virtual {v5, v6}, Landroidx/slice/SliceItem;->hasHint(Ljava/lang/String;)Z
 
@@ -1046,7 +1046,7 @@
 
     if-nez v6, :cond_c
 
-    const-string v6, "summary"
+    const-string/jumbo v6, "summary"
 
     invoke-virtual {v5, v6}, Landroidx/slice/SliceItem;->hasHint(Ljava/lang/String;)Z
 

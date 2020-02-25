@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
 
-    .line 1170
+    .line 1172
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,14 +40,14 @@
 
     move-object/from16 v0, p0
 
-    .line 1174
+    .line 1176
     move-object/from16 v1, p2
 
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 1175
+    .line 1177
     .local v2, "action":Ljava/lang/String;
     sget-boolean v3, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
@@ -71,7 +71,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1182
+    .line 1184
     :cond_0
     const-string v3, "android.intent.action.TIMEZONE_CHANGED"
 
@@ -81,7 +81,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 1183
+    .line 1185
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -94,7 +94,7 @@
 
     goto/16 :goto_3
 
-    .line 1184
+    .line 1186
     :cond_1
     const-string v3, "android.intent.action.BATTERY_CHANGED"
 
@@ -108,7 +108,7 @@
 
     if-eqz v3, :cond_6
 
-    .line 1185
+    .line 1187
     const-string v3, "status"
 
     const/4 v6, 0x1
@@ -117,7 +117,7 @@
 
     move-result v3
 
-    .line 1186
+    .line 1188
     .local v3, "status":I
     const-string v7, "plugged"
 
@@ -125,7 +125,7 @@
 
     move-result v14
 
-    .line 1187
+    .line 1189
     .local v14, "plugged":I
     const-string v7, "level"
 
@@ -133,7 +133,7 @@
 
     move-result v15
 
-    .line 1188
+    .line 1190
     .local v15, "level":I
     const-string v7, "health"
 
@@ -141,7 +141,7 @@
 
     move-result v16
 
-    .line 1190
+    .line 1192
     .local v16, "health":I
     const-string v7, "max_charging_current"
 
@@ -149,7 +149,7 @@
 
     move-result v11
 
-    .line 1191
+    .line 1193
     .local v11, "maxChargingMicroAmp":I
     const-string v7, "max_charging_voltage"
 
@@ -157,14 +157,14 @@
 
     move-result v7
 
-    .line 1194
+    .line 1196
     .local v7, "maxChargingMicroVolt":I
     if-gtz v7, :cond_2
 
-    .line 1195
+    .line 1197
     const v7, 0x4c4b40
 
-    .line 1197
+    .line 1199
     .end local v7    # "maxChargingMicroVolt":I
     .local v10, "maxChargingMicroVolt":I
     :cond_2
@@ -172,25 +172,26 @@
 
     if-lez v11, :cond_3
 
-    .line 1200
+    .line 1202
     div-int/lit16 v4, v11, 0x3e8
 
     div-int/lit16 v7, v10, 0x3e8
 
     mul-int/2addr v4, v7
 
-    .line 1203
+    .line 1205
     .local v12, "maxChargingMicroWatt":I
     :goto_0
     move v12, v4
 
     goto :goto_1
 
+    .line 1205
     .end local v12    # "maxChargingMicroWatt":I
     :cond_3
     goto :goto_0
 
-    .line 1207
+    .line 1209
     .restart local v12    # "maxChargingMicroWatt":I
     :goto_1
     const-string v4, "fastcharge_status"
@@ -199,13 +200,13 @@
 
     move-result v4
 
-    .line 1208
+    .line 1210
     .local v4, "chargingstatus":I
     sget-boolean v7, Lcom/android/systemui/util/OPUtils;->SUPPORT_WARP_CHARGING:Z
 
     if-eqz v7, :cond_4
 
-    .line 1209
+    .line 1211
     move v13, v4
 
     goto :goto_2
@@ -220,7 +221,7 @@
     :cond_5
     move v13, v5
 
-    .line 1211
+    .line 1213
     .local v13, "fastcharge":I
     :goto_2
     iget-object v5, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
@@ -243,12 +244,14 @@
 
     move v10, v14
 
+    .line 1213
     .end local v10    # "maxChargingMicroVolt":I
     .local v17, "maxChargingMicroVolt":I
     move/from16 v18, v11
 
     move/from16 v11, v16
 
+    .line 1213
     .end local v11    # "maxChargingMicroAmp":I
     .local v18, "maxChargingMicroAmp":I
     invoke-direct/range {v7 .. v13}, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;-><init>(IIIIII)V
@@ -259,7 +262,7 @@
 
     move-result-object v5
 
-    .line 1215
+    .line 1217
     .local v5, "msg":Landroid/os/Message;
     iget-object v6, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -269,7 +272,7 @@
 
     invoke-virtual {v6, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1216
+    .line 1218
     .end local v3    # "status":I
     .end local v4    # "chargingstatus":I
     .end local v5    # "msg":Landroid/os/Message;
@@ -291,7 +294,7 @@
 
     if-eqz v3, :cond_8
 
-    .line 1221
+    .line 1223
     const-string v3, "rebroadcastOnUnlock"
 
     invoke-virtual {v1, v3, v5}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
@@ -300,16 +303,16 @@
 
     if-eqz v3, :cond_7
 
-    .line 1222
+    .line 1224
     return-void
 
-    .line 1224
+    .line 1226
     :cond_7
     invoke-static/range {p2 .. p2}, Lcom/android/keyguard/KeyguardUpdateMonitor$SimData;->fromIntent(Landroid/content/Intent;)Lcom/android/keyguard/KeyguardUpdateMonitor$SimData;
 
     move-result-object v3
 
-    .line 1226
+    .line 1228
     .local v3, "args":Lcom/android/keyguard/KeyguardUpdateMonitor$SimData;
     const-string v4, "KeyguardUpdateMonitor"
 
@@ -329,7 +332,7 @@
 
     const-string v6, "ss"
 
-    .line 1227
+    .line 1229
     invoke-virtual {v1, v6}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v6
@@ -356,10 +359,10 @@
 
     move-result-object v5
 
-    .line 1226
+    .line 1228
     invoke-static {v4, v5}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1230
+    .line 1232
     iget-object v4, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v4}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -378,10 +381,10 @@
 
     move-result-object v4
 
-    .line 1231
+    .line 1233
     invoke-virtual {v4}, Landroid/os/Message;->sendToTarget()V
 
-    .line 1232
+    .line 1234
     .end local v3    # "args":Lcom/android/keyguard/KeyguardUpdateMonitor$SimData;
     goto/16 :goto_3
 
@@ -394,7 +397,7 @@
 
     if-eqz v3, :cond_9
 
-    .line 1233
+    .line 1235
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -411,12 +414,12 @@
 
     const-string v8, "android.media.EXTRA_RINGER_MODE"
 
-    .line 1234
+    .line 1236
     invoke-virtual {v1, v8, v4}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
     move-result v4
 
-    .line 1233
+    .line 1235
     invoke-virtual {v6, v7, v4, v5}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
 
     move-result-object v4
@@ -425,7 +428,7 @@
 
     goto/16 :goto_3
 
-    .line 1235
+    .line 1237
     :cond_9
     const-string v3, "android.intent.action.PHONE_STATE"
 
@@ -435,14 +438,14 @@
 
     if-eqz v3, :cond_a
 
-    .line 1236
+    .line 1238
     const-string v3, "state"
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 1237
+    .line 1239
     .local v3, "state":Ljava/lang/String;
     iget-object v4, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -464,7 +467,7 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1238
+    .line 1240
     .end local v3    # "state":Ljava/lang/String;
     goto/16 :goto_3
 
@@ -477,7 +480,7 @@
 
     if-eqz v3, :cond_b
 
-    .line 1239
+    .line 1241
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -490,7 +493,7 @@
 
     goto/16 :goto_3
 
-    .line 1240
+    .line 1242
     :cond_b
     const-string v3, "android.intent.action.BOOT_COMPLETED"
 
@@ -500,14 +503,14 @@
 
     if-eqz v3, :cond_c
 
-    .line 1241
+    .line 1243
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->dispatchBootCompleted()V
 
     goto/16 :goto_3
 
-    .line 1242
+    .line 1244
     :cond_c
     const-string v3, "android.intent.action.SERVICE_STATE"
 
@@ -517,7 +520,7 @@
 
     if-eqz v3, :cond_d
 
-    .line 1245
+    .line 1247
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
     move-result-object v3
@@ -526,15 +529,15 @@
 
     move-result-object v3
 
-    .line 1246
+    .line 1248
     .local v3, "serviceState":Landroid/telephony/ServiceState;
-    const-string v6, "subscription"
+    const-string/jumbo v6, "subscription"
 
     invoke-virtual {v1, v6, v4}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
     move-result v4
 
-    .line 1248
+    .line 1250
     .local v4, "subId":I
     const-string v6, "slot"
 
@@ -542,7 +545,7 @@
 
     move-result v5
 
-    .line 1250
+    .line 1252
     .local v5, "phoneId":I
     const-string v6, "KeyguardUpdateMonitor"
 
@@ -580,7 +583,7 @@
 
     invoke-static {v6, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1253
+    .line 1255
     iget-object v6, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v6}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -601,7 +604,7 @@
 
     invoke-virtual {v6, v7}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1256
+    .line 1258
     .end local v3    # "serviceState":Landroid/telephony/ServiceState;
     .end local v4    # "subId":I
     .end local v5    # "phoneId":I
@@ -616,7 +619,7 @@
 
     if-eqz v3, :cond_e
 
-    .line 1257
+    .line 1259
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -629,7 +632,7 @@
 
     goto :goto_3
 
-    .line 1258
+    .line 1260
     :cond_e
     const-string v3, "android.app.action.DEVICE_POLICY_MANAGER_STATE_CHANGED"
 
@@ -639,7 +642,7 @@
 
     if-eqz v3, :cond_f
 
-    .line 1260
+    .line 1262
     iget-object v3, v0, Lcom/android/keyguard/KeyguardUpdateMonitor$6;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -650,7 +653,7 @@
 
     invoke-virtual {v3, v4}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 1262
+    .line 1264
     :cond_f
     :goto_3
     return-void

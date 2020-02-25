@@ -40,6 +40,8 @@
 
 .field private mKeyguardIsVisible:Z
 
+.field private mOPSceneModeObserver:Lcom/oneplus/scene/OPSceneModeObserver;
+
 .field private mObject:Ljava/lang/Object;
 
 .field mPMView:Lcom/android/systemui/plugin/PreventModeView;
@@ -57,15 +59,15 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 45
+    .line 51
     const/4 v0, 0x0
 
     sput-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
-    .line 46
+    .line 52
     sput-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensorEnabled:Z
 
-    .line 47
+    .line 53
     sput-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeNoBackground:Z
 
     return-void
@@ -74,48 +76,48 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 67
+    .line 75
     invoke-direct {p0}, Lcom/android/systemui/plugin/BaseCtrl;-><init>()V
 
-    .line 39
+    .line 45
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->DEBUG:Z
 
-    .line 40
+    .line 46
     const-string v0, "PreventModeCtrl"
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->TAG:Ljava/lang/String;
 
-    .line 52
+    .line 58
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBouncer:Z
 
-    .line 53
+    .line 59
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyguardIsVisible:Z
 
-    .line 54
+    .line 60
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyguardIsShowing:Z
 
-    .line 55
+    .line 61
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mDozing:Z
 
-    .line 65
+    .line 71
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mObject:Ljava/lang/Object;
 
-    .line 158
+    .line 168
     new-instance v0, Lcom/android/systemui/plugin/PreventModeCtrl$1;
 
     invoke-direct {v0, p0}, Lcom/android/systemui/plugin/PreventModeCtrl$1;-><init>(Lcom/android/systemui/plugin/PreventModeCtrl;)V
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximityListener:Landroid/hardware/SensorEventListener;
 
-    .line 68
+    .line 76
     return-void
 .end method
 
@@ -123,7 +125,7 @@
     .locals 1
     .param p0, "x0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 37
+    .line 43
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mObject:Ljava/lang/Object;
 
     return-object v0
@@ -133,7 +135,7 @@
     .locals 1
     .param p0, "x0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 37
+    .line 43
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensor:Landroid/hardware/Sensor;
 
     return-object v0
@@ -143,7 +145,7 @@
     .locals 0
     .param p0, "x0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 37
+    .line 43
     invoke-direct {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->startRootAnimation()V
 
     return-void
@@ -152,7 +154,7 @@
 .method static synthetic access$400()Z
     .locals 1
 
-    .line 37
+    .line 43
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
     return v0
@@ -162,7 +164,7 @@
     .locals 0
     .param p0, "x0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 37
+    .line 43
     invoke-direct {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->enableProximitySensorInternal()V
 
     return-void
@@ -172,21 +174,70 @@
     .locals 0
     .param p0, "x0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 37
+    .line 43
     invoke-direct {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->disableProximitySensorInternal()V
 
     return-void
 .end method
 
+.method private bypassPreventMode()Z
+    .locals 2
+
+    .line 405
+    invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/systemui/plugin/LSState;->getPhoneStatusBar()Lcom/android/systemui/statusbar/phone/StatusBar;
+
+    move-result-object v0
+
+    .line 406
+    .local v0, "bar":Lcom/android/systemui/statusbar/phone/StatusBar;
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->isCameraForeground()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    :cond_0
+    iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mOPSceneModeObserver:Lcom/oneplus/scene/OPSceneModeObserver;
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mOPSceneModeObserver:Lcom/oneplus/scene/OPSceneModeObserver;
+
+    .line 407
+    invoke-virtual {v1}, Lcom/oneplus/scene/OPSceneModeObserver;->isInBrickMode()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    :cond_1
+    const/4 v1, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    const/4 v1, 0x0
+
+    .line 406
+    :goto_0
+    return v1
+.end method
+
 .method private disableProximitySensorInternal()V
     .locals 4
 
-    .line 278
+    .line 288
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensorEnabled:Z
 
     if-eqz v0, :cond_0
 
-    .line 279
+    .line 289
     const-string v0, "PreventModeCtrl"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -207,12 +258,12 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 281
+    .line 291
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 283
+    .line 293
     .local v0, "identity":J
     :try_start_0
     iget-object v2, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mSensorManager:Landroid/hardware/SensorManager;
@@ -221,20 +272,20 @@
 
     invoke-virtual {v2, v3}, Landroid/hardware/SensorManager;->unregisterListener(Landroid/hardware/SensorEventListener;)V
 
-    .line 284
+    .line 294
     const/4 v2, 0x0
 
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensorEnabled:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 286
+    .line 296
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 287
+    .line 297
     goto :goto_0
 
-    .line 286
+    .line 296
     :catchall_0
     move-exception v2
 
@@ -242,7 +293,7 @@
 
     throw v2
 
-    .line 289
+    .line 299
     .end local v0    # "identity":J
     :cond_0
     :goto_0
@@ -252,27 +303,27 @@
 .method private enableProximitySensorInternal()V
     .locals 6
 
-    .line 219
+    .line 229
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
-    .line 225
+    .line 235
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensorEnabled:Z
 
     if-nez v0, :cond_0
 
-    .line 226
+    .line 236
     const-string v0, "PreventModeCtrl"
 
     const-string v1, "enableProximitySensor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 228
+    .line 238
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 230
+    .line 240
     .local v0, "identity":J
     :try_start_0
     iget-object v2, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mSensorManager:Landroid/hardware/SensorManager;
@@ -285,20 +336,20 @@
 
     invoke-virtual {v2, v3, v4, v5}, Landroid/hardware/SensorManager;->registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;I)Z
 
-    .line 232
+    .line 242
     const/4 v2, 0x1
 
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensorEnabled:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 234
+    .line 244
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 235
+    .line 245
     goto :goto_0
 
-    .line 234
+    .line 244
     :catchall_0
     move-exception v2
 
@@ -306,7 +357,7 @@
 
     throw v2
 
-    .line 237
+    .line 247
     .end local v0    # "identity":J
     :cond_0
     :goto_0
@@ -316,21 +367,21 @@
 .method private hideSoftInput()V
     .locals 3
 
-    .line 390
+    .line 395
     :try_start_0
     const-string v0, "input_method"
 
-    .line 391
+    .line 396
     invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 390
+    .line 395
     invoke-static {v0}, Lcom/android/internal/view/IInputMethodManager$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/view/IInputMethodManager;
 
     move-result-object v0
 
-    .line 392
+    .line 397
     .local v0, "iimm":Lcom/android/internal/view/IInputMethodManager;
     const/4 v1, 0x0
 
@@ -340,15 +391,15 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 396
+    .line 401
     .end local v0    # "iimm":Lcom/android/internal/view/IInputMethodManager;
     goto :goto_0
 
-    .line 393
+    .line 398
     :catch_0
     move-exception v0
 
-    .line 395
+    .line 400
     .local v0, "e":Ljava/lang/Exception;
     const-string v1, "PreventModeCtrl"
 
@@ -356,7 +407,7 @@
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 397
+    .line 402
     .end local v0    # "e":Ljava/lang/Exception;
     :goto_0
     return-void
@@ -365,7 +416,7 @@
 .method private isPreventModeEnabled()Z
     .locals 1
 
-    .line 155
+    .line 165
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Lcom/android/systemui/util/OPUtils;->isPreventModeEnalbed(Landroid/content/Context;)Z
@@ -392,18 +443,24 @@
 .method private startRootAnimation()V
     .locals 5
 
-    .line 293
+    .line 303
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_4
 
     iget-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyguardIsShowing:Z
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_4
+
+    invoke-direct {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->bypassPreventMode()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
 
     goto/16 :goto_0
 
-    .line 296
+    .line 307
     :cond_0
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
@@ -413,21 +470,8 @@
 
     move-result-object v0
 
-    .line 298
+    .line 308
     .local v0, "bar":Lcom/android/systemui/statusbar/phone/StatusBar;
-    if-eqz v0, :cond_1
-
-    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->isCameraForeground()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 299
-    return-void
-
-    .line 303
-    :cond_1
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -444,10 +488,10 @@
 
     iput v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyLockMode:I
 
-    .line 304
+    .line 309
     invoke-direct {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->hideSoftInput()V
 
-    .line 305
+    .line 310
     const-string v1, "PreventModeCtrl"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -480,7 +524,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 308
+    .line 313
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBackground:Landroid/widget/ImageView;
 
     invoke-virtual {v1}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
@@ -489,52 +533,52 @@
 
     const/4 v2, 0x1
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_1
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1
 
-    .line 309
+    .line 314
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/systemui/statusbar/phone/StatusBar;->setPanelViewAlpha(FZI)V
 
-    .line 310
+    .line 315
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeNoBackground:Z
 
-    .line 311
+    .line 316
     const-string v1, "PreventModeCtrl"
 
     const-string v3, "panel alpha to 0"
 
     invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 315
-    :cond_2
+    .line 320
+    :cond_1
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
-    .line 317
-    if-eqz v0, :cond_4
+    .line 322
+    if-eqz v0, :cond_3
 
-    .line 318
+    .line 323
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->getFacelockController()Lcom/android/systemui/statusbar/phone/OPFacelockController;
 
     move-result-object v1
 
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_2
 
-    .line 319
+    .line 324
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->getFacelockController()Lcom/android/systemui/statusbar/phone/OPFacelockController;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/OPFacelockController;->stopFacelockLightMode()V
 
-    .line 321
-    :cond_3
+    .line 326
+    :cond_2
     invoke-virtual {v0, v2}, Lcom/android/systemui/statusbar/phone/StatusBar;->notifyPreventModeChange(Z)V
 
-    .line 326
-    :cond_4
+    .line 331
+    :cond_3
     const/4 v1, 0x2
 
     new-array v1, v1, [F
@@ -547,14 +591,14 @@
 
     iput-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mAlphaAnimator:Landroid/animation/ValueAnimator;
 
-    .line 327
+    .line 332
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mAlphaAnimator:Landroid/animation/ValueAnimator;
 
     const-wide/16 v2, 0x0
 
     invoke-virtual {v1, v2, v3}, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
 
-    .line 328
+    .line 333
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mAlphaAnimator:Landroid/animation/ValueAnimator;
 
     new-instance v2, Lcom/android/systemui/plugin/PreventModeCtrl$2;
@@ -563,7 +607,7 @@
 
     invoke-virtual {v1, v2}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
 
-    .line 336
+    .line 341
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mAlphaAnimator:Landroid/animation/ValueAnimator;
 
     new-instance v2, Lcom/android/systemui/plugin/PreventModeCtrl$3;
@@ -572,21 +616,19 @@
 
     invoke-virtual {v1, v2}, Landroid/animation/ValueAnimator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
-    .line 358
+    .line 363
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mAlphaAnimator:Landroid/animation/ValueAnimator;
 
     invoke-virtual {v1}, Landroid/animation/ValueAnimator;->start()V
 
-    .line 359
+    .line 364
     return-void
 
-    .line 294
+    .line 304
     .end local v0    # "bar":Lcom/android/systemui/statusbar/phone/StatusBar;
-    :cond_5
+    :cond_4
     :goto_0
     return-void
-
-    nop
 
     :array_0
     .array-data 4
@@ -601,43 +643,43 @@
     .locals 1
     .param p1, "ev"    # Landroid/view/MotionEvent;
 
-    .line 151
+    .line 161
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
 
     invoke-virtual {v0, p1}, Lcom/android/systemui/plugin/PreventModeView;->dispatchTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 152
+    .line 162
     return-void
 .end method
 
 .method public disableProximitySensor()V
     .locals 2
 
-    .line 240
+    .line 250
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     if-eqz v0, :cond_0
 
-    .line 241
+    .line 251
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 242
+    .line 252
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 245
+    .line 255
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 247
+    .line 257
     :cond_0
     return-void
 .end method
@@ -645,7 +687,7 @@
 .method public isPreventModeActive()Z
     .locals 1
 
-    .line 378
+    .line 383
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
     return v0
@@ -654,7 +696,7 @@
 .method public isPreventModeNoBackground()Z
     .locals 1
 
-    .line 383
+    .line 388
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeNoBackground:Z
 
     return v0
@@ -663,24 +705,24 @@
 .method public onDreamingStarted()V
     .locals 1
 
-    .line 90
+    .line 100
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mDozing:Z
 
-    .line 91
+    .line 101
     return-void
 .end method
 
 .method public onDreamingStopped()V
     .locals 1
 
-    .line 95
+    .line 105
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mDozing:Z
 
-    .line 96
+    .line 106
     return-void
 .end method
 
@@ -688,10 +730,10 @@
     .locals 0
     .param p1, "why"    # I
 
-    .line 124
+    .line 134
     invoke-virtual {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->disableProximitySensor()V
 
-    .line 125
+    .line 135
     return-void
 .end method
 
@@ -699,10 +741,10 @@
     .locals 0
     .param p1, "bouncer"    # Z
 
-    .line 129
+    .line 139
     iput-boolean p1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBouncer:Z
 
-    .line 130
+    .line 140
     return-void
 .end method
 
@@ -710,17 +752,17 @@
     .locals 0
     .param p1, "visible"    # Z
 
-    .line 134
+    .line 144
     iput-boolean p1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyguardIsVisible:Z
 
-    .line 138
+    .line 148
     return-void
 .end method
 
 .method public onScreenTurnedOn()V
     .locals 3
 
-    .line 101
+    .line 111
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     if-eqz v0, :cond_0
@@ -735,26 +777,26 @@
 
     if-nez v0, :cond_0
 
-    .line 102
+    .line 112
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 103
+    .line 113
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v2, 0x2
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 106
+    .line 116
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 108
+    .line 118
     :cond_0
     return-void
 .end method
@@ -762,14 +804,14 @@
 .method public onStartCtrl()V
     .locals 3
 
-    .line 72
+    .line 80
     const-string v0, "PreventModeCtrl"
 
     const-string v1, "onStartCtrl"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 73
+    .line 81
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v0
@@ -780,7 +822,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mStatusBarKeyguardViewManager:Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;
 
-    .line 74
+    .line 82
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v0
@@ -799,7 +841,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
 
-    .line 75
+    .line 83
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v0
@@ -818,7 +860,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBackground:Landroid/widget/ImageView;
 
-    .line 76
+    .line 84
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
 
     if-nez v0, :cond_0
@@ -849,13 +891,13 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 78
+    .line 86
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
 
     invoke-virtual {v0}, Lcom/android/systemui/plugin/PreventModeView;->init()V
 
-    .line 79
+    .line 87
     new-instance v0, Lcom/android/systemui/plugin/PreventModeCtrl$ProximityHandler;
 
     const/4 v1, 0x0
@@ -864,7 +906,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
-    .line 80
+    .line 88
     new-instance v0, Landroid/hardware/SystemSensorManager;
 
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mContext:Landroid/content/Context;
@@ -879,7 +921,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mSensorManager:Landroid/hardware/SensorManager;
 
-    .line 81
+    .line 89
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mSensorManager:Landroid/hardware/SensorManager;
 
     const/16 v1, 0x8
@@ -892,14 +934,25 @@
 
     iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mProximitySensor:Landroid/hardware/Sensor;
 
-    .line 82
+    .line 91
+    const-class v0, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/oneplus/scene/OPSceneModeObserver;
+
+    iput-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mOPSceneModeObserver:Lcom/oneplus/scene/OPSceneModeObserver;
+
+    .line 92
     return-void
 .end method
 
 .method public onStartedWakingUp()V
     .locals 3
 
-    .line 113
+    .line 123
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     if-eqz v0, :cond_0
@@ -910,26 +963,26 @@
 
     if-eqz v0, :cond_0
 
-    .line 114
+    .line 124
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 115
+    .line 125
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     const/4 v2, 0x2
 
     invoke-virtual {v0, v2}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 118
+    .line 128
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 120
+    .line 130
     :cond_0
     return-void
 .end method
@@ -938,7 +991,7 @@
     .locals 3
     .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
-    .line 363
+    .line 368
     const-string v0, "PreventModeCtrl"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -967,27 +1020,27 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 364
+    .line 369
     if-eqz p1, :cond_1
 
-    .line 365
+    .line 370
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mContext:Landroid/content/Context;
 
     invoke-static {v0, p1}, Lcom/android/systemui/util/ImageUtils;->computeCustomBackgroundBounds(Landroid/content/Context;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 366
+    .line 371
     .local v0, "bm":Landroid/graphics/Bitmap;
     iget-object v1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBackground:Landroid/widget/ImageView;
 
     invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 367
+    .line 372
     .end local v0    # "bm":Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 368
+    .line 373
     :cond_1
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mBackground:Landroid/widget/ImageView;
 
@@ -995,7 +1048,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 370
+    .line 375
     :goto_1
     return-void
 .end method
@@ -1004,7 +1057,7 @@
     .locals 3
     .param p1, "showing"    # Z
 
-    .line 142
+    .line 152
     const-string v0, "PreventModeCtrl"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1023,16 +1076,16 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 143
+    .line 153
     iput-boolean p1, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mKeyguardIsShowing:Z
 
-    .line 144
+    .line 154
     if-nez p1, :cond_0
 
-    .line 145
+    .line 155
     invoke-virtual {p0}, Lcom/android/systemui/plugin/PreventModeCtrl;->disableProximitySensor()V
 
-    .line 147
+    .line 157
     :cond_0
     return-void
 .end method
@@ -1040,24 +1093,24 @@
 .method public stopPreventMode()V
     .locals 6
 
-    .line 250
+    .line 260
     sget-boolean v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
     if-eqz v0, :cond_2
 
-    .line 251
+    .line 261
     const-string v0, "PreventModeCtrl"
 
     const-string v1, "stopPreventMode"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 253
+    .line 263
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 256
+    .line 266
     .local v0, "identity":J
     :try_start_0
     iget-object v2, p0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
@@ -1066,7 +1119,7 @@
 
     invoke-virtual {v2, v3}, Lcom/android/systemui/plugin/PreventModeView;->setVisibility(I)V
 
-    .line 258
+    .line 268
     sget-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeNoBackground:Z
 
     if-eqz v2, :cond_0
@@ -1081,7 +1134,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 259
+    .line 269
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v2
@@ -1098,23 +1151,23 @@
 
     invoke-virtual {v2, v3, v4, v5}, Lcom/android/systemui/statusbar/phone/StatusBar;->setPanelViewAlpha(FZI)V
 
-    .line 260
+    .line 270
     const-string v2, "PreventModeCtrl"
 
     const-string v3, "panel alpha to 1"
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 262
+    .line 272
     :cond_0
     const/4 v2, 0x0
 
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeNoBackground:Z
 
-    .line 264
+    .line 274
     sput-boolean v2, Lcom/android/systemui/plugin/PreventModeCtrl;->mPreventModeActive:Z
 
-    .line 266
+    .line 276
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v3
@@ -1125,7 +1178,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 267
+    .line 277
     invoke-static {}, Lcom/android/systemui/plugin/LSState;->getInstance()Lcom/android/systemui/plugin/LSState;
 
     move-result-object v3
@@ -1138,14 +1191,14 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 272
+    .line 282
     :cond_1
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 273
+    .line 283
     goto :goto_0
 
-    .line 272
+    .line 282
     :catchall_0
     move-exception v2
 
@@ -1153,7 +1206,7 @@
 
     throw v2
 
-    .line 275
+    .line 285
     .end local v0    # "identity":J
     :cond_2
     :goto_0

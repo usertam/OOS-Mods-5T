@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$1"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
-    .line 1316
+    .line 1321
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;->this$1:Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,10 +39,10 @@
 .method public run()V
     .locals 2
 
-    .line 1319
+    .line 1324
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;->this$1:Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1200(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
 
     move-result-object v0
 
@@ -54,11 +54,11 @@
 
     return-void
 
-    .line 1320
+    .line 1325
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;->this$1:Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1200(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
 
     move-result-object v0
 
@@ -66,10 +66,10 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setPressed(Z)V
 
-    .line 1321
+    .line 1326
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;->this$1:Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1200(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->access$1300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
 
     move-result-object v0
 
@@ -77,6 +77,6 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setPressed(Z)V
 
-    .line 1322
+    .line 1327
     return-void
 .end method

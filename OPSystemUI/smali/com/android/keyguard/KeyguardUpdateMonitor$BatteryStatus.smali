@@ -38,28 +38,28 @@
     .param p5, "maxChargingWattage"    # I
     .param p6, "fastCharge"    # I
 
-    .line 1465
+    .line 1467
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1466
+    .line 1468
     iput p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->status:I
 
-    .line 1467
+    .line 1469
     iput p2, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->level:I
 
-    .line 1468
+    .line 1470
     iput p3, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->plugged:I
 
-    .line 1469
+    .line 1471
     iput p4, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->health:I
 
-    .line 1470
+    .line 1472
     iput p5, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->maxChargingWattage:I
 
-    .line 1471
+    .line 1473
     iput p6, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->fastCharge:I
 
-    .line 1472
+    .line 1474
     return-void
 .end method
 
@@ -70,7 +70,7 @@
     .param p1, "slowThreshold"    # I
     .param p2, "fastThreshold"    # I
 
-    .line 1514
+    .line 1516
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->fastCharge:I
 
     const/4 v1, 0x2
@@ -81,7 +81,7 @@
 
     return v1
 
-    .line 1515
+    .line 1517
     :cond_0
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->fastCharge:I
 
@@ -91,7 +91,7 @@
 
     return v0
 
-    .line 1518
+    .line 1520
     :cond_1
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->maxChargingWattage:I
 
@@ -101,11 +101,11 @@
 
     goto :goto_0
 
-    .line 1522
+    .line 1524
     :cond_2
     nop
 
-    .line 1518
+    .line 1520
     :goto_0
     return v2
 .end method
@@ -113,7 +113,7 @@
 .method public isCharged()Z
     .locals 2
 
-    .line 1501
+    .line 1503
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->status:I
 
     const/4 v1, 0x5
@@ -144,7 +144,7 @@
 .method public isPluggedIn()Z
     .locals 3
 
-    .line 1480
+    .line 1482
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->plugged:I
 
     const/4 v1, 0x1
@@ -178,7 +178,7 @@
 .method public isPluggedInWired()Z
     .locals 3
 
-    .line 1490
+    .line 1492
     iget v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;->plugged:I
 
     const/4 v1, 0x1
@@ -206,7 +206,7 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 1528
+    .line 1530
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

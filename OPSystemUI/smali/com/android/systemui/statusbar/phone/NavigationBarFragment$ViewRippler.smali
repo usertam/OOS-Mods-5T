@@ -26,12 +26,12 @@
 .method private constructor <init>(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)V
     .locals 0
 
-    .line 1294
+    .line 1299
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1316
+    .line 1321
     new-instance p1, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;
 
     invoke-direct {p1, p0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler$1;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)V
@@ -46,17 +46,17 @@
     .param p1, "x0"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
     .param p2, "x1"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment$1;
 
-    .line 1294
+    .line 1299
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;-><init>(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)V
 
     return-void
 .end method
 
-.method static synthetic access$1200(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
+.method static synthetic access$1300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;)Landroid/view/View;
     .locals 1
     .param p0, "x0"    # Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;
 
-    .line 1294
+    .line 1299
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     return-object v0
@@ -68,13 +68,13 @@
     .locals 4
     .param p1, "root"    # Landroid/view/View;
 
-    .line 1300
+    .line 1305
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->stop()V
 
-    .line 1302
+    .line 1307
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
-    .line 1305
+    .line 1310
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRipple:Ljava/lang/Runnable;
@@ -83,7 +83,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postOnAnimationDelayed(Ljava/lang/Runnable;J)V
 
-    .line 1306
+    .line 1311
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRipple:Ljava/lang/Runnable;
@@ -92,7 +92,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postOnAnimationDelayed(Ljava/lang/Runnable;J)V
 
-    .line 1307
+    .line 1312
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRipple:Ljava/lang/Runnable;
@@ -101,7 +101,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postOnAnimationDelayed(Ljava/lang/Runnable;J)V
 
-    .line 1308
+    .line 1313
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRipple:Ljava/lang/Runnable;
@@ -110,7 +110,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postOnAnimationDelayed(Ljava/lang/Runnable;J)V
 
-    .line 1309
+    .line 1314
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRipple:Ljava/lang/Runnable;
@@ -119,14 +119,14 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postOnAnimationDelayed(Ljava/lang/Runnable;J)V
 
-    .line 1310
+    .line 1315
     return-void
 .end method
 
 .method public stop()V
     .locals 2
 
-    .line 1313
+    .line 1318
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$ViewRippler;->mRoot:Landroid/view/View;
 
     if-eqz v0, :cond_0
@@ -137,7 +137,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 1314
+    .line 1319
     :cond_0
     return-void
 .end method

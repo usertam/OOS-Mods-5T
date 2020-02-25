@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 336
+    .line 341
     iput-object p1, p0, Lcom/android/systemui/plugin/PreventModeCtrl$3;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,7 +40,7 @@
     .locals 0
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 350
+    .line 355
     return-void
 .end method
 
@@ -48,7 +48,7 @@
     .locals 0
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 345
+    .line 350
     return-void
 .end method
 
@@ -56,7 +56,7 @@
     .locals 0
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 355
+    .line 360
     return-void
 .end method
 
@@ -64,7 +64,7 @@
     .locals 2
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 339
+    .line 344
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$3;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     iget-object v0, v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
@@ -73,6 +73,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/plugin/PreventModeView;->setVisibility(I)V
 
-    .line 340
+    .line 345
     return-void
 .end method

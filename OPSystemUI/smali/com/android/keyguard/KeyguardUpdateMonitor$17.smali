@@ -30,7 +30,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
 
-    .line 3223
+    .line 3228
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     iput p2, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->val$type:I
@@ -47,7 +47,7 @@
 .method public run()V
     .locals 4
 
-    .line 3226
+    .line 3231
     const/4 v0, 0x0
 
     move v1, v0
@@ -66,7 +66,7 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 3227
+    .line 3232
     iget-object v2, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v2}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$5600(Lcom/android/keyguard/KeyguardUpdateMonitor;)Ljava/util/ArrayList;
@@ -85,23 +85,23 @@
 
     check-cast v2, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;
 
-    .line 3228
+    .line 3233
     .local v2, "cb":Lcom/android/keyguard/KeyguardUpdateMonitorCallback;
     if-eqz v2, :cond_0
 
-    .line 3229
+    .line 3234
     iget v3, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->val$type:I
 
     invoke-virtual {v2, v3}, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;->onFacelockStateChanged(I)V
 
-    .line 3226
+    .line 3231
     .end local v2    # "cb":Lcom/android/keyguard/KeyguardUpdateMonitorCallback;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 3233
+    .line 3238
     .end local v1    # "i":I
     :cond_1
     iget v1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->val$lastType:I
@@ -112,7 +112,7 @@
 
     return-void
 
-    .line 3235
+    .line 3240
     :cond_2
     iget v1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->val$type:I
 
@@ -120,7 +120,7 @@
 
     if-ne v1, v2, :cond_3
 
-    .line 3236
+    .line 3241
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     const/4 v1, 0x1
@@ -129,13 +129,13 @@
 
     goto :goto_1
 
-    .line 3238
+    .line 3243
     :cond_3
     iget-object v1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$17;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v1, v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$5700(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)V
 
-    .line 3241
+    .line 3246
     :goto_1
     return-void
 .end method

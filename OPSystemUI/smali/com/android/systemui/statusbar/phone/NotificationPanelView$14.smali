@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 1558
+    .line 1567
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$14;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,7 +40,7 @@
     .locals 2
     .param p1, "animation"    # Landroid/animation/ValueAnimator;
 
-    .line 1561
+    .line 1570
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$14;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
@@ -55,6 +55,6 @@
 
     invoke-static {v0, v1}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->access$1400(Lcom/android/systemui/statusbar/phone/NotificationPanelView;F)V
 
-    .line 1562
+    .line 1571
     return-void
 .end method

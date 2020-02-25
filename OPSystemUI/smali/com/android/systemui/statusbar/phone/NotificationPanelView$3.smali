@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 286
+    .line 289
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$3;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
@@ -37,7 +37,7 @@
     .locals 1
     .param p1, "animation"    # Landroid/animation/Animator;
 
-    .line 289
+    .line 292
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$3;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->access$200(Lcom/android/systemui/statusbar/phone/NotificationPanelView;)Ljava/lang/Runnable;
@@ -46,7 +46,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 290
+    .line 293
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$3;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->access$200(Lcom/android/systemui/statusbar/phone/NotificationPanelView;)Ljava/lang/Runnable;
@@ -55,7 +55,7 @@
 
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
 
-    .line 292
+    .line 295
     :cond_0
     return-void
 .end method

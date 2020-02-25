@@ -25,15 +25,15 @@
     .locals 0
     .param p2, "wrapped"    # Landroid/view/ActionMode$Callback;
 
-    .line 550
+    .line 558
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     invoke-direct {p0}, Landroid/view/ActionMode$Callback2;-><init>()V
 
-    .line 551
+    .line 559
     iput-object p2, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
-    .line 552
+    .line 560
     return-void
 .end method
 
@@ -44,7 +44,7 @@
     .param p1, "mode"    # Landroid/view/ActionMode;
     .param p2, "item"    # Landroid/view/MenuItem;
 
-    .line 564
+    .line 572
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     invoke-interface {v0, p1, p2}, Landroid/view/ActionMode$Callback;->onActionItemClicked(Landroid/view/ActionMode;Landroid/view/MenuItem;)Z
@@ -59,7 +59,7 @@
     .param p1, "mode"    # Landroid/view/ActionMode;
     .param p2, "menu"    # Landroid/view/Menu;
 
-    .line 555
+    .line 563
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     invoke-interface {v0, p1, p2}, Landroid/view/ActionMode$Callback;->onCreateActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
@@ -73,12 +73,12 @@
     .locals 2
     .param p1, "mode"    # Landroid/view/ActionMode;
 
-    .line 568
+    .line 576
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     invoke-interface {v0, p1}, Landroid/view/ActionMode$Callback;->onDestroyActionMode(Landroid/view/ActionMode;)V
 
-    .line 569
+    .line 577
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/StatusBarWindowView;->access$000(Lcom/android/systemui/statusbar/phone/StatusBarWindowView;)Landroid/view/ActionMode;
@@ -87,25 +87,25 @@
 
     if-ne p1, v0, :cond_0
 
-    .line 570
+    .line 578
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/StatusBarWindowView;->access$100(Lcom/android/systemui/statusbar/phone/StatusBarWindowView;)V
 
-    .line 571
+    .line 579
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     const/4 v1, 0x0
 
     invoke-static {v0, v1}, Lcom/android/systemui/statusbar/phone/StatusBarWindowView;->access$002(Lcom/android/systemui/statusbar/phone/StatusBarWindowView;Landroid/view/ActionMode;)Landroid/view/ActionMode;
 
-    .line 573
+    .line 581
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBarWindowView;->requestFitSystemWindows()V
 
-    .line 574
+    .line 582
     return-void
 .end method
 
@@ -115,14 +115,14 @@
     .param p2, "view"    # Landroid/view/View;
     .param p3, "outRect"    # Landroid/graphics/Rect;
 
-    .line 578
+    .line 586
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     instance-of v0, v0, Landroid/view/ActionMode$Callback2;
 
     if-eqz v0, :cond_0
 
-    .line 579
+    .line 587
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     check-cast v0, Landroid/view/ActionMode$Callback2;
@@ -131,11 +131,11 @@
 
     goto :goto_0
 
-    .line 581
+    .line 589
     :cond_0
     invoke-super {p0, p1, p2, p3}, Landroid/view/ActionMode$Callback2;->onGetContentRect(Landroid/view/ActionMode;Landroid/view/View;Landroid/graphics/Rect;)V
 
-    .line 583
+    .line 591
     :goto_0
     return-void
 .end method
@@ -145,12 +145,12 @@
     .param p1, "mode"    # Landroid/view/ActionMode;
     .param p2, "menu"    # Landroid/view/Menu;
 
-    .line 559
+    .line 567
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->this$0:Lcom/android/systemui/statusbar/phone/StatusBarWindowView;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBarWindowView;->requestFitSystemWindows()V
 
-    .line 560
+    .line 568
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBarWindowView$ActionModeCallback2Wrapper;->mWrapped:Landroid/view/ActionMode$Callback;
 
     invoke-interface {v0, p1, p2}, Landroid/view/ActionMode$Callback;->onPrepareActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z

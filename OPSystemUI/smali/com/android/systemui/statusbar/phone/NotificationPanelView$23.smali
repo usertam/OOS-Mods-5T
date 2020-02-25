@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    .line 3012
+    .line 3021
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$23;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,7 +39,7 @@
 .method public run()V
     .locals 2
 
-    .line 3015
+    .line 3024
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NotificationPanelView$23;->this$0:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->access$2000(Lcom/android/systemui/statusbar/phone/NotificationPanelView;)Landroid/content/Context;
@@ -50,12 +50,12 @@
 
     move-result-object v0
 
-    .line 3016
+    .line 3025
     .local v0, "updateMonitor":Lcom/android/keyguard/KeyguardUpdateMonitor;
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->updateLaunchingCameraState(Z)V
 
-    .line 3017
+    .line 3026
     return-void
 .end method

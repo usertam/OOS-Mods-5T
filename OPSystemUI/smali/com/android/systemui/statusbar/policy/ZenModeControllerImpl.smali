@@ -31,6 +31,8 @@
     .end annotation
 .end field
 
+.field private final mCallbacksLock:Ljava/lang/Object;
+
 .field private final mConditions:Ljava/util/LinkedHashMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -88,7 +90,7 @@
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "handler"    # Landroid/os/Handler;
 
-    .line 71
+    .line 74
     invoke-direct {p0, p1}, Lcom/android/systemui/settings/CurrentUserTracker;-><init>(Landroid/content/Context;)V
 
     .line 55
@@ -98,24 +100,31 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    .line 60
+    .line 57
+    new-instance v0, Ljava/lang/Object;
+
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
+
+    .line 63
     new-instance v0, Ljava/util/LinkedHashMap;
 
     invoke-direct {v0}, Ljava/util/LinkedHashMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConditions:Ljava/util/LinkedHashMap;
 
-    .line 230
+    .line 273
     new-instance v0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$3;
 
     invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$3;-><init>(Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 72
+    .line 75
     iput-object p1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mContext:Landroid/content/Context;
 
-    .line 73
+    .line 76
     new-instance v0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$1;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mContext:Landroid/content/Context;
@@ -126,7 +135,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mModeSetting:Lcom/android/systemui/qs/GlobalSetting;
 
-    .line 80
+    .line 83
     new-instance v0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$2;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mContext:Landroid/content/Context;
@@ -137,7 +146,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfigSetting:Lcom/android/systemui/qs/GlobalSetting;
 
-    .line 86
+    .line 89
     const-string v0, "notification"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -148,7 +157,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mNoMan:Landroid/app/NotificationManager;
 
-    .line 87
+    .line 90
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mNoMan:Landroid/app/NotificationManager;
 
     invoke-virtual {v0}, Landroid/app/NotificationManager;->getZenModeConfig()Landroid/service/notification/ZenModeConfig;
@@ -157,14 +166,14 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
-    .line 88
+    .line 91
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mModeSetting:Lcom/android/systemui/qs/GlobalSetting;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/qs/GlobalSetting;->setListening(Z)V
 
-    .line 89
+    .line 92
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mModeSetting:Lcom/android/systemui/qs/GlobalSetting;
 
     invoke-virtual {v0}, Lcom/android/systemui/qs/GlobalSetting;->getValue()I
@@ -173,15 +182,15 @@
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->updateZenMode(I)V
 
-    .line 90
+    .line 93
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfigSetting:Lcom/android/systemui/qs/GlobalSetting;
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/qs/GlobalSetting;->setListening(Z)V
 
-    .line 91
+    .line 94
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->updateZenModeConfig()V
 
-    .line 92
+    .line 95
     const-string v0, "alarm"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -192,19 +201,19 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mAlarmManager:Landroid/app/AlarmManager;
 
-    .line 93
+    .line 96
     new-instance v0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;
 
     invoke-direct {v0, p0, p2}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;-><init>(Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;Landroid/os/Handler;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mSetupObserver:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;
 
-    .line 94
+    .line 97
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mSetupObserver:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->register()V
 
-    .line 95
+    .line 98
     const-class v0, Landroid/os/UserManager;
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
@@ -215,10 +224,10 @@
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mUserManager:Landroid/os/UserManager;
 
-    .line 96
+    .line 99
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->startTracking()V
 
-    .line 97
+    .line 100
     return-void
 .end method
 
@@ -285,82 +294,177 @@
 .end method
 
 .method private fireEffectsSuppressorChanged()V
-    .locals 2
+    .locals 3
 
-    .line 193
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 213
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    sget-object v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SV0AVEr3ZD6I5F0ZOAtC6EOyn-k;->INSTANCE:Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SV0AVEr3ZD6I5F0ZOAtC6EOyn-k;
+    monitor-enter v0
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    .line 214
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    .line 194
+    sget-object v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SV0AVEr3ZD6I5F0ZOAtC6EOyn-k;->INSTANCE:Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SV0AVEr3ZD6I5F0ZOAtC6EOyn-k;
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 215
+    monitor-exit v0
+
+    .line 217
     return-void
+
+    .line 215
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method private fireManualRuleChanged(Landroid/service/notification/ZenModeConfig$ZenRule;)V
-    .locals 2
+    .locals 3
     .param p1, "rule"    # Landroid/service/notification/ZenModeConfig$ZenRule;
 
-    .line 205
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 240
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    new-instance v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$8iaDxlkHjmysoUP7KwjUaBzkBiQ;
+    monitor-enter v0
 
-    invoke-direct {v1, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$8iaDxlkHjmysoUP7KwjUaBzkBiQ;-><init>(Landroid/service/notification/ZenModeConfig$ZenRule;)V
+    .line 241
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    new-instance v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$8iaDxlkHjmysoUP7KwjUaBzkBiQ;
 
-    .line 206
+    invoke-direct {v2, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$8iaDxlkHjmysoUP7KwjUaBzkBiQ;-><init>(Landroid/service/notification/ZenModeConfig$ZenRule;)V
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 242
+    monitor-exit v0
+
+    .line 244
     return-void
+
+    .line 242
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method private fireNextAlarmChanged()V
-    .locals 2
+    .locals 3
 
-    .line 189
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 204
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    sget-object v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$6_S_aAoRd9fsiJr9D0TIwCJGb6M;->INSTANCE:Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$6_S_aAoRd9fsiJr9D0TIwCJGb6M;
+    monitor-enter v0
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    .line 205
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    .line 190
+    sget-object v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$6_S_aAoRd9fsiJr9D0TIwCJGb6M;->INSTANCE:Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$6_S_aAoRd9fsiJr9D0TIwCJGb6M;
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 206
+    monitor-exit v0
+
+    .line 208
     return-void
+
+    .line 206
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method private fireZenAvailableChanged(Z)V
-    .locals 2
+    .locals 3
     .param p1, "available"    # Z
 
-    .line 201
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 231
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    new-instance v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SZ6Og1sK4NAner-jv0COJMr2bCU;
+    monitor-enter v0
 
-    invoke-direct {v1, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SZ6Og1sK4NAner-jv0COJMr2bCU;-><init>(Z)V
+    .line 232
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    new-instance v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SZ6Og1sK4NAner-jv0COJMr2bCU;
 
-    .line 202
+    invoke-direct {v2, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$SZ6Og1sK4NAner-jv0COJMr2bCU;-><init>(Z)V
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 233
+    monitor-exit v0
+
+    .line 235
     return-void
+
+    .line 233
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method private fireZenChanged(I)V
-    .locals 2
+    .locals 3
     .param p1, "zen"    # I
 
-    .line 197
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 222
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    new-instance v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$d6ICAgvR9KT8NKs4p-zRwBgYI2g;
+    monitor-enter v0
 
-    invoke-direct {v1, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$d6ICAgvR9KT8NKs4p-zRwBgYI2g;-><init>(I)V
+    .line 223
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    new-instance v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$d6ICAgvR9KT8NKs4p-zRwBgYI2g;
 
-    .line 198
+    invoke-direct {v2, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$d6ICAgvR9KT8NKs4p-zRwBgYI2g;-><init>(I)V
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 224
+    monitor-exit v0
+
+    .line 226
     return-void
+
+    .line 224
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method static synthetic lambda$fireConfigChanged$5(Landroid/service/notification/ZenModeConfig;Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;)V
@@ -368,7 +472,7 @@
     .param p0, "config"    # Landroid/service/notification/ZenModeConfig;
     .param p1, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 210
+    .line 251
     invoke-interface {p1, p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onConfigChanged(Landroid/service/notification/ZenModeConfig;)V
 
     return-void
@@ -378,7 +482,7 @@
     .locals 0
     .param p0, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 193
+    .line 214
     invoke-interface {p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onEffectsSupressorChanged()V
 
     return-void
@@ -389,7 +493,7 @@
     .param p0, "rule"    # Landroid/service/notification/ZenModeConfig$ZenRule;
     .param p1, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 205
+    .line 241
     invoke-interface {p1, p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onManualRuleChanged(Landroid/service/notification/ZenModeConfig$ZenRule;)V
 
     return-void
@@ -399,7 +503,7 @@
     .locals 0
     .param p0, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 189
+    .line 205
     invoke-interface {p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onNextAlarmChanged()V
 
     return-void
@@ -410,7 +514,7 @@
     .param p0, "available"    # Z
     .param p1, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 201
+    .line 232
     invoke-interface {p1, p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onZenAvailableChanged(Z)V
 
     return-void
@@ -421,7 +525,7 @@
     .param p0, "zen"    # I
     .param p1, "c"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 197
+    .line 223
     invoke-interface {p1, p0}, Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;->onZenChanged(I)V
 
     return-void
@@ -433,27 +537,46 @@
     .locals 2
     .param p1, "callback"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 116
+    .line 119
     if-nez p1, :cond_0
 
-    .line 117
+    .line 120
     const-string v0, "ZenModeController"
 
     const-string v1, "Attempted to add a null callback."
 
     invoke-static {v0, v1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 118
-    return-void
-
-    .line 120
-    :cond_0
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
     .line 121
     return-void
+
+    .line 125
+    :cond_0
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
+
+    monitor-enter v0
+
+    .line 126
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+
+    invoke-virtual {v1, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 127
+    monitor-exit v0
+
+    .line 129
+    return-void
+
+    .line 127
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method public bridge synthetic addCallback(Ljava/lang/Object;)V
@@ -470,14 +593,14 @@
 .method public areNotificationsHiddenInShade()Z
     .locals 2
 
-    .line 107
+    .line 110
     iget v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mZenMode:I
 
     const/4 v1, 0x0
 
     if-eqz v0, :cond_1
 
-    .line 108
+    .line 111
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
     iget v0, v0, Landroid/service/notification/ZenModeConfig;->suppressedVisualEffects:I
@@ -493,34 +616,53 @@
     :cond_0
     return v1
 
-    .line 111
+    .line 114
     :cond_1
     return v1
 .end method
 
 .method protected fireConfigChanged(Landroid/service/notification/ZenModeConfig;)V
-    .locals 2
+    .locals 3
     .param p1, "config"    # Landroid/service/notification/ZenModeConfig;
     .annotation build Lcom/android/internal/annotations/VisibleForTesting;
     .end annotation
 
-    .line 210
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 250
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    new-instance v1, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$NTRmeN-9LsZ7CNQt3AAPKduQbCg;
+    monitor-enter v0
 
-    invoke-direct {v1, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$NTRmeN-9LsZ7CNQt3AAPKduQbCg;-><init>(Landroid/service/notification/ZenModeConfig;)V
+    .line 251
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
 
-    invoke-static {v0, v1}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+    new-instance v2, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$NTRmeN-9LsZ7CNQt3AAPKduQbCg;
 
-    .line 211
+    invoke-direct {v2, p1}, Lcom/android/systemui/statusbar/policy/-$$Lambda$ZenModeControllerImpl$NTRmeN-9LsZ7CNQt3AAPKduQbCg;-><init>(Landroid/service/notification/ZenModeConfig;)V
+
+    invoke-static {v1, v2}, Lcom/android/systemui/util/OPUtils;->safeForeach(Ljava/util/List;Ljava/util/function/Consumer;)V
+
+    .line 252
+    monitor-exit v0
+
+    .line 254
     return-void
+
+    .line 252
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method public getConfig()Landroid/service/notification/ZenModeConfig;
     .locals 1
 
-    .line 150
+    .line 163
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
     return-object v0
@@ -529,7 +671,7 @@
 .method public getManualRule()Landroid/service/notification/ZenModeConfig$ZenRule;
     .locals 1
 
-    .line 145
+    .line 158
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
     if-nez v0, :cond_0
@@ -550,7 +692,7 @@
 .method public getNextAlarm()J
     .locals 3
 
-    .line 155
+    .line 168
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mAlarmManager:Landroid/app/AlarmManager;
 
     iget v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mUserId:I
@@ -559,7 +701,7 @@
 
     move-result-object v0
 
-    .line 156
+    .line 169
     .local v0, "info":Landroid/app/AlarmManager$AlarmClockInfo;
     if-eqz v0, :cond_0
 
@@ -579,7 +721,7 @@
 .method public getZen()I
     .locals 1
 
-    .line 130
+    .line 143
     iget v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mZenMode:I
 
     return v0
@@ -588,7 +730,7 @@
 .method public isVolumeRestricted()Z
     .locals 4
 
-    .line 101
+    .line 104
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mUserManager:Landroid/os/UserManager;
 
     const-string v1, "no_adjust_volume"
@@ -609,7 +751,7 @@
 .method public isZenAvailable()Z
     .locals 1
 
-    .line 140
+    .line 153
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mSetupObserver:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->isDeviceProvisioned()Z
@@ -641,22 +783,22 @@
     .locals 8
     .param p1, "userId"    # I
 
-    .line 161
+    .line 174
     iput p1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mUserId:I
 
-    .line 162
+    .line 175
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mRegistered:Z
 
     if-eqz v0, :cond_0
 
-    .line 163
+    .line 176
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 165
+    .line 178
     :cond_0
     new-instance v0, Landroid/content/IntentFilter;
 
@@ -664,13 +806,13 @@
 
     invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 166
+    .line 179
     .local v0, "filter":Landroid/content/IntentFilter;
     const-string v1, "android.os.action.ACTION_EFFECTS_SUPPRESSOR_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 167
+    .line 180
     iget-object v2, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mContext:Landroid/content/Context;
 
     iget-object v3, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mReceiver:Landroid/content/BroadcastReceiver;
@@ -689,31 +831,50 @@
 
     invoke-virtual/range {v2 .. v7}, Landroid/content/Context;->registerReceiverAsUser(Landroid/content/BroadcastReceiver;Landroid/os/UserHandle;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
 
-    .line 168
+    .line 181
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mRegistered:Z
 
-    .line 169
+    .line 182
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mSetupObserver:Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;
 
     invoke-virtual {v1}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl$SetupObserver;->register()V
 
-    .line 170
+    .line 183
     return-void
 .end method
 
 .method public removeCallback(Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;)V
-    .locals 1
+    .locals 2
     .param p1, "callback"    # Lcom/android/systemui/statusbar/policy/ZenModeController$Callback;
 
-    .line 125
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+    .line 135
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacksLock:Ljava/lang/Object;
 
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+    monitor-enter v0
 
-    .line 126
+    .line 136
+    :try_start_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mCallbacks:Ljava/util/ArrayList;
+
+    invoke-virtual {v1, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    .line 137
+    monitor-exit v0
+
+    .line 139
     return-void
+
+    .line 137
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method public bridge synthetic removeCallback(Ljava/lang/Object;)V
@@ -733,12 +894,12 @@
     .param p2, "conditionId"    # Landroid/net/Uri;
     .param p3, "reason"    # Ljava/lang/String;
 
-    .line 135
+    .line 148
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mNoMan:Landroid/app/NotificationManager;
 
     invoke-virtual {v0, p1, p2, p3}, Landroid/app/NotificationManager;->setZenMode(ILandroid/net/Uri;Ljava/lang/String;)V
 
-    .line 136
+    .line 149
     return-void
 .end method
 
@@ -748,10 +909,10 @@
     .annotation build Lcom/android/internal/annotations/VisibleForTesting;
     .end annotation
 
-    .line 215
+    .line 258
     iput p1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mZenMode:I
 
-    .line 216
+    .line 259
     return-void
 .end method
 
@@ -760,14 +921,14 @@
     .annotation build Lcom/android/internal/annotations/VisibleForTesting;
     .end annotation
 
-    .line 220
+    .line 263
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mNoMan:Landroid/app/NotificationManager;
 
     invoke-virtual {v0}, Landroid/app/NotificationManager;->getZenModeConfig()Landroid/service/notification/ZenModeConfig;
 
     move-result-object v0
 
-    .line 221
+    .line 264
     .local v0, "config":Landroid/service/notification/ZenModeConfig;
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
@@ -779,7 +940,7 @@
 
     return-void
 
-    .line 222
+    .line 265
     :cond_0
     iget-object v1, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
@@ -796,22 +957,22 @@
     :cond_1
     move-object v1, v2
 
-    .line 223
+    .line 266
     .local v1, "oldRule":Landroid/service/notification/ZenModeConfig$ZenRule;
     :goto_0
     iput-object v0, p0, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->mConfig:Landroid/service/notification/ZenModeConfig;
 
-    .line 224
+    .line 267
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->fireConfigChanged(Landroid/service/notification/ZenModeConfig;)V
 
-    .line 225
+    .line 268
     if-eqz v0, :cond_2
 
     iget-object v2, v0, Landroid/service/notification/ZenModeConfig;->manualRule:Landroid/service/notification/ZenModeConfig$ZenRule;
 
     nop
 
-    .line 226
+    .line 269
     .local v2, "newRule":Landroid/service/notification/ZenModeConfig$ZenRule;
     :cond_2
     invoke-static {v1, v2}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
@@ -822,10 +983,10 @@
 
     return-void
 
-    .line 227
+    .line 270
     :cond_3
     invoke-direct {p0, v2}, Lcom/android/systemui/statusbar/policy/ZenModeControllerImpl;->fireManualRuleChanged(Landroid/service/notification/ZenModeConfig$ZenRule;)V
 
-    .line 228
+    .line 271
     return-void
 .end method

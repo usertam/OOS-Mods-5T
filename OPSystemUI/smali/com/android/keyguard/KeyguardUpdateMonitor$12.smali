@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
     .param p2, "x0"    # Landroid/os/Handler;
 
-    .line 2139
+    .line 2144
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$12;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -38,10 +38,10 @@
     .locals 3
     .param p1, "selfChange"    # Z
 
-    .line 2142
+    .line 2147
     invoke-super {p0, p1}, Landroid/database/ContentObserver;->onChange(Z)V
 
-    .line 2143
+    .line 2148
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$12;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     iget-object v1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$12;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
@@ -52,7 +52,7 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$4802(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)Z
 
-    .line 2144
+    .line 2149
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$12;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$4800(Lcom/android/keyguard/KeyguardUpdateMonitor;)Z
@@ -61,7 +61,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 2145
+    .line 2150
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$12;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3200(Lcom/android/keyguard/KeyguardUpdateMonitor;)Landroid/os/Handler;
@@ -72,7 +72,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 2147
+    .line 2152
     :cond_0
     const-string v0, "KeyguardUpdateMonitor"
 
@@ -98,6 +98,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2148
+    .line 2153
     return-void
 .end method

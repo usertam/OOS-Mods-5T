@@ -6293,7 +6293,7 @@
     packed-switch v1, :pswitch_data_0
 
     .line 533
-    const-string v1, "subscription"
+    const-string/jumbo v1, "subscription"
 
     invoke-virtual {p2, v1, v2}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
@@ -6487,10 +6487,12 @@
     :pswitch_4
     nop
 
+    .line 487
     .local v3, "i":I
     :goto_2
     move v1, v3
 
+    .line 487
     .end local v3    # "i":I
     .local v1, "i":I
     iget-object v2, p0, Lcom/android/systemui/statusbar/policy/NetworkControllerImpl;->mMobileSignalControllers:Landroid/util/SparseArray;
@@ -6518,6 +6520,7 @@
     .end local v2    # "controller":Lcom/android/systemui/statusbar/policy/MobileSignalController;
     add-int/lit8 v3, v1, 0x1
 
+    .line 487
     .end local v1    # "i":I
     .restart local v3    # "i":I
     goto :goto_2
@@ -6569,6 +6572,8 @@
     :cond_8
     :goto_3
     return-void
+
+    nop
 
     :sswitch_data_0
     .sparse-switch

@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/statusbar/phone/StatusBar;
 
-    .line 601
+    .line 602
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar$3;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,34 +39,34 @@
 .method public onCancelled()V
     .locals 0
 
-    .line 616
+    .line 617
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar$3;->onFinished()V
 
-    .line 617
+    .line 618
     return-void
 .end method
 
 .method public onFinished()V
     .locals 2
 
-    .line 604
+    .line 605
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$3;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarKeyguardViewManager:Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;
 
     if-nez v0, :cond_0
 
-    .line 605
+    .line 606
     const-string v0, "StatusBar"
 
     const-string v1, "Tried to notify keyguard visibility when mStatusBarKeyguardViewManager was null"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 607
+    .line 608
     return-void
 
-    .line 609
+    .line 610
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$3;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
@@ -74,14 +74,14 @@
 
     if-eqz v0, :cond_1
 
-    .line 610
+    .line 611
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar$3;->this$0:Lcom/android/systemui/statusbar/phone/StatusBar;
 
     iget-object v0, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarKeyguardViewManager:Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;
 
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBarKeyguardViewManager;->onKeyguardFadedAway()V
 
-    .line 612
+    .line 613
     :cond_1
     return-void
 .end method

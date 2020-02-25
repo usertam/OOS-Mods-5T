@@ -25,7 +25,7 @@
 .method private constructor <init>(Lcom/android/systemui/statusbar/NotificationEntryManager;)V
     .locals 0
 
-    .line 157
+    .line 168
     iput-object p1, p0, Lcom/android/systemui/statusbar/NotificationEntryManager$NotificationClicker;->this$0:Lcom/android/systemui/statusbar/NotificationEntryManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
     .param p1, "x0"    # Lcom/android/systemui/statusbar/NotificationEntryManager;
     .param p2, "x1"    # Lcom/android/systemui/statusbar/NotificationEntryManager$1;
 
-    .line 157
+    .line 168
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/NotificationEntryManager$NotificationClicker;-><init>(Lcom/android/systemui/statusbar/NotificationEntryManager;)V
 
     return-void
@@ -48,7 +48,7 @@
     .locals 1
     .param p0, "row"    # Lcom/android/systemui/statusbar/ExpandableNotificationRow;
 
-    .line 183
+    .line 194
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->setJustClicked(Z)V
@@ -62,22 +62,22 @@
     .locals 4
     .param p1, "v"    # Landroid/view/View;
 
-    .line 161
+    .line 172
     instance-of v0, p1, Lcom/android/systemui/statusbar/ExpandableNotificationRow;
 
     if-nez v0, :cond_0
 
-    .line 162
+    .line 173
     const-string v0, "NotificationEntryMgr"
 
     const-string v1, "NotificationClicker called on a view that is not a notification row."
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 163
+    .line 174
     return-void
 
-    .line 166
+    .line 177
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/NotificationEntryManager$NotificationClicker;->this$0:Lcom/android/systemui/statusbar/NotificationEntryManager;
 
@@ -89,32 +89,32 @@
 
     invoke-interface {v0, v1, v2, p1}, Lcom/android/systemui/statusbar/NotificationPresenter;->wakeUpIfDozing(JLandroid/view/View;)V
 
-    .line 168
+    .line 179
     move-object v0, p1
 
     check-cast v0, Lcom/android/systemui/statusbar/ExpandableNotificationRow;
 
-    .line 169
+    .line 180
     .local v0, "row":Lcom/android/systemui/statusbar/ExpandableNotificationRow;
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->getStatusBarNotification()Landroid/service/notification/StatusBarNotification;
 
     move-result-object v1
 
-    .line 170
+    .line 181
     .local v1, "sbn":Landroid/service/notification/StatusBarNotification;
     if-nez v1, :cond_1
 
-    .line 171
+    .line 182
     const-string v2, "NotificationEntryMgr"
 
     const-string v3, "NotificationClicker called on an unclickable notification,"
 
     invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 172
+    .line 183
     return-void
 
-    .line 176
+    .line 187
     :cond_1
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->getProvider()Lcom/android/systemui/plugins/statusbar/NotificationMenuRowPlugin;
 
@@ -132,35 +132,35 @@
 
     if-eqz v2, :cond_2
 
-    .line 177
+    .line 188
     const/4 v2, 0x0
 
     invoke-virtual {v0, v2}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->animateTranslateNotification(F)V
 
-    .line 178
+    .line 189
     return-void
 
-    .line 182
+    .line 193
     :cond_2
     const/4 v2, 0x1
 
     invoke-virtual {v0, v2}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->setJustClicked(Z)V
 
-    .line 183
+    .line 194
     new-instance v2, Lcom/android/systemui/statusbar/-$$Lambda$NotificationEntryManager$NotificationClicker$LBMGOladLjt5equMOv9trf31Q8s;
 
     invoke-direct {v2, v0}, Lcom/android/systemui/statusbar/-$$Lambda$NotificationEntryManager$NotificationClicker$LBMGOladLjt5equMOv9trf31Q8s;-><init>(Lcom/android/systemui/statusbar/ExpandableNotificationRow;)V
 
     invoke-static {v2}, Lcom/android/systemui/DejankUtils;->postAfterTraversal(Ljava/lang/Runnable;)V
 
-    .line 185
+    .line 196
     iget-object v2, p0, Lcom/android/systemui/statusbar/NotificationEntryManager$NotificationClicker;->this$0:Lcom/android/systemui/statusbar/NotificationEntryManager;
 
     iget-object v2, v2, Lcom/android/systemui/statusbar/NotificationEntryManager;->mCallback:Lcom/android/systemui/statusbar/NotificationEntryManager$Callback;
 
     invoke-interface {v2, v1, v0}, Lcom/android/systemui/statusbar/NotificationEntryManager$Callback;->onNotificationClicked(Landroid/service/notification/StatusBarNotification;Lcom/android/systemui/statusbar/ExpandableNotificationRow;)V
 
-    .line 186
+    .line 197
     return-void
 .end method
 
@@ -169,12 +169,12 @@
     .param p1, "row"    # Lcom/android/systemui/statusbar/ExpandableNotificationRow;
     .param p2, "sbn"    # Landroid/service/notification/StatusBarNotification;
 
-    .line 189
+    .line 200
     invoke-virtual {p2}, Landroid/service/notification/StatusBarNotification;->getNotification()Landroid/app/Notification;
 
     move-result-object v0
 
-    .line 190
+    .line 201
     .local v0, "notification":Landroid/app/Notification;
     iget-object v1, v0, Landroid/app/Notification;->contentIntent:Landroid/app/PendingIntent;
 
@@ -186,7 +186,7 @@
 
     goto :goto_0
 
-    .line 193
+    .line 204
     :cond_0
     const/4 v1, 0x0
 
@@ -194,12 +194,12 @@
 
     goto :goto_1
 
-    .line 191
+    .line 202
     :cond_1
     :goto_0
     invoke-virtual {p1, p0}, Lcom/android/systemui/statusbar/ExpandableNotificationRow;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 195
+    .line 206
     :goto_1
     return-void
 .end method

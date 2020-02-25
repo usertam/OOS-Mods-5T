@@ -23,13 +23,13 @@
     .locals 0
     .param p2, "handler"    # Landroid/os/Handler;
 
-    .line 1175
+    .line 1183
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    .line 1176
+    .line 1184
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 1177
+    .line 1185
     return-void
 .end method
 
@@ -39,7 +39,7 @@
     .locals 7
     .param p1, "selfChange"    # Z
 
-    .line 1181
+    .line 1189
     sget-boolean v0, Landroid/os/Build;->DEBUG_ONEPLUS:Z
 
     if-eqz v0, :cond_0
@@ -50,7 +50,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1182
+    .line 1190
     :cond_0
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
@@ -62,11 +62,11 @@
 
     return-void
 
-    .line 1186
+    .line 1194
     :cond_1
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$800(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/OverviewProxyService;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$900(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/OverviewProxyService;
 
     move-result-object v0
 
@@ -74,10 +74,10 @@
 
     if-eqz v0, :cond_2
 
-    .line 1187
+    .line 1195
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$800(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/OverviewProxyService;
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$900(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/OverviewProxyService;
 
     move-result-object v0
 
@@ -87,11 +87,11 @@
 
     goto :goto_0
 
-    .line 1188
+    .line 1196
     :cond_2
     move v0, v1
 
-    .line 1189
+    .line 1197
     .local v0, "shouldShowSwipeUpUI":Z
     :goto_0
     const/4 v2, 0x1
@@ -100,7 +100,7 @@
 
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    .line 1190
+    .line 1198
     invoke-static {v3}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$400(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Landroid/content/ContentResolver;
 
     move-result-object v3
@@ -115,7 +115,7 @@
 
     iget-object v3, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    .line 1192
+    .line 1200
     invoke-static {v3}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$400(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Landroid/content/ContentResolver;
 
     move-result-object v3
@@ -135,7 +135,7 @@
     :cond_3
     move v3, v1
 
-    .line 1197
+    .line 1205
     .local v3, "config":Z
     :goto_1
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
@@ -144,18 +144,18 @@
 
     if-eqz v4, :cond_4
 
-    .line 1198
+    .line 1206
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     iget-object v4, v4, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->mNavigationBarView:Lcom/android/systemui/statusbar/phone/NavigationBarView;
 
     invoke-virtual {v4, v3}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->updateNavButtonState(Z)V
 
-    .line 1201
+    .line 1209
     :cond_4
     if-nez v3, :cond_5
 
-    .line 1202
+    .line 1210
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-static {v2}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$400(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Landroid/content/ContentResolver;
@@ -166,14 +166,14 @@
 
     invoke-static {v2, v4, v1}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1203
+    .line 1211
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
     invoke-static {v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$302(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;Z)Z
 
-    goto :goto_2
+    goto :goto_3
 
-    .line 1205
+    .line 1213
     :cond_5
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
@@ -191,49 +191,20 @@
 
     if-ne v5, v2, :cond_6
 
-    move v1, v2
-
-    nop
+    goto :goto_2
 
     :cond_6
-    invoke-static {v4, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$302(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;Z)Z
+    move v2, v1
 
-    .line 1208
     :goto_2
-    iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
+    invoke-static {v4, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$302(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;Z)Z
 
-    invoke-static {v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$500(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Lcom/android/systemui/statusbar/phone/StatusBar;
-
-    move-result-object v1
-
+    .line 1215
+    :goto_3
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
 
-    invoke-static {v2}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Z
+    invoke-static {v2, v1}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$600(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;Z)V
 
-    move-result v2
-
-    invoke-virtual {v1, v2}, Lcom/android/systemui/statusbar/phone/StatusBar;->onHideNavBar(Z)V
-
-    .line 1210
-    iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
-
-    iget-object v1, v1, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->mNavigationBarView:Lcom/android/systemui/statusbar/phone/NavigationBarView;
-
-    if-eqz v1, :cond_7
-
-    iget-object v1, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
-
-    iget-object v1, v1, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->mNavigationBarView:Lcom/android/systemui/statusbar/phone/NavigationBarView;
-
-    iget-object v2, p0, Lcom/android/systemui/statusbar/phone/NavigationBarFragment$NavBarSettingObserver;->this$0:Lcom/android/systemui/statusbar/phone/NavigationBarFragment;
-
-    invoke-static {v2}, Lcom/android/systemui/statusbar/phone/NavigationBarFragment;->access$300(Lcom/android/systemui/statusbar/phone/NavigationBarFragment;)Z
-
-    move-result v2
-
-    invoke-virtual {v1, v2}, Lcom/android/systemui/statusbar/phone/NavigationBarView;->setHideNavBarOn(Z)V
-
-    .line 1211
-    :cond_7
+    .line 1216
     return-void
 .end method

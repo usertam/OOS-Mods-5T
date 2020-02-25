@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/keyguard/KeyguardUpdateMonitor;
     .param p2, "x0"    # Landroid/os/Looper;
 
-    .line 401
+    .line 403
     iput-object p1, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
@@ -38,7 +38,7 @@
     .locals 4
     .param p1, "msg"    # Landroid/os/Message;
 
-    .line 404
+    .line 406
     iget v0, p1, Landroid/os/Message;->what:I
 
     const/16 v1, 0x1f4
@@ -65,12 +65,12 @@
 
     packed-switch v0, :pswitch_data_7
 
-    .line 555
+    .line 557
     invoke-super {p0, p1}, Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V
 
     goto/16 :goto_2
 
-    .line 551
+    .line 553
     :pswitch_0
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -85,10 +85,10 @@
     :cond_0
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3100(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)V
 
-    .line 552
+    .line 554
     goto/16 :goto_2
 
-    .line 546
+    .line 548
     :pswitch_1
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -103,10 +103,10 @@
     :cond_1
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$3000(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)V
 
-    .line 547
+    .line 549
     goto/16 :goto_2
 
-    .line 535
+    .line 537
     :pswitch_2
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -126,11 +126,11 @@
 
     goto :goto_0
 
-    .line 538
+    .line 540
     :cond_2
     return-void
 
-    .line 536
+    .line 538
     :cond_3
     :goto_0
     const-string v0, "KeyguardUpdateMonitor"
@@ -177,26 +177,26 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 540
+    .line 542
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     iget v1, p1, Landroid/os/Message;->arg1:I
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$200(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 541
+    .line 543
     goto/16 :goto_2
 
-    .line 529
+    .line 531
     :pswitch_3
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleSystemReady()V
 
-    .line 530
+    .line 532
     goto/16 :goto_2
 
-    .line 520
+    .line 522
     :pswitch_4
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -206,51 +206,51 @@
 
     if-eqz v0, :cond_8
 
-    .line 521
+    .line 523
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2802(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)Z
 
-    .line 522
+    .line 524
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->updateFingerprintListeningState()V
 
-    .line 523
+    .line 525
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2900(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
     goto/16 :goto_2
 
-    .line 496
+    .line 498
     :pswitch_5
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleScreenturningOn()V
 
-    .line 497
+    .line 499
     goto/16 :goto_2
 
-    .line 515
+    .line 517
     :pswitch_6
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2700(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 516
+    .line 518
     goto/16 :goto_2
 
-    .line 509
+    .line 511
     :pswitch_7
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->updateFingerprintListeningState()V
 
-    .line 510
+    .line 512
     goto/16 :goto_2
 
-    .line 505
+    .line 507
     :pswitch_8
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -264,24 +264,24 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2502(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)Z
 
-    .line 506
+    .line 508
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->updateFingerprintListeningState()V
 
-    .line 507
+    .line 509
     goto/16 :goto_2
 
-    .line 502
+    .line 504
     :pswitch_9
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2400(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 503
+    .line 505
     goto/16 :goto_2
 
-    .line 499
+    .line 501
     :pswitch_a
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -289,36 +289,36 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2300(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 500
+    .line 502
     goto/16 :goto_2
 
-    .line 491
+    .line 493
     :pswitch_b
     const-string v0, "KeyguardUpdateMonitor#handler MSG_SCREEN_TURNED_ON"
 
     invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
-    .line 492
+    .line 494
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2200(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 493
+    .line 495
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
-    .line 494
+    .line 496
     goto/16 :goto_2
 
-    .line 488
+    .line 490
     :pswitch_c
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2100(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 489
+    .line 491
     goto/16 :goto_2
 
-    .line 484
+    .line 486
     :pswitch_d
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -332,19 +332,19 @@
 
     invoke-static {v0, v1, v2, v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2000(Lcom/android/keyguard/KeyguardUpdateMonitor;IILandroid/telephony/ServiceState;)V
 
-    .line 486
+    .line 488
     goto/16 :goto_2
 
-    .line 478
+    .line 480
     :pswitch_e
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1900(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 479
+    .line 481
     goto/16 :goto_2
 
-    .line 468
+    .line 470
     :pswitch_f
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -364,39 +364,39 @@
 
     goto :goto_1
 
-    .line 475
+    .line 477
     :cond_4
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1800(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 476
+    .line 478
     goto/16 :goto_2
 
-    .line 469
+    .line 471
     :cond_5
     :goto_1
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0, v2}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1702(Lcom/android/keyguard/KeyguardUpdateMonitor;Z)Z
 
-    .line 470
+    .line 472
     const-string v0, "KeyguardUpdateMonitor"
 
     const-string v1, "delay handle subinfo change"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 471
+    .line 473
     return-void
 
-    .line 462
+    .line 464
     :pswitch_10
     const-string v0, "KeyguardUpdateMonitor#handler MSG_FACE_UNLOCK_STATE_CHANGED"
 
     invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
-    .line 463
+    .line 465
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     iget v3, p1, Landroid/os/Message;->arg1:I
@@ -412,13 +412,13 @@
 
     invoke-static {v0, v1, v2}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1400(Lcom/android/keyguard/KeyguardUpdateMonitor;ZI)V
 
-    .line 464
+    .line 466
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
-    .line 465
+    .line 467
     goto/16 :goto_2
 
-    .line 439
+    .line 441
     :pswitch_11
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -426,10 +426,10 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1000(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 440
+    .line 442
     goto/16 :goto_2
 
-    .line 451
+    .line 453
     :pswitch_12
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -437,10 +437,10 @@
 
     invoke-virtual {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleStartedGoingToSleep(I)V
 
-    .line 452
+    .line 454
     goto/16 :goto_2
 
-    .line 454
+    .line 456
     :pswitch_13
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -448,36 +448,36 @@
 
     invoke-virtual {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleFinishedGoingToSleep(I)V
 
-    .line 455
+    .line 457
     goto/16 :goto_2
 
-    .line 457
+    .line 459
     :pswitch_14
     const-string v0, "KeyguardUpdateMonitor#handler MSG_STARTED_WAKING_UP"
 
     invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
-    .line 458
+    .line 460
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-virtual {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleStartedWakingUp()V
 
-    .line 459
+    .line 461
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
-    .line 460
+    .line 462
     goto/16 :goto_2
 
-    .line 448
+    .line 450
     :pswitch_15
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1300(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 449
+    .line 451
     goto/16 :goto_2
 
-    .line 445
+    .line 447
     :pswitch_16
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -485,10 +485,10 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1200(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 446
+    .line 448
     goto/16 :goto_2
 
-    .line 433
+    .line 435
     :pswitch_17
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -496,28 +496,28 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$800(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 434
+    .line 436
     goto :goto_2
 
-    .line 442
+    .line 444
     :pswitch_18
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$1100(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 443
+    .line 445
     goto :goto_2
 
-    .line 436
+    .line 438
     :pswitch_19
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$900(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 437
+    .line 439
     goto :goto_2
 
-    .line 430
+    .line 432
     :pswitch_1a
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -529,28 +529,28 @@
 
     invoke-static {v0, v1, v2}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$700(Lcom/android/keyguard/KeyguardUpdateMonitor;ILandroid/os/IRemoteCallback;)V
 
-    .line 431
+    .line 433
     goto :goto_2
 
-    .line 427
+    .line 429
     :pswitch_1b
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$600(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 428
+    .line 430
     goto :goto_2
 
-    .line 424
+    .line 426
     :pswitch_1c
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$500(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 425
+    .line 427
     goto :goto_2
 
-    .line 421
+    .line 423
     :pswitch_1d
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -560,10 +560,10 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$400(Lcom/android/keyguard/KeyguardUpdateMonitor;Ljava/lang/String;)V
 
-    .line 422
+    .line 424
     goto :goto_2
 
-    .line 418
+    .line 420
     :pswitch_1e
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -571,10 +571,10 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$300(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 419
+    .line 421
     goto :goto_2
 
-    .line 413
+    .line 415
     :pswitch_1f
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -582,7 +582,7 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$200(Lcom/android/keyguard/KeyguardUpdateMonitor;I)V
 
-    .line 415
+    .line 417
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     iget v1, p1, Landroid/os/Message;->arg1:I
@@ -595,10 +595,10 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/keyguard/KeyguardUpdateMonitor;->handleSimStateChange(IILcom/android/internal/telephony/IccCardConstants$State;)V
 
-    .line 416
+    .line 418
     goto :goto_2
 
-    .line 409
+    .line 411
     :pswitch_20
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -608,28 +608,28 @@
 
     invoke-static {v0, v1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$100(Lcom/android/keyguard/KeyguardUpdateMonitor;Lcom/android/keyguard/KeyguardUpdateMonitor$BatteryStatus;)V
 
-    .line 410
+    .line 412
     goto :goto_2
 
-    .line 406
+    .line 408
     :pswitch_21
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$000(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 407
+    .line 409
     goto :goto_2
 
-    .line 512
+    .line 514
     :cond_7
     iget-object v0, p0, Lcom/android/keyguard/KeyguardUpdateMonitor$1;->this$0:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
     invoke-static {v0}, Lcom/android/keyguard/KeyguardUpdateMonitor;->access$2600(Lcom/android/keyguard/KeyguardUpdateMonitor;)V
 
-    .line 513
+    .line 515
     nop
 
-    .line 558
+    .line 560
     :cond_8
     :goto_2
     return-void

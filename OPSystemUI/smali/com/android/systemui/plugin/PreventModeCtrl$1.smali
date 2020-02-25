@@ -26,7 +26,7 @@
     .locals 0
     .param p1, "this$0"    # Lcom/android/systemui/plugin/PreventModeCtrl;
 
-    .line 158
+    .line 168
     iput-object p1, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
     .locals 3
     .param p1, "result"    # I
 
-    .line 186
+    .line 196
     const-string v0, "PreventModeCtrl"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -57,19 +57,19 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 187
+    .line 197
     const/4 v0, 0x1
 
     if-ne p1, v0, :cond_0
 
-    .line 188
+    .line 198
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-static {v0}, Lcom/android/systemui/plugin/PreventModeCtrl;->access$300(Lcom/android/systemui/plugin/PreventModeCtrl;)V
 
     goto :goto_0
 
-    .line 189
+    .line 199
     :cond_0
     const/4 v0, 0x2
 
@@ -81,7 +81,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 190
+    .line 200
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     iget-object v0, v0, Lcom/android/systemui/plugin/PreventModeCtrl;->mPMView:Lcom/android/systemui/plugin/PreventModeView;
@@ -90,23 +90,23 @@
 
     invoke-virtual {v0, v1}, Lcom/android/systemui/plugin/PreventModeView;->setVisibility(I)V
 
-    .line 191
+    .line 201
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-virtual {v0}, Lcom/android/systemui/plugin/PreventModeCtrl;->stopPreventMode()V
 
     goto :goto_0
 
-    .line 192
+    .line 202
     :cond_1
     if-nez p1, :cond_2
 
-    .line 193
+    .line 203
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-virtual {v0}, Lcom/android/systemui/plugin/PreventModeCtrl;->stopPreventMode()V
 
-    .line 195
+    .line 205
     :cond_2
     :goto_0
     return-void
@@ -119,7 +119,7 @@
     .param p1, "sensor"    # Landroid/hardware/Sensor;
     .param p2, "accuracy"    # I
 
-    .line 183
+    .line 193
     return-void
 .end method
 
@@ -127,7 +127,7 @@
     .locals 5
     .param p1, "event"    # Landroid/hardware/SensorEvent;
 
-    .line 166
+    .line 176
     iget-object v0, p0, Lcom/android/systemui/plugin/PreventModeCtrl$1;->this$0:Lcom/android/systemui/plugin/PreventModeCtrl;
 
     invoke-static {v0}, Lcom/android/systemui/plugin/PreventModeCtrl;->access$100(Lcom/android/systemui/plugin/PreventModeCtrl;)Ljava/lang/Object;
@@ -136,7 +136,7 @@
 
     monitor-enter v0
 
-    .line 168
+    .line 178
     :try_start_0
     iget-object v1, p1, Landroid/hardware/SensorEvent;->values:[F
 
@@ -146,19 +146,19 @@
 
     if-nez v1, :cond_0
 
-    .line 169
+    .line 179
     const-string v1, "PreventModeCtrl"
 
     const-string v3, "Event has no values!"
 
     invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 170
+    .line 180
     invoke-direct {p0, v2}, Lcom/android/systemui/plugin/PreventModeCtrl$1;->finishWithResult(I)V
 
     goto :goto_1
 
-    .line 173
+    .line 183
     :cond_0
     const-string v1, "PreventModeCtrl"
 
@@ -198,7 +198,7 @@
 
     invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 174
+    .line 184
     iget-object v1, p1, Landroid/hardware/SensorEvent;->values:[F
 
     aget v1, v1, v2
@@ -218,7 +218,7 @@
     :cond_1
     move v1, v2
 
-    .line 175
+    .line 185
     .local v1, "isNear":Z
     if-eqz v1, :cond_2
 
@@ -230,15 +230,15 @@
     :goto_0
     invoke-direct {p0, v3}, Lcom/android/systemui/plugin/PreventModeCtrl$1;->finishWithResult(I)V
 
-    .line 177
+    .line 187
     .end local v1    # "isNear":Z
     :goto_1
     monitor-exit v0
 
-    .line 178
+    .line 188
     return-void
 
-    .line 177
+    .line 187
     :catchall_0
     move-exception v1
 
